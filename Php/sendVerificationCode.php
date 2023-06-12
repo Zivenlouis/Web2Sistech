@@ -1,7 +1,5 @@
 <?php
-require 'lib/PHPMailer/src/PHPMailer.php';
-require 'lib/PHPMailer/src/SMTP.php';
-require 'lib/PHPMailer/src/Exception.php';
+require('vendor/autoload.php');
 use PHPMailer\PHPMailer\PHPMailer;
 require("Php/connection.php");
 if (isset($_POST['submit']) || isset($_POST['resend'])) {
