@@ -1,0 +1,191 @@
+nav {
+  position: fixed;
+  right: 0px;
+  top: 20px;
+  width: 40vw;
+  max-width: 700px;
+  height: 60px;
+  background: linear-gradient(
+    91.97deg,
+    #1b7d98 -21.42%,
+    #26ad95 38.95%,
+    #2cc994 98.57%
+  );
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 40px 0px 0px 40px;
+  z-index: 100;
+  animation: upndown 10s infinite reverse;
+  animation-timing-function: linear;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-left: 20px;
+  padding-right: 20px;
+  transition: width 1s;
+}
+
+.hamburger {
+  height: 25px;
+  display: none;
+}
+
+nav p {
+  color: white;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 21px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin: 0;
+}
+
+header a {
+  text-decoration: none;
+  height: 60px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 60px;
+}
+
+header a:hover .selected-header {
+  display: block;
+}
+
+header {
+  position: absolute;
+}
+@media screen and (min-width: 1200px) {
+  header a {
+    display: flex !important;
+  }
+
+  nav {
+    height: 60px !important;
+  }
+}
+@media screen and (max-width: 1200px) {
+  header .nav-item {
+    display: none;
+  }
+
+  nav {
+    flex-flow: column;
+    width: 100px;
+    transition: height 1s;
+  }
+
+  .sistech-logo {
+    left: -40px !important;
+  }
+
+  .profile-icon {
+    display: none;
+  }
+  .hamburger {
+    display: block;
+    padding: 10px;
+    margin-top: -10px;
+  }
+
+  .sistech-logo {
+    height: 220px !important;
+  }
+}
+
+.header-logo {
+  z-index: 100;
+}
+
+.selected-header {
+  display: none;
+  position: relative;
+  width: 140%;
+  left: -20%;
+  height: 5px;
+  background-color: white;
+  top: -38px;
+  border-radius: 100px;
+  z-index: 10;
+}
+
+.sistech-logo {
+  position: relative;
+  height: 300px;
+  left: -20vw;
+  top: 0px;
+  opacity: 0.2;
+  animation: circling 60s infinite reverse;
+  animation-timing-function: linear;
+  z-index: -1;
+  transition: left 1s, width 1s, height 1s;
+}
+
+.header-logo {
+  position: fixed;
+  width: 126px;
+  height: 60px;
+  left: 20px;
+  top: 20px;
+  background: #fdfdfd;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+  animation: upndown 9s infinite reverse;
+  animation-timing-function: linear;
+}
+
+.header-logo img {
+  width: 50px;
+}
+
+.header-logo p {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: #212572;
+}
+
+@keyframes circling {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes upndown {
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.dropdown {
+  position: absolute;
+  background-color: white;
+  width: 100px;
+  right: 10px;
+  bottom: -30px;
+  padding: 10px;
+  border-radius: 5px;
+  display: none;
+}
+
+.nav-item {
+  cursor: pointer;
+}
+
+.dropdown input {
+  background: none;
+  outline: none;
+  border: none;
+}
