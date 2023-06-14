@@ -48,7 +48,7 @@
           <p class="white-text">
             On its way to create a better and more fun campuss
           </p>
-          <a href="About Us/index.php">
+          <a href="about_us.php">
             <button class="button-org" style="transform: scale(0.8)">
               More About Us
             </button>
@@ -80,7 +80,7 @@
           </div>
           <div class="bottom-content-section2">
             <!-- <button id="registerNow" class="button-ijo" style="transform:scale(0.8)">Register Now</button> -->
-            <a href="Events/index.php">
+            <a href="events.php">
               <button
                 id="moreDetails"
                 class="button-ijo"
@@ -111,7 +111,7 @@
             </label>
           </div>
         </div>
-        <a href="Events/index.php">
+        <a href="events.php">
           <button class="button-ijo" style="margin-top: 0; margin-bottom: 50px">
             More Events
           </button>

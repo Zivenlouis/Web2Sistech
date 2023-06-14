@@ -13,7 +13,7 @@
         $params = array(
 
         'transaction_details' => array(
-            'order_id' => 'ORDER12345',
+            'order_id' => uniqid(),
             'gross_amount' => 100000 
         ),
         
@@ -32,11 +32,12 @@
                 'quantity' => 2,
                 'name' => 'Example Item'
             )
-        )
+        ),
+        // 'enabled_payments' => array('credit_card', 'gopay')
 
     );
 
-        $enabled_payments = array('credit_card', 'gopay');
+        
 
         $transaction_token = $transaction->createTransaction($params);
         header('Location: ' . $transaction_token->redirect_url);    
