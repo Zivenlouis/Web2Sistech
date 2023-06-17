@@ -4,15 +4,15 @@ use PHPMailer\PHPMailer\PHPMailer;
 require("Php/connection.php");
 if (isset($_POST['submit']) || isset($_POST['resend'])) {
     if (isset($_POST['email']) && isset($_POST['verificationCode']) && $_POST['verificationCode'] != '') {
-    $verificationCode = $_POST['verificationCode'];
-    $email = $_POST['email'];
-    $sql = "SELECT * FROM tbl_akun WHERE email='{$email}' && verification_code='{$verificationCode}'";
-    $result = $conn -> query($sql);
-    if($row = $result -> fetch_assoc()) {
-        header("Location: change_password.php?verificationCode={$verificationCode}&email={$email}");
-    } else {
-        echo "Verification code is wrong";
-    } 
+        $verificationCode = $_POST['verificationCode'];
+        $email = $_POST['email'];
+        $sql = "SELECT * FROM tbl_akun WHERE email='{$email}' && verification_code='{$verificationCode}'";
+        $result = $conn -> query($sql);
+        if($row = $result -> fetch_assoc()) {
+            header("Location: change_password.php?verificationCode={$verificationCode}&email={$email}");
+        } else {
+            echo "Verification code is wrong";
+        } 
     } else {
         $email = $_POST['email'];
         

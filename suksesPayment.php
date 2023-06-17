@@ -15,14 +15,5 @@
     echo "<br>";
 
 
-    // Retrieve and echo the response headers
-    $responseHeaders = headers_list();
-    foreach ($responseHeaders as $header) {
-        echo $header . "<br>";
-    }
-
-    // Retrieve and echo the response body
-    $responseBody = file_get_contents('php://input');
-    echo $responseBody;
 
 ?>

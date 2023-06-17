@@ -30,6 +30,7 @@
             <p>Home</p>
             <div class="selected-header" style="display: <?= $filename == 'index.php' ? "block" : "";  ?>"></div>
           </div>
+          
         </a>
         <a class="nav-item" href="events.php">
           <div class="header-item">
@@ -46,6 +47,13 @@
         <a class="nav-item" href="profile.php">
           <div class="header-item">
             <p>Profile </p>
+            <div class="selected-header" style="display: <?= $filename == 'profile.php' ? "block" : "";  ?>"></div>
+          </div>
+        </a>
+
+        <a class="nav-item" href="tesPayment.php">
+          <div class="header-item">
+            <p>Tes Payment </p>
             <div class="selected-header" style="display: <?= $filename == 'profile.php' ? "block" : "";  ?>"></div>
           </div>
         </a>

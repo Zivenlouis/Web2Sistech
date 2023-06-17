@@ -33,12 +33,11 @@
                 'name' => 'Example Item'
             )
         ),
-        // 'enabled_payments' => array('credit_card', 'gopay')
-
+        // 'enabled_payments' => array('bank_transfer'),
     );
 
         
-
+        
         $transaction_token = $transaction->createTransaction($params);
         header('Location: ' . $transaction_token->redirect_url);    
 
