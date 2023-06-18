@@ -36,10 +36,14 @@
         // 'enabled_payments' => array('bank_transfer'),
     );
 
-        
-        
+    try {
         $transaction_token = $transaction->createTransaction($params);
         header('Location: ' . $transaction_token->redirect_url);    
+    } catch (Exception $e) {
+        echo 'Error occurred: ' . $e->getMessage();
+    }
+        
+       
 
 
     ?>
