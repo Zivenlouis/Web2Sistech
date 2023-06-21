@@ -15,7 +15,7 @@ if(isset($_POST['submit'])) {
     if ($row = $result->fetch_assoc()) {
         header("Location: register.php?messageCode=1");
     } else {
-        $sql = "INSERT INTO tbl_akun (first_name, last_name, email, password, kelas, nim, line) VALUES ('$firstName', '$lastName', '$email', '$password', '$kelas', '$nim', '$line')";
+        $sql = "INSERT INTO tbl_akun (first_name, last_name, email, password, class, nim, line) VALUES ('$firstName', '$lastName', '$email', '$password', '$kelas', '$nim', '$line')";
         if (mysqli_query($conn, $sql)) {
             header("Location: sign_in.php?messageCode=3");
         } else {
