@@ -311,7 +311,7 @@ swiper-slide img {
   .container-2-main .card-2 h1 {
     font-size: 1.75em;
     bottom: 40px;
-    left: 45px;
+    right: 45px;
   }
 
   .container-1-main .card-1 p {
@@ -333,7 +333,7 @@ swiper-slide img {
   .container-2-main .card-2:hover h1 {
     font-size: 1.25em;
     bottom: 210px;
-    left: 25px;
+    right: 25px;
   }
 
   .container-1-main .card-1:hover p {
@@ -342,7 +342,7 @@ swiper-slide img {
 
   .container-2-main .card-2:hover p {
     bottom: 45px;
-    left: 25px;
+    right: 25px;
   }
 }
 
@@ -379,13 +379,13 @@ swiper-slide img {
   }
 
   .container-1-main .card-1:hover h1 {
-    font-size: 1.75em;
-    bottom: 180px;
+    font-size: 1.5em;
+    bottom: 150px;
     right: 35px;
   }
 
   .container-1-main .card-1:hover p {
-    bottom: 30px;
+    bottom: 10px;
   }
 
   .container-2-main .card-2 h1 {
@@ -404,7 +404,7 @@ swiper-slide img {
   }
 
   .container-2-main .card-2:hover p {
-    bottom: 30px;
+    bottom: 20px;
   }
 }
 
@@ -442,7 +442,7 @@ swiper-slide img {
 
   .container-1-main .card-1:hover h1 {
     font-size: 1em;
-    bottom: 135px;
+    bottom: 130px;
     right: 15px;
   }
 
@@ -454,7 +454,7 @@ swiper-slide img {
   .container-2-main .card-2 h1 {
     font-size: 1.2em;
     bottom: 25px;
-    left: 25px;
+    right: 50px;
   }
 
   .container-2-main .card-2 p {
@@ -465,12 +465,12 @@ swiper-slide img {
   .container-2-main .card-2:hover h1 {
     font-size: 0.75em;
     bottom: 130px;
-    left: 25px;
+    right: 15px;
   }
 
   .container-2-main .card-2:hover p {
-    bottom: 40px;
-    left: 25px;
+    bottom: 30px;
+    right: 15px;
   }
 }
 

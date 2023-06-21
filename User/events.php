@@ -7,12 +7,12 @@
   <link rel="stylesheet" href="Style/mainEvent.css">
   </head>
   <body>
-    <!-- <div class="background">
+    <div class="background">
       <div class="eclipse1"></div>
       <div class="eclipse2"></div>
       <div class="eclipse3"></div>
       <div class="eclipse4"></div>
-    </div> -->
+    </div>
 
     <?php require_once("Layout/header.php");?>
 
@@ -27,7 +27,7 @@
                     </div>
                     <div class="bottom-content">
                         <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" space-between="30"
-                        centered-slides="true" autoplay-delay="5500" autoplay-disable-on-interaction="true">
+                        centered-slides="true" autoplay-delay="3500" autoplay-disable-on-interaction="true">
                             <swiper-slide>
                                 <img src="Image/Main/Bangkit.png" alt="">
                                 <img src="Image/Main/Menara.png" alt="">
