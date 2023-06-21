@@ -7,12 +7,12 @@
   <link rel="stylesheet" href="Style/mainEvent.css">
   </head>
   <body>
-    <div class="background">
+    <!-- <div class="background">
       <div class="eclipse1"></div>
       <div class="eclipse2"></div>
       <div class="eclipse3"></div>
       <div class="eclipse4"></div>
-    </div>
+    </div> -->
 
     <?php require_once("Layout/header.php");?>
 
@@ -52,23 +52,23 @@
             </div>
         </div>
         <div class="container-2">
-            <div class="container-2-main">
+            <div class="container-1-main">
                 <div class="card-1">
                     <h1>Bangkit 2023</h1>
                     <div class="round-1"></div>
                     <p>Aim Higher With Bangkit 2023 merupakan program kerja oleh Himpunan Mahasiswa Program Studi Sistem Informasi (HMPSSI) dan Himpunan Mahasiswa Program Studi Informatika (HMPTIF) UPH Kampus Medan yang bertujuan untuk memperkenalkan program MBKM terkhususnya Bangkit untuk mahasiswa/i UPH Kampus Medan...</p>
-                    <div class="image"><img class='container-2-image'  src="Image/main/Main-bangkit.png"></div>
+                    <div class="image-1"><img class='container-2-image'  src="Image/main/Main-bangkit.png"></div>
                 </div>
             </div>
-            <div class="container-3-main">
+            <div class="container-2-main">
                 <div class="card-2">
-                    <h1>Menara: Metaverse in Nusantara</h1>
+                    <h1 >Metaverse In Nusantara</h1>
                     <div class="round-2"></div>
                     <p>Menara: Metaverse in Nusantara is an event held by SISTECH to introduce and enrich participants' knowledge about the technology behind Metaverse and the development of Metaverse in Indonesia...</p>
                     <div class="image-2"><img class='container-2-image'  src="Image/main/Main-metanesia.png"></div>
                 </div>
             </div>
-            <div class="container-2-main">
+            <div class="container-1-main">
                 <div class="card-1">
                     <h1>Basic Coding Class</h1>
                     <div class="round-1"></div>
@@ -76,7 +76,7 @@
                     <div class="image-1"><img class='container-2-image'  src="Image/main/Main-bcc.png"></div>
                 </div>
             </div>
-            <div class="container-3-main">
+            <div class="container-2-main">
                 <div class="card-2">
                     <h1>D.O.T.S. 2022</h1>
                     <div class="round-2"></div>
@@ -84,7 +84,6 @@
                     <div class="image-2"><img class='container-2-image'  src="Image/main/Main-dots.png"></div>
                 </div>
             </div>
-            <div class="container-6"></div>
         </div>
     </main>
     <?php require_once("Layout/footer.php");?>
