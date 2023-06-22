@@ -27,4 +27,5 @@
 />
 <link rel="stylesheet" href="assets/css/style.css" />
 <link rel="shortcut icon" href="../User/Image/favicon.png" />
+
 <?php require_once("php/connection.php"); ?>

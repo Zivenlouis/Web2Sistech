@@ -1,3 +1,9 @@
+document.querySelector(".nim").addEventListener("keydown", function (evt) {
+  if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57)
+  {
+      evt.preventDefault();
+  }
+});
 function validation() {
   let form = document.getElementById("form");
   let email = document.getElementById("email").value;
@@ -37,6 +43,17 @@ function validation2() {
   } else {
     text.innerHTML = "";
   }
+}
+function validation3() {
+  let nim = document.getElementById("nim").value;
+  let text = document.getElementById("text3");
+  if (nim.length < 11) {
+    text.innerHTML = "Invalid NIM, minimum length: 11";
+    text.style.color = "#ff0000";
+  } else {
+    text.innerHTML = "";
+  }
+
 }
 
 function lettersOnlyCheck() {

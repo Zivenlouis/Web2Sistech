@@ -64,7 +64,20 @@
                   <label class="textregister"for="pass2">Re-enter Password</label>
                   <br>
                   <input class="inputregister2" type="password" id="pass2" name="pass2" value="" required="required" onkeyup="validation2()"><span id="text2"></span>
-              </div>
+                  <br>
+                  <label class="textregister"for="email">Kelas</label>
+                  <br>
+                  <input class="inputregister2" type="text" id="kelas" name="kelas" value="" required="required" > <span id="text4"></span>
+                  <br>
+                  <label class="textregister"for="email">NIM</label>
+                  <br>
+                  <input class="inputregister2 nim" type="number" id="nim" name="nim" value="" required="required" onkeyup="validation3()"><span id="text3"></span>  
+                  <br>
+                  <label class="textregister"for="email">Line ID</label>
+                  <br>
+                  <input class="inputregister2" type="text" id="line" name="line" value="" required="required">
+                  <br>
+                </div>
               <div class="row"  style="margin-top: 40px;">
                   <div class="bagi5persen">
                       <input type="checkbox" required="required">
