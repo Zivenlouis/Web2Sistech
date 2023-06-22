@@ -50,8 +50,8 @@
                     </tbody>
                     <style>
                        .showDataImg {
-                        width: 300px !important;
-                        height: 300px !important;
+                        width: 100px !important;
+                        height: 100px !important;
                         border-radius: 0 !important;
                        }
 
