@@ -1,9 +1,9 @@
 <?php
     session_start();
-    if(empty($_SESSION['loggedInAdmin'])) {
-        header('location: login.php');
-    }
-?>
+//     if(empty($_SESSION['loggedInAdmin'])) {
+//         header('location: login.php');
+//     }
+// ?>
 
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div
