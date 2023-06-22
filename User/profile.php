@@ -5,6 +5,9 @@
     <?php require_once("Layout/head.php"); ?>
     <link rel="stylesheet" href="Style/mainProfile.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
   </head>
   <body>
     <!-- <div class="background">
@@ -24,7 +27,18 @@
         </div>
         <div class="division-part">
           <div class="division-container">
-            <div class="division-name">Governing Body</div>
+            <p class="division-name fs-1 text">Governing Body</p>
+            <p class="ok-name">hmpssi 2022/2023</p>
+            <div class="people-container">
+              <div class="people">
+                <img src="Image/HMPSSI/jian-hmpssi.png"">
+                <img src="Image/HMPSSI/wilbert-hmpssi.png">
+                <img src="Image/HMPSSI/vellyn-hmpssi.png">
+              </div>
+            </div>
+          </div>
+          <div class="division-container">
+            <p class="division-name">Governing Body</p>
             <div class="ok-name">hmpssi 2022/2023</div>
             <div class="people-container">
               <div class="people">
@@ -34,17 +48,6 @@
               </div>
             </div>
           </div>
-          <!-- <div class="division-container">
-            <div class="division-name">Governing Body</div>
-            <div class="ok-name">hmpssi 2022/2023</div>
-            <div class="people-container">
-              <div class="people">
-                <img src="Image/HMPSSI/jian-hmpssi.png"">
-                <img src="Image/HMPSSI/wilbert-hmpssi.png">
-                <img src="Image/HMPSSI/vellyn-hmpssi.png">
-              </div>
-            </div>
-          </div> -->
         </div>
       </div>
     </main>
