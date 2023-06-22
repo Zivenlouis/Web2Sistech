@@ -16,13 +16,13 @@
                 <div class="form-group row">
                   <label for="eventTitle" class="col-sm-3 col-form-label">Event Title</label>
                   <div class="col-sm-9">
-                    <input type="text" name="title" value="" class="form-control" id="eventTitle" placeholder="Title">
+                    <input type="text" name="title" value="" class="form-control" id="eventTitle" placeholder="Title" style="color: #ffff">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="eventDescription" class="col-sm-3 col-form-label">Event Description</label>
                   <div class="col-sm-9">
-                    <textarea class="form-control" id="eventDescription" name="description" placeholder="Description"></textarea>
+                    <textarea class="form-control" id="eventDescription" name="description" placeholder="Description" style="color: #ffff"></textarea>
                   </div>
                 </div>
                 <div class="form-group row">
