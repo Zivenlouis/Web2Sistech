@@ -23,7 +23,7 @@
     <main>
       <div class="profile-container">
         <div class="profile-logo">
-          PROFILE
+          SISTECH PROFILE
         </div>
         <div class="division-part">
           <div class="division-container">
@@ -37,9 +37,10 @@
               </div>
             </div>
           </div>
+        <div class="division-part">
           <div class="division-container">
-            <p class="division-name">Governing Body</p>
-            <div class="ok-name">hmpssi 2022/2023</div>
+            <p class="division-name fs-1 text">Governing Body</p>
+            <p class="ok-name">hmpssi 2022/2023</p>
             <div class="people-container">
               <div class="people">
                 <img src="Image/HMPSSI/jian-hmpssi.png"">

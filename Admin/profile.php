@@ -42,7 +42,7 @@
         <div class="table-responsive">
           <div class="card">
             <div class="card-body">
-              <h4 class="card-title">Profile Admin</h4>
+              <h4 class="card-title">Profile Admin Page</h4>
               <p class="card-description"> 
                 <form>
                   
