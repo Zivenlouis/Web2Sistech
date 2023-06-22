@@ -8,7 +8,7 @@
       <?php require_once("component/navbar.php");?>
       <div class="main-panel">
         <div class="content-wrapper">
-       
+          
         </div>
       </div>
     </div>

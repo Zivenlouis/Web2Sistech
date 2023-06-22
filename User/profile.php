@@ -4,147 +4,47 @@
     <title>Profile</title>
     <?php require_once("Layout/head.php"); ?>
     <link rel="stylesheet" href="Style/mainProfile.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
   </head>
   <body>
-    <div class="background">
+    <!-- <div class="background">
       <div class="eclipse1"></div>
       <div class="eclipse2"></div>
       <div class="eclipse3"></div>
       <div class="eclipse4"></div>
       <div class="eclipse5"></div>
       <div class="eclipse6"></div>
-    </div>
+    </div> -->
 
     <?php require_once("Layout/header.php"); ?>
     <main>
-      <div class="continue1-content">
-        <p>PROFILE</p>
-      </div>
-      <div class="continue5-content">
-        <h2>GOVERNING BODY</h2>
-      </div>
-      <div class="container3">
-        <p>HMPSSI 2022/2023</p>
-      </div>
-      <div class="Governing-body">
-        <div class="Gbody">
-          <img src="Image/HMPSSI/jian-hmpssi.png" />
+      <div class="profile-container">
+        <div class="profile-logo">
+          PROFILE
         </div>
-        <div class="Gbody">
-          <img src="Image/HMPSSI/wilbert-hmpssi.png" />
-        </div>
-        <div class="Gbody">
-          <img src="Image/HMPSSI/vellyn-hmpssi.png" />
-        </div>
-      </div>
-      <div class="continue5-content">
-        <h2>INTERNAL RELATIONS</h2>
-      </div>
-      <div class="container3">
-        <p>HMPSSI 2022/2023</p>
-      </div>
-      <div class="Governing-body">
-        <div class="Gbody">
-          <img src="Image/HMPSSI/brian-hmpssi.png" />
-        </div>
-        <div class="Gbody">
-          <img src="Image/HMPSSI/gilbert-hmpssi.png" />
-        </div>
-      </div>
-      <div class="continue5-content">
-        <h2>EXTERNAL RELATIONS</h2>
-      </div>
-      <div class="container3">
-        <p>HMPSSI 2022/2023</p>
-      </div>
-      <div class="Governing-body">
-        <div class="Gbody">
-          <img src="Image/HMPSSI/karen-hmpssi.png" />
-        </div>
-        <div class="Gbody">
-          <img src="Image/HMPSSI/jovin-hmpssi.png" />
-        </div>
-      </div>
-      <div class="continue5-content">
-        <h2>COMMUNICATION MEDIA AND INFORMATION</h2>
-      </div>
-      <div class="container3">
-        <p>HMPSSI 2022/2023</p>
-      </div>
-      <div class="Governing-body">
-        <div class="Gbody">
-          <img src="Image/HMPSSI/jodie-hmpssi.png" />
-        </div>
-        <div class="Gbody">
-          <img src="Image/HMPSSI/vinson-hmpssi.png" />
-        </div>
-        <div class="Gbody">
-          <img src="Image/HMPSSI/kimberly-hmpssi.png" />
-        </div>
-      </div>
-      <div class="continue7-content">
-        <h2>GOVERNING BODY</h2>
-      </div>
-      <div class="container3">
-        <p>HMPSIF 2022/2023</p>
-      </div>
-      <div class="Governing-body2">
-        <div class="Gbody">
-          <img src="Image/HMPSIF/irwanto-hmptif.png" />
-        </div>
-        <div class="Gbody">
-          <img src="Image/HMPSIF/vincent-hmptif.png" />
-        </div>
-        <div class="Gbody">
-          <img src="Image/HMPSIF/etthanne-hmptif.png" />
-        </div>
-      </div>
-      <div class="continue7-content">
-        <h2>PUBLIC RELATIONS</h2>
-      </div>
-      <div class="container3">
-        <p>HMPSIF 2022/2023</p>
-      </div>
-      <div class="Governing-body2">
-        <div class="Gbody">
-          <img src="Image/HMPSIF/elvina-hmptif.png" />
-        </div>
-        <div class="Gbody">
-          <img src="Image/HMPSIF/darren-hmptif.png" />
-        </div>
-        <div class="Gbody">
-          <img src="Image/HMPSIF/ziven-hmptif.png" />
-        </div>
-      </div>
-      <div class="continue7-content">
-        <h2>IT DEVELOPMENT</h2>
-      </div>
-      <div class="container3">
-        <p>HMPSIF 2022/2023</p>
-      </div>
-      <div class="Governing-body2">
-        <div class="Gbody">
-          <img src="Image/HMPSIF/kingky-hmptif.png" />
-        </div>
-        <div class="Gbody">
-          <img src="Image/HMPSIF/cecilia-hmptif.png" />
-        </div>
-        <div class="Gbody">
-          <img src="Image/HMPSIF/felic-hmptif.png" />
-        </div>
-      </div>
-      <div class="continue7-content">
-        <h2>COMMUNICATION MEDIA AND INFORMATION</h2>
-      </div>
-      <div class="container3">
-        <p>HMPSIF 2022/2023</p>
-      </div>
-      <div class="Governing-body2">
-        <div class="Gbody">
-          <img src="Image/HMPSIF/celine-hmptif.png" />
-        </div>
-        <div class="Gbody">
-          <img src="Image/HMPSIF/fredo-hmptif.png" />
+        <div class="division-part">
+          <div class="division-container">
+            <div class="division-name">Governing Body</div>
+            <div class="ok-name">hmpssi 2022/2023</div>
+            <div class="people-container">
+              <div class="people">
+                <img src="Image/HMPSSI/jian-hmpssi.png"">
+                <img src="Image/HMPSSI/wilbert-hmpssi.png">
+                <img src="Image/HMPSSI/vellyn-hmpssi.png">
+              </div>
+            </div>
+          </div>
+          <!-- <div class="division-container">
+            <div class="division-name">Governing Body</div>
+            <div class="ok-name">hmpssi 2022/2023</div>
+            <div class="people-container">
+              <div class="people">
+                <img src="Image/HMPSSI/jian-hmpssi.png"">
+                <img src="Image/HMPSSI/wilbert-hmpssi.png">
+                <img src="Image/HMPSSI/vellyn-hmpssi.png">
+              </div>
+            </div>
+          </div> -->
         </div>
       </div>
     </main>
