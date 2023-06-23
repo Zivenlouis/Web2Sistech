@@ -16,19 +16,37 @@
               <div class="form-group row">
                 <label for="eventTitle" class="col-sm-3 col-form-label">Profile Title</label>
                 <div class="col-sm-9">
-                  <input type="text" name="title" value="" class="form-control" id="eventTitle" placeholder="Title" style="color: #ffff">
+                  <input type="text" name="title" value="" class="form-control" id="profileTitle" placeholder="Title" style="color: #ffff">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="eventDescription" class="col-sm-3 col-form-label">Profile Description</label>
                 <div class="col-sm-9">
-                  <textarea class="form-control" id="eventDescription" name="description" placeholder="Description" style="color: #ffff"></textarea>
+                  <textarea class="form-control" id="profileDescription" name="description" placeholder="Description" style="color: #ffff"></textarea>
                 </div>
               </div>
               <div class="form-group row">
-                <label for="eventImage" class="col-sm-3 col-form-label">Image</label>
+                <label for="eventImage" class="col-sm-3 col-form-label">Image 1</label>
                 <div class="col-sm-9">
-                  <input type="file" accept="image/*" name="image" class="" id="eventImage">
+                  <input type="file" accept="image/*" name="image" id="profileImage">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="eventImage" class="col-sm-3 col-form-label">Image 2</label>
+                <div class="col-sm-9">
+                  <input type="file" accept="image/*" name="image" id="profileImage">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="eventImage" class="col-sm-3 col-form-label">Image 3</label>
+                <div class="col-sm-9">
+                  <input type="file" accept="image/*" name="image" id="profileImage">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="eventImage" class="col-sm-3 col-form-label">Image 4</label>
+                <div class="col-sm-9">
+                  <input type="file" accept="image/*" name="image" id="profileImage">
                 </div>
               </div>
               <button type="submit" class="btn btn-primary mr-2" name="submit">Submit</button>
@@ -62,14 +80,40 @@
                     </tr>
                   </thead>
                   <tbody>
+                  <?php 
+                      $sql = "SELECT * FROM tbl_admin_events";
+                      $result = $conn -> query($sql);
+                      $i = 1;
+                      // while($row = $result->fetch_assoc()) {
+                      //   echo "<tr>";
+                      //   echo "<td>{$row['event_title']} </td>";
+                      //   echo "<td class='event-description'><p>{$row['event_description']}</p></td>";
+                      //   $imageSquare = 'data:image/jpeg;base64,' . base64_encode($row['event_square_image']); 
+                      //   $imageLong = 'data:image/jpeg;base64,' . base64_encode($row['event_long_image']); 
+                      //   echo "<td><img class='showDataImg1' src='{$imageSquare}' alt='data'></td>";
+                      //   echo "<td><img class='showDataImg2' src='{$imageLong}' alt='data'></td>";
+                      //   echo "<td>{$row['time_created']} </td>";
+                      //   echo "<td>{$row['last_modified']} </td>";
+                      //   $id = $row['id'];
+                  ?>
+                    <tr>
+                      <form method="post" action="" enctype="multipart/form-data">
+                        <td><input class='btn-primary'style='padding:5px 10px;' type='submit' name='<?= "edit".$id ?>' value='Edit'></td>
+                        <td><input class='btn-primary'style='padding:5px 10px;' type='submit' name='<?= "delete".$id ?>' value='Delete'></td>
+                      </form>
+                    </tr>
                     <?php
-                      if (isset($_POST['submit'])) {
-                        $title = $_POST['title'];
-                        $description = $_POST['description'];
-                        $image = $_FILES['image']['name'];
-                        echo "<tr>";
-                        echo "<td>" . $title. "</td>";
-                        echo "<td>" . $description. "</td>";
-                        echo "<td><img src='path/to/uploaded/images/" . $image . "' class='showDataImg'></td>";
-                        echo "</tr>"; 
-                      }
+                      $i++;
+                    ?>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <?php require_once("component/script.php");?>
+  </body>
+</html>

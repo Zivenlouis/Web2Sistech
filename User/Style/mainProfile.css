@@ -62,11 +62,12 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 40px;
+  gap: 50px;
 }
 
 .people img {
-  width: 50%;
+  margin-top: 20px;
+  width: 40%;
   height: auto;
 }
 
