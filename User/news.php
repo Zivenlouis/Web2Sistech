@@ -7,6 +7,7 @@
     <<?php require_once("Layout/head.php");?>
 </head>
 <body>
+    <?php require_once("Layout/header.php");?>
     
 </body>
 </html>
