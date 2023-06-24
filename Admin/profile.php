@@ -126,7 +126,7 @@
                         echo "<tr>";
                         echo "<td>{$profileTitle}</td>";
                         echo "<td>{$profileDescription}</td>";
-                        echo "<td><img src='../UploadImage/Profile/{$profileImage}' alt='Profile Image' width='200'></td>";
+                        echo "<td><img src='../UploadImage/Profile/{$profileImage}' alt='Profile Image' width='200px'></td>";
                         echo "<td>{$dateCreated}</td>";
                         echo "<td>{$lastModified}</td>";
                         echo "<td><button class='btn btn-primary' onclick='deleteProfile({$id})'>Delete</button></td>";
