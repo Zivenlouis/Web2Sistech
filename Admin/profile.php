@@ -3,6 +3,23 @@
 <head>
   <?php require_once("component/head.php");?>
 </head>
+<style>
+  .showDataImg {
+  width: 100px !important;
+  height: 100px !important;
+  border-radius: 0 !important;
+  }
+
+  .successMessage {
+    color: #3c763d;
+    font-size: 16px;
+  }
+
+  .errorMessage {
+    color: #a94442;
+    font-size: 16px;
+  }
+</style>
 <body>
   <div class="container-scroller">
     <?php require_once("component/navbar.php");?>
@@ -31,7 +48,7 @@
                   <input type="file" accept="image/*" name="image" id="profileImage">
                 </div>
               </div>
-              <div class="form-group row">
+              <!-- <div class="form-group row">
                 <label for="eventImage" class="col-sm-3 col-form-label">Image 2</label>
                 <div class="col-sm-9">
                   <input type="file" accept="image/*" name="image" id="profileImage">
@@ -48,7 +65,7 @@
                 <div class="col-sm-9">
                   <input type="file" accept="image/*" name="image" id="profileImage">
                 </div>
-              </div>
+              </div> -->
               <button type="submit" class="btn btn-primary mr-2" name="submit">Submit</button>
               <button class="btn btn-dark">Cancel</button>
             </form>
@@ -81,31 +98,43 @@
                   </thead>
                   <tbody>
                   <?php 
-                      $sql = "SELECT * FROM tbl_admin_events";
-                      $result = $conn -> query($sql);
-                      $i = 1;
-                      // while($row = $result->fetch_assoc()) {
-                      //   echo "<tr>";
-                      //   echo "<td>{$row['event_title']} </td>";
-                      //   echo "<td class='event-description'><p>{$row['event_description']}</p></td>";
-                      //   $imageSquare = 'data:image/jpeg;base64,' . base64_encode($row['event_square_image']); 
-                      //   $imageLong = 'data:image/jpeg;base64,' . base64_encode($row['event_long_image']); 
-                      //   echo "<td><img class='showDataImg1' src='{$imageSquare}' alt='data'></td>";
-                      //   echo "<td><img class='showDataImg2' src='{$imageLong}' alt='data'></td>";
-                      //   echo "<td>{$row['time_created']} </td>";
-                      //   echo "<td>{$row['last_modified']} </td>";
-                      //   $id = $row['id'];
+                    require_once("php/connection.php"); 
+                    if(isset($_POST['submit'])){
+                      $title = $_POST['title'];
+                      $description = $_POST['description'];
+                      $submittedImage = $_FILES['image']['tmp_name'];
+                      $imageName = uniqid() . '.' . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+                      $uploadFolder = '../UploadImage/Profile';
+                      $destination = $uploadFolder . '/' . $imageName;
+                      move_uploaded_file($submittedImage, $destination);
+                      date_default_timezone_set('Asia/Jakarta');
+                      $time = date("Y-m-d H:i:s");
+                      $sql = "INSERT INTO tbl_admin_profile(profile_title, profile_description, profile_image, data_created, last_modified) VALUES ('$title', '$description', '$imageName', '$time', '$time')";
+                      $result = $conn->query($sql);
+
+                      $sql = "SELECT * FROM tbl_admin_profile";
+                      $result = $conn->query($sql);
+                      while ($row = $result->fetch_assoc()) {
+                          $profileTitle = $row['profile_title'];
+                          $profileDescription = $row['profile_description'];
+                          $profileImage = $row['profile_image'];
+                          $dateCreated = $row['data_created'];
+                          $lastModified = $row['last_modified'];
+                          $id = $row['profile_id'];
+
+                          echo "<tr>";
+                          echo "<td>{$profileTitle}</td>";
+                          echo "<td>{$profileDescription}</td>";
+                          echo "<td><img src='../UploadImage/Profile/{$profileImage}' alt='Profile Image' width='100'></td>";
+                          echo "<td>{$dateCreated}</td>";
+                          echo "<td>{$lastModified}</td>";
+                          echo "<td><input class='btn-primary' style='padding:5px 10px;' type='submit' name='edit{$id}' value='Edit'></td>";
+                          echo "<td><input class='btn-primary' style='padding:5px 10px;' type='submit' name='delete' value='Delete' onclick='deleteProfile({$id})'></td>";
+                          echo "</tr>";
+                      }
+                    }
                   ?>
-                    <tr>
-                      <form method="post" action="" enctype="multipart/form-data">
-                        <td><input class='btn-primary'style='padding:5px 10px;' type='submit' name='<?= "edit".$id ?>' value='Edit'></td>
-                        <td><input class='btn-primary'style='padding:5px 10px;' type='submit' name='<?= "delete".$id ?>' value='Delete'></td>
-                      </form>
-                    </tr>
-                    <?php
-                      $i++;
-                    ?>
-                    </tbody>
+                  </tbody>
                   </table>
                 </div>
               </div>
