@@ -1,23 +1,28 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <?php require_once("component/head.php");?>
+  <script>
+  function deleteProfile(id) {
+    if (confirm('Are you sure you want to delete this profile?')) {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var response = this.responseText;
+          alert(response);
+          location.reload();
+        }
+      };
+      xhttp.open('GET', 'deleteProfile.php?id=' + id, true);
+      xhttp.send();
+    }
+  }
+</script>
 </head>
 <style>
   .showDataImg {
   width: 100px !important;
   height: 100px !important;
   border-radius: 0 !important;
-  }
-
-  .successMessage {
-    color: #3c763d;
-    font-size: 16px;
-  }
-
-  .errorMessage {
-    color: #a94442;
-    font-size: 16px;
   }
 </style>
 <body>
@@ -71,9 +76,7 @@
             </form>
           </div>
         </div>
-
         <br>
-
         <div class="table-responsive">
           <div class="card">
             <div class="card-body">
@@ -92,8 +95,7 @@
                       <th>Profile Image</th>
                       <th>Date Created</th>
                       <th>Last Modified</th>
-                      <th>Edit</th>
-                      <th>Delete</th>
+                      <th>Delete Data</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -115,25 +117,23 @@
                       $sql = "SELECT * FROM tbl_admin_profile";
                       $result = $conn->query($sql);
                       while ($row = $result->fetch_assoc()) {
-                          $profileTitle = $row['profile_title'];
-                          $profileDescription = $row['profile_description'];
-                          $profileImage = $row['profile_image'];
-                          $dateCreated = $row['data_created'];
-                          $lastModified = $row['last_modified'];
-                          $id = $row['profile_id'];
-
-                          echo "<tr>";
-                          echo "<td>{$profileTitle}</td>";
-                          echo "<td>{$profileDescription}</td>";
-                          echo "<td><img src='../UploadImage/Profile/{$profileImage}' alt='Profile Image' width='100'></td>";
-                          echo "<td>{$dateCreated}</td>";
-                          echo "<td>{$lastModified}</td>";
-                          echo "<td><input class='btn-primary' style='padding:5px 10px;' type='submit' name='edit{$id}' value='Edit'></td>";
-                          echo "<td><input class='btn-primary' style='padding:5px 10px;' type='submit' name='delete' value='Delete' onclick='deleteProfile({$id})'></td>";
-                          echo "</tr>";
+                        $profileTitle = $row['profile_title'];
+                        $profileDescription = $row['profile_description'];
+                        $profileImage = $row['profile_image'];
+                        $dateCreated = $row['data_created'];
+                        $lastModified = $row['last_modified'];
+                        $id = $row['profile_id'];
+                        echo "<tr>";
+                        echo "<td>{$profileTitle}</td>";
+                        echo "<td>{$profileDescription}</td>";
+                        echo "<td><img src='../UploadImage/Profile/{$profileImage}' alt='Profile Image' width='200'></td>";
+                        echo "<td>{$dateCreated}</td>";
+                        echo "<td>{$lastModified}</td>";
+                        echo "<td><button class='btn btn-primary' onclick='deleteProfile({$id})'>Delete</button></td>";
+                        echo "</tr>";
                       }
                     }
-                  ?>
+                  ?>  
                   </tbody>
                   </table>
                 </div>
