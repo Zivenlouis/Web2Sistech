@@ -1,22 +1,6 @@
 <html lang="en">
 <head>
   <?php require_once("component/head.php");?>
-  <script>
-  function deleteProfile(id) {
-    if (confirm('Are you sure you want to delete this profile?')) {
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          var response = this.responseText;
-          alert(response);
-          location.reload();
-        }
-      };
-      xhttp.open('GET', 'deleteProfile.php?id=' + id, true);
-      xhttp.send();
-    }
-  }
-</script>
 </head>
 <style>
   .showDataImg {
@@ -95,12 +79,13 @@
                       <th>Profile Image</th>
                       <th>Date Created</th>
                       <th>Last Modified</th>
+                      <th>Edit Data</th>
                       <th>Delete Data</th>
                     </tr>
                   </thead>
                   <tbody>
-                  <?php 
-                    require_once("php/connection.php"); 
+                  <?php
+                    require_once("php/connection.php");
                     if(isset($_POST['submit'])){
                       $title = $_POST['title'];
                       $description = $_POST['description'];
@@ -113,7 +98,7 @@
                       $time = date("Y-m-d H:i:s");
                       $sql = "INSERT INTO tbl_admin_profile(profile_title, profile_description, profile_image, data_created, last_modified) VALUES ('$title', '$description', '$imageName', '$time', '$time')";
                       $result = $conn->query($sql);
-
+                    }
                       $sql = "SELECT * FROM tbl_admin_profile";
                       $result = $conn->query($sql);
                       while ($row = $result->fetch_assoc()) {
@@ -129,10 +114,20 @@
                         echo "<td><img src='../UploadImage/Profile/{$profileImage}' alt='Profile Image' width='200px'></td>";
                         echo "<td>{$dateCreated}</td>";
                         echo "<td>{$lastModified}</td>";
-                        echo "<td><button class='btn btn-primary' onclick='deleteProfile({$id})'>Delete</button></td>";
+                        echo "<td>";
+                        echo "<form method='post' action='editProfile.php'>";
+                        echo "<input type='hidden' name='id' value='{$id}'>";
+                        echo "<button type='submit' class='btn btn-primary'>Edit</button>";
+                        echo "</form>";
+                        echo "</td>";
+                        echo "<td>";
+                        echo "<form method='post' action='deleteProfile.php'>";
+                        echo "<input type='hidden' name='id' value='{$id}'>";
+                        echo "<button type='submit'  class='btn btn-primary' onclick='return confirm(\"Are you sure you want to delete this profile?\")'>Delete</button>";
+                        echo "</form>";
+                        echo "</td>";
                         echo "</tr>";
                       }
-                    }
                   ?>  
                   </tbody>
                   </table>
