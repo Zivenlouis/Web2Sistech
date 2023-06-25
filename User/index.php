@@ -13,7 +13,6 @@
       $result = $conn -> query($sql);
       if($row = $result->fetch_assoc()) {
         return $row['dataImage'];
-      
       };
       return "fail";
     }?>

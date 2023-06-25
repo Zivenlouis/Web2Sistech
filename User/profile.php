@@ -26,29 +26,35 @@
           SISTECH PROFILE
         </div>
         <div class="division-part">
-          <div class="division-container">
-            <p class="division-name fs-1 text">Governing Body</p>
-            <p class="ok-name">hmpssi 2022/2023</p>
-            <div class="people-container">
-              <div class="people">
-                <img src="Image/HMPSSI/jian-hmpssi.png"">
-                <img src="Image/HMPSSI/wilbert-hmpssi.png">
-                <img src="Image/HMPSSI/vellyn-hmpssi.png">
-              </div>
-            </div>
-          </div>
-        <div class="division-part">
-          <div class="division-container">
-            <p class="division-name fs-1 text">Governing Body</p>
-            <p class="ok-name">hmpssi 2022/2023</p>
-            <div class="people-container">
-              <div class="people">
-                <img src="Image/HMPSSI/jian-hmpssi.png"">
-                <img src="Image/HMPSSI/wilbert-hmpssi.png">
-                <img src="Image/HMPSSI/vellyn-hmpssi.png">
-              </div>
-            </div>
-          </div>
+          <?php
+            require_once("php/connection.php");
+            $sql = "SELECT * FROM tbl_admin_profile";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+              while ($row = $result->fetch_assoc()) {
+                $profileTitle = $row['profile_title'];
+                $profileDescription = $row['profile_description'];
+                $profileImage1 = $row['profile_image_1'];
+                $profileImage2 = $row['profile_image_2'];
+                $profileImage3 = $row['profile_image_3'];
+                $profileImage4 = $row['profile_image_4'];
+                ?>
+                <div class="division-container">
+                  <div class="division-name fs-1 text"><?php echo $profileTitle; ?></div>
+                  <div class="ok-name"><?php echo $profileDescription; ?></div>
+                  <div class="people-container">
+                    <div class="people">
+                      <img src="../UploadImage/Profile/<?php echo $profileImage1; ?>">
+                      <img src="../UploadImage/Profile/<?php echo $profileImage2; ?>">
+                      <img src="../UploadImage/Profile/<?php echo $profileImage3; ?>">
+                      <img src="../UploadImage/Profile/<?php echo $profileImage4; ?>">
+                    </div>
+                  </div>
+                </div>
+                <?php
+              }
+            }
+          ?>
         </div>
       </div>
     </main>
@@ -68,7 +74,6 @@
       button.innerHTML = "+";
     }
   }
-
   let hamburger = document.getElementById("hamburger");
   hamburger.addEventListener("click", function () {
     let nav = document.getElementById("navbar");
@@ -78,7 +83,6 @@
       for (i = 0; i < a.length; i++) {
         a.item(i).style.display = "block";
       }
-      // hamburger.style.paddingBottom = "20px"
     } else {
       nav.style.height = "60px";
       for (i = 0; i < a.length; i++) {
