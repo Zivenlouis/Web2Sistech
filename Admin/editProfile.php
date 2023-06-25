@@ -5,14 +5,22 @@ if(isset($_POST['submit'])){
   $id = $_POST['id'];
   $title = $_POST['title'];
   $description = $_POST['description']; 
-  $submittedImage = $_FILES['image']['tmp_name'];
-  $imageName = uniqid() . '.' . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+  $submittedImage_1 = $_FILES['image-1']['tmp_name'];
+  $submittedImage_2 = $_FILES['image-2']['tmp_name'];
+  $submittedImage_3 = $_FILES['image-3']['tmp_name'];
+  $imageName_1 = uniqid() . '.' . pathinfo($_FILES['image-1']['name'], PATHINFO_EXTENSION);
+  $imageName_2 = uniqid() . '.' . pathinfo($_FILES['image-2']['name'], PATHINFO_EXTENSION);
+  $imageName_3 = uniqid() . '.' . pathinfo($_FILES['image-3']['name'], PATHINFO_EXTENSION);
   $uploadFolder = '../UploadImage/Profile';
-  $destination = $uploadFolder . '/' . $imageName;
-  move_uploaded_file($submittedImage, $destination);
+  $destination_1 = $uploadFolder . '/' . $imageName_1;
+  $destination_2 = $uploadFolder . '/' . $imageName_2;
+  $destination_3 = $uploadFolder . '/' . $imageName_3;
+  move_uploaded_file($submittedImage_1, $destination_1);
+  move_uploaded_file($submittedImage_2, $destination_2);
+  move_uploaded_file($submittedImage_3, $destination_3);
   date_default_timezone_set('Asia/Jakarta');
   $time = date("Y-m-d H:i:s");
-  $sql = "UPDATE tbl_admin_profile SET profile_title='$title', profile_description='$description', profile_image='$imageName', last_modified='$time' WHERE profile_id='$id'";
+  $sql = "UPDATE tbl_admin_profile SET profile_title='$title', profile_description='$description', profile_image_1='$imageName_1',profile_image_2='$imageName_2',profile_image_3='$imageName_3', last_modified='$time' WHERE profile_id='$id'";
   $result = $conn->query($sql);
   if ($result) {
     header("Location: profile.php");
@@ -26,7 +34,9 @@ if(isset($_POST['submit'])){
   $row = $result->fetch_assoc();
   $profileTitle = $row['profile_title'];
   $profileDescription = $row['profile_description'];
-  $profileImage = $row['profile_image'];
+  $profileImage_1 = $row['profile_image_1'];
+  $profileImage_2 = $row['profile_image_2'];
+  $profileImage_3 = $row['profile_image_3'];
   $id = $row['profile_id'];
 ?>
 
@@ -60,7 +70,19 @@ if(isset($_POST['submit'])){
               <div class="form-group row">
                 <label for="eventImage" class="col-sm-3 col-form-label">Image 1</label>
                 <div class="col-sm-9">
-                  <input type="file" accept="image/*" name="image" id="profileImage">
+                  <input type="file" accept="image/*" name="image-1" id="profileImage">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="eventImage" class="col-sm-3 col-form-label">Image 2</label>
+                <div class="col-sm-9">
+                  <input type="file" accept="image/*" name="image-2" id="profileImage">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="eventImage" class="col-sm-3 col-form-label">Image 3</label>
+                <div class="col-sm-9">
+                  <input type="file" accept="image/*" name="image-3" id="profileImage">
                 </div>
               </div>
               <input type="hidden" name="id" value="<?php echo $id; ?>">

@@ -10,14 +10,14 @@
 
   </head>
   <body>
-    <!-- <div class="background">
+    <div class="background">
       <div class="eclipse1"></div>
       <div class="eclipse2"></div>
       <div class="eclipse3"></div>
       <div class="eclipse4"></div>
       <div class="eclipse5"></div>
       <div class="eclipse6"></div>
-    </div> -->
+    </div>
 
     <?php require_once("Layout/header.php"); ?>
     <main>
@@ -37,7 +37,6 @@
                 $profileImage1 = $row['profile_image_1'];
                 $profileImage2 = $row['profile_image_2'];
                 $profileImage3 = $row['profile_image_3'];
-                $profileImage4 = $row['profile_image_4'];
                 ?>
                 <div class="division-container">
                   <div class="division-name fs-1 text"><?php echo $profileTitle; ?></div>
@@ -47,7 +46,6 @@
                       <img src="../UploadImage/Profile/<?php echo $profileImage1; ?>">
                       <img src="../UploadImage/Profile/<?php echo $profileImage2; ?>">
                       <img src="../UploadImage/Profile/<?php echo $profileImage3; ?>">
-                      <img src="../UploadImage/Profile/<?php echo $profileImage4; ?>">
                     </div>
                   </div>
                 </div>
