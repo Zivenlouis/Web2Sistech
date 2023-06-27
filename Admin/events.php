@@ -14,7 +14,7 @@
       word-wrap: break-word !important;
       white-space:pre-wrap !important;
       /* height: auto !important; */
-      width: 300px !important;
+      width: 500px !important;
     } 
 
     .showDataImg2 {
@@ -32,59 +32,91 @@
       color: #a94442;
       font-size: 16px;
     }
+
+    @media screen and (min-width: 1000px) {
+      .numpang {
+        width: 85% !important;
+      }
+      
+    }
+
 </style>
 
   <body>
     <div class="container-scroller">
       <?php require_once("component/navbar.php");?>
-      <div class="main-panel">
+      
+      <div class="main-panel numpang">
         <div class="content-wrapper">
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">Add Events</h4>
-              <p class="card-description"> Horizontal form layout </p>
+              <?php
+                  require("php/image.php");
+                  require_once("php/CRUDevents.php");
+                  if(isset($_POST['submit'])) {
+                    $title = $_POST['title'];
+                    $description = $_POST['description'];
+                    $squareImage= $_FILES['squareImage'];
+                    $longImage = $_FILES['longImage'];
+                    if(insertEvents($title, $description, $squareImage, $longImage)) {
+                      echo " <p class='successMessage'>Data inserted successfully</p>";
+                    } else {
+                      echo " <p class='errorMessage'>Data insertion unsuccessful</p>";
+                    }
+                  } 
+                  else if (isset($_POST['delete'])) {
+                    if (deleteEvents($_POST['id'])) {
+                      echo " <p class='successMessage'>Data deleted successfully</p>";
+                    } else {
+                      echo " <p class='errorMessage'>Data deletion unsuccessful</p>";
+                    }
+                  }
+                  
+
+                ?>               
               <form class="forms-sample" method="post" action=""  enctype="multipart/form-data">
                 <div class="form-group row">
                   <label for="eventTitle" class="col-sm-3 col-form-label">Event Title</label>
                   <div class="col-sm-9">
-                    <input type="text" name="title" value="" class="form-control" id="eventTitle" placeholder="Title" style="color: #ffff">
+                    <input type="text" required name="title" value="" class="form-control" id="eventTitle" placeholder="Title" style="color: #ffff">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="eventDescription" class="col-sm-3 col-form-label">Event Description</label>
                   <div class="col-sm-9">
-                    <textarea class="form-control" id="eventDescription" name="description" placeholder="Description" style="color: #ffff"></textarea>
+                    <textarea class="form-control" required id="eventDescription" name="description" placeholder="Description" style="color: #ffff"></textarea>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="eventImage" class="col-sm-3 col-form-label">Square Image</label>
                   <div class="col-sm-9">
-                    <input type="file" accept="image/*" name="squareImage" class="" id="eventImage">
+                    <input type="file" required accept="image/*" name="squareImage" class="" id="eventImage">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="eventImage" class="col-sm-3 col-form-label">Long Image</label>
                   <div class="col-sm-9">
-                    <input type="file" accept="image/*" name="longImage" class="" id="eventImage">
+                    <input type="file" required accept="image/*" name="longImage" class="" id="eventImage">
                   </div>
                 </div>
-                <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                <button class="btn btn-dark">Cancel</button>
+                <input type="submit" class="btn btn-primary mr-2" name="submit" value="Submit">              
+                <a href="" class="btn btn-dark">Cancel</a>
+                
               </form>
             </div>
           </div>
           <br>
-          <div class="table-responsive">
-            <div class="card">
+          <!-- <div class="table-responsive"> -->
+          <div class="card" style="box-sizing:border-box">
+           
+            
               <div class="card-body">
                 <h4 class="card-title">Events Admin</h4>
-                <p class="card-description"> 
-                  <form>
-                    
-                  </form>  
-              
-                </p>
-                <div class="table-responsive table-wrapper">
+               
+               
+                
+                <div class="table-responsive table-wrapper"  >
                   <table class="table">
                     <thead>
                       <tr>
@@ -107,17 +139,21 @@
                           echo "<tr>";
                           echo "<td>{$row['event_title']} </td>";
                           echo "<td class='event-description'><p>{$row['event_description']}</p></td>";
-                          $imageSquare = 'data:image/jpeg;base64,' . base64_encode($row['event_square_image']); 
-                          $imageLong = 'data:image/jpeg;base64,' . base64_encode($row['event_long_image']); 
-                          echo "<td><img class='showDataImg1' src='{$imageSquare}' alt='data'></td>";
-                          echo "<td><img class='showDataImg2' src='{$imageLong}' alt='data'></td>";
+                          $imageSquare = $row['event_square_image']; 
+                          $imageLong = $row['event_long_image']; 
+                          echo "<td><img class='showDataImg1' src='../UploadImage/Events/{$imageSquare}' alt='data'></td>";
+                          echo "<td><img class='showDataImg2' src='../UploadImage/Events/{$imageLong}' alt='data'></td>";
                           echo "<td>{$row['time_created']} </td>";
                           echo "<td>{$row['last_modified']} </td>";
                           $id = $row['id'];
                           ?>
                             <form method="post" action="" enctype="multipart/form-data">
-                              <td><input class='btn-primary'style='padding:5px 10px;' type='submit' name='<?= "edit".$id ?>' value='Edit'></td>
-                              <td><input class='btn-primary'style='padding:5px 10px;' type='submit' name='<?= "delete".$id ?>' value='Delete'></td>
+                              
+                              <td>
+                                <input type='hidden' name='id'  value='<?= $id ?>'>
+                                <input class='btn-primary'style='padding:5px 10px;' type='submit' name='<?= "edit"?>' value='Edit'>
+                              </td>
+                              <td><input class='btn-primary'style='padding:5px 10px;' type='submit' name='<?= "delete"?>' value='Delete'></td>
                             </form>
                             </tr>
                           <?php
@@ -131,7 +167,7 @@
             </div>
           </div>
         </div>
-      </div>
+      <!-- </div> -->
     </div>
     <?php require_once("component/script.php");?>
   </body>
