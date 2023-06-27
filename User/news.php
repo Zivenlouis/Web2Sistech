@@ -7,6 +7,10 @@
     <<?php require_once("Layout/head.php");?>
 
     <style>
+        /* main {
+            height: -60vh;
+        } */
+
         h1 {
             display: flex;
             align-items: center;
