@@ -37,7 +37,7 @@
             color: white;
         }
 
-        img {
+        main img {
             width: 150px;
         }
     </style>

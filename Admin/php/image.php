@@ -10,4 +10,10 @@
         } 
         return "";
     }
+
+    function deleteImage($location, $imageName) {
+        $path = "../UploadImage/" . $location . "/" . $imageName;
+        if(file_exists($path)) if (unlink($path)) return true;
+        return false;
+    }
 ?>

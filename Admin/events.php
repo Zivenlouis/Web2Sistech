@@ -13,6 +13,7 @@
     .event-description p {
       word-wrap: break-word !important;
       white-space:pre-wrap !important;
+      line-height: 20px;
       /* height: auto !important; */
       width: 500px !important;
     } 
@@ -57,12 +58,23 @@
                   if(isset($_POST['submit'])) {
                     $title = $_POST['title'];
                     $description = $_POST['description'];
-                    $squareImage= $_FILES['squareImage'];
-                    $longImage = $_FILES['longImage'];
-                    if(insertEvents($title, $description, $squareImage, $longImage)) {
-                      echo " <p class='successMessage'>Data inserted successfully</p>";
-                    } else {
-                      echo " <p class='errorMessage'>Data insertion unsuccessful</p>";
+                    if(isset($_FILES['squareImage'])) $squareImage= $_FILES['squareImage'];
+                    if(isset($_FILES['longImage'])) $longImage = $_FILES['longImage']; 
+                    
+                    if(isset($_POST['id'])) {
+                      $id = $_POST['id'];
+                      if(updateEvents($id, $title, $description, $squareImage, $longImage)) {
+                        echo " <p class='successMessage'>Data updated successfully</p>";
+                      } else {
+                        echo " <p class='errorMessage'>Data update unsuccessful</p>";
+                      }
+                    } else {                    
+                     
+                      if(insertEvents($title, $description, $squareImage, $longImage)) {
+                        echo " <p class='successMessage'>Data inserted successfully</p>";
+                      } else {
+                        echo " <p class='errorMessage'>Data insertion unsuccessful</p>";
+                      }
                     }
                   } 
                   else if (isset($_POST['delete'])) {
@@ -72,6 +84,9 @@
                       echo " <p class='errorMessage'>Data deletion unsuccessful</p>";
                     }
                   }
+                  else if(isset($_POST['edit'])) {
+                    $arr = getEventsFromId($_POST['id']);
+                  }
                   
 
                 ?>               
@@ -79,25 +94,39 @@
                 <div class="form-group row">
                   <label for="eventTitle" class="col-sm-3 col-form-label">Event Title</label>
                   <div class="col-sm-9">
-                    <input type="text" required name="title" value="" class="form-control" id="eventTitle" placeholder="Title" style="color: #ffff">
+                    <input type="text" required name="title" value="<?php if(isset($arr)) echo $arr['event_title']; ?>" class="form-control" id="eventTitle" placeholder="Title" style="color: #ffff">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="eventDescription" class="col-sm-3 col-form-label">Event Description</label>
                   <div class="col-sm-9">
-                    <textarea class="form-control" required id="eventDescription" name="description" placeholder="Description" style="color: #ffff"></textarea>
+                    <textarea style="height: 200px;" class="form-control" required  id="eventDescription" name="description" placeholder="Description" style="color: #ffff"><?php if(isset($arr)) echo $arr['event_description']; ?></textarea>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="eventImage" class="col-sm-3 col-form-label">Square Image</label>
                   <div class="col-sm-9">
-                    <input type="file" required accept="image/*" name="squareImage" class="" id="eventImage">
+                    <?php 
+                      if(isset($arr)) {
+                        $squareImage = $arr['event_square_image'];
+                        $id = $_POST['id'];
+                        echo "<input type='hidden' name='id' value='$id'>";
+                        echo "<img style='width: 150px;  margin-right: 10px;' src='../UploadImage/Events/$squareImage'>";
+                      }
+                    ?>
+                    <input type="file" accept="image/*" name="squareImage" class="" id="eventImage">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="eventImage" class="col-sm-3 col-form-label">Long Image</label>
                   <div class="col-sm-9">
-                    <input type="file" required accept="image/*" name="longImage" class="" id="eventImage">
+                    <?php 
+                      if(isset($arr)) {
+                        $longImage = $arr['event_long_image'];
+                        echo "<img style='height: 150px; margin-right: 10px;' src='../UploadImage/Events/$longImage'>";
+                      }
+                    ?>
+                    <input type="file" accept="image/*" name="longImage" class="" id="eventImage">
                   </div>
                 </div>
                 <input type="submit" class="btn btn-primary mr-2" name="submit" value="Submit">              
@@ -151,9 +180,9 @@
                               
                               <td>
                                 <input type='hidden' name='id'  value='<?= $id ?>'>
-                                <input class='btn-primary'style='padding:5px 10px;' type='submit' name='<?= "edit"?>' value='Edit'>
+                                <input class='btn-primary'style='padding:5px 10px;' type='submit' name='edit' value='Edit'>
                               </td>
-                              <td><input class='btn-primary'style='padding:5px 10px;' type='submit' name='<?= "delete"?>' value='Delete'></td>
+                              <td><input class='btn-primary'style='padding:5px 10px;' type='submit' name='delete' value='Delete'></td>
                             </form>
                             </tr>
                           <?php

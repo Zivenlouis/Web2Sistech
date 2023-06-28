@@ -28,21 +28,22 @@
                     <div class="bottom-content">
                         <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" space-between="30"
                         centered-slides="true" autoplay-delay="3500" autoplay-disable-on-interaction="true">
-                            <swiper-slide>
-                                <img src="Image/Main/Bangkit.png" alt="">
-                                <img src="Image/Main/Menara.png" alt="">
-                                <img src="Image/Main/BCC.png" alt="">
-                            </swiper-slide>
-                            <swiper-slide>
-                                <img src="Image/Main/DOTS.png" alt="">
-                                <img src="Image/Main/Bangkit.png" alt="">
-                                <img src="Image/Main/Menara.png" alt="">
-                            </swiper-slide>
-                            <swiper-slide>
-                                <img src="Image/Main/BCC.png" alt="">
-                                <img src="Image/Main/DOTS.png" alt="">
-                                <img src="Image/Main/Bangkit.png" alt="">
-                            </swiper-slide>
+                            <?php
+                                require("../Admin/php/CRUDevents.php");
+                                $arr = getEventsToArr();
+                                if(count($arr)/3 > 3) $loop = ceil(count($arr)/3); else $loop = 3;
+                                $j = 0;
+                                $maxJ = count($arr)-1;
+                                for($i = 0; $i < $loop; $i++) {
+                                    echo "<swiper-slide>";
+                                    for($k = 0; $k < 3; $k++) {
+                                        $img = $arr[$j]['event_square_image'];
+                                        echo "<img src='../UploadImage/Events/$img' alt=''>";
+                                        if($j == $maxJ) $j = 0; else $j++;
+                                    }
+                                    echo "</swiper-slide>";
+                                }
+                            ?>
                         </swiper-container>
                     </div>
                 </div>
@@ -52,12 +53,28 @@
             </div>
         </div>
         <div class="container-2">
-            <div class="container-1-main">
+            <?php
+                for($i = 0; $i < count($arr); $i++) {
+                    ?>
+                    <div class="container-1-main">
+                        <div class="card-1">
+                            <h1><?= $arr[$i]['event_title'] ?></h1>
+                            <div class="round-1"></div>
+                            <p><?= $arr[$i]['event_description']?></p>
+                            <div class="image-1"><img class='container-2-image' src="../UploadImage/Events/<?= $arr[$i]['event_long_image']?>"></div>
+                        </div>
+                    </div>
+
+                    <?php
+                }
+
+            ?>
+            <!-- <div class="container-1-main">
                 <div class="card-1">
                     <h1>Bangkit 2023</h1>
                     <div class="round-1"></div>
                     <p>Aim Higher With Bangkit 2023 merupakan program kerja oleh Himpunan Mahasiswa Program Studi Sistem Informasi (HMPSSI) dan Himpunan Mahasiswa Program Studi Informatika (HMPTIF) UPH Kampus Medan yang bertujuan untuk memperkenalkan program MBKM terkhususnya Bangkit untuk mahasiswa/i UPH Kampus Medan...</p>
-                    <div class="image-1"><img class='container-2-image'  src="Image/main/Main-bangkit.png"></div>
+                    <div class="image-1"><img class='container-2-image' src="Image/main/Main-bangkit.png"></div>
                 </div>
             </div>
             <div class="container-2-main">
@@ -83,8 +100,8 @@
                     <p>Techno is cordially inviting you to join a thrilling event that we’ve curated wholeheartedly for you guys called “Day of Togetherness and Sharing”! Day of Togetherness and Sharing is an event that will bring all of you together in unity and get to know each other more</p>
                     <div class="image-2"><img class='container-2-image'  src="Image/main/Main-dots.png"></div>
                 </div>
-            </div>
-        </div>
+            </div> -->
+    </div>
     </main>
     <?php require_once("Layout/footer.php");?>
     <script src="js/scriptEvents.js"></script>
