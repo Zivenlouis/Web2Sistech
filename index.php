@@ -1,3 +1,3 @@
 <?php
-    header('location: User/indx.php');
+    header('location: User/index.php');
 ?>
