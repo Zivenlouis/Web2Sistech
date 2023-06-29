@@ -11,7 +11,7 @@
         $image_1 = mysqli_real_escape_string($conn, $image_1);
         $image_2 = mysqli_real_escape_string($conn, $image_2);   
         $image_3 = mysqli_real_escape_string($conn, $image_3);   
-        $query = "INSERT INTO tbl_admin_profile (profile_title, profile_description, profile_image_1, profile_image_2, profile_image_3, date_created, last_modified) VALUES ('$title', '$description', '$image_1', '$image_2', $image_3, '$currentTime', '$currentTime')"; 
+        $query = "INSERT INTO tbl_admin_profile (profile_title, profile_description, profile_image_1, profile_image_2, profile_image_3, data_created, last_modified) VALUES ('$title', '$description', '$image_1', '$image_2', $image_3, '$currentTime', '$currentTime')"; 
         if ($conn->query($query)) {
             return true;
         }
@@ -42,7 +42,7 @@
 
     function getProfileFromId($id) {
         require("connection.php");
-        $query = "SELECT * FROM tbl_admin_profile where id = $id";
+        $query = "SELECT * FROM tbl_admin_profile where profile_id = $id";
         if ($result = $conn -> query($query)) return $result -> fetch_assoc();
         return null;
     }

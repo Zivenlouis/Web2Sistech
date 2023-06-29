@@ -70,7 +70,7 @@
                     }
                   } 
                   else if (isset($_POST['delete'])) {
-                    if (deleteEvents($_POST['id'])) {
+                    if (deleteProfile($_POST['id'])) {
                       echo " <p class='successMessage'>Data deleted successfully</p>";
                     } else {
                       echo " <p class='errorMessage'>Data deletion unsuccessful</p>";
@@ -185,9 +185,9 @@
                           } else {
                               echo "<td></td>";
                           }
-                          echo "<td>{$row['date_created']} </td>";
+                          echo "<td>{$row['data_created']} </td>";
                           echo "<td>{$row['last_modified']} </td>";
-                          $id = $row['id'];
+                          $id = $row['profile_id'];
                           ?>
                             <form method="post" action="" enctype="multipart/form-data">
                               
