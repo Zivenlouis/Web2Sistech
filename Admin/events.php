@@ -10,9 +10,7 @@
     border-radius: 0 !important;
     }
 
-    textarea:active {
-      color: white !important;
-    }
+
     .event-description p {
       word-wrap: break-word !important;
       white-space:pre-wrap !important;
@@ -42,14 +40,6 @@
         width: 85% !important;
       }
       
-    }
-
-    label select option {
-      color: black !important;
-    }
-
-    .main-panel * {
-      color: white;
     }
 
 </style>

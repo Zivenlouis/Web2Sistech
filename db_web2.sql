@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Jun 30, 2023 at 07:39 AM
+-- Generation Time: Jun 30, 2023 at 03:58 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -44,7 +44,7 @@ CREATE TABLE `tbl_admin_events` (
 --
 
 INSERT INTO `tbl_admin_events` (`id`, `event_title`, `event_description`, `price`, `active`, `event_long_image`, `event_square_image`, `time_created`, `last_modified`) VALUES
-(6, 'Bangkit 2023', 'Aim Higher With Bangkit 2023 merupakan program kerja oleh Himpunan Mahasiswa Program Studi Sistem Informasi (HMPSSI) dan Himpunan Mahasiswa Program Studi Informatika (HMPTIF) UPH Kampus Medan yang bertujuan untuk memperkenalkan program MBKM terkhususnya Bangkit untuk mahasiswa/i UPH Kampus Medan...', 25000, '1', '649d3d458f960.png', '649d3d458f7a6.png', '2023-06-29 15:13:57', '2023-06-29 15:13:57'),
+(6, 'Bangkit 2023', 'Aim Higher With Bangkit 2023 merupakan program kerja oleh Himpunan Mahasiswa Program Studi Sistem Informasi (HMPSSI) dan Himpunan Mahasiswa Program Studi Informatika (HMPTIF) UPH Kampus Medan yang bertujuan untuk memperkenalkan program MBKM terkhususnya Bangkit untuk mahasiswa/i UPH Kampus Medan...', 25000, '1', '649d3d458f960.png', '649d3d458f7a6.png', '2023-06-29 15:13:57', '2023-06-30 20:29:04'),
 (7, 'Menara: Metaverse in Nusantara', 'Menara: Metaverse in Nusantara is an event held by SISTECH to introduce and enrich participants\' knowledge about the technology behind Metaverse and the development of Metaverse in Indonesia...', 35000, '0', '649d3d5a9308c.png', '649d3d5a92ee9.png', '2023-06-29 15:14:18', '2023-06-29 15:15:02'),
 (8, 'Basic Coding Class', 'Techno has been eavesdropping, hearing rumors that some of you are confused on where to start your first coding journey. Therefore, we’re bringing back “Basic Coding Class” as a platform where you can learn about the fundamentals of coding and sharpen your logical skills...', 125000, '1', '649d3d6c509d4.png', '649d3d6c5084c.png', '2023-06-29 15:14:36', '2023-06-29 15:14:36'),
 (9, 'D.O.T.S. 2022', 'Techno is cordially inviting you to join a thrilling event that we’ve curated wholeheartedly for you guys called “Day of Togetherness and Sharing”! Day of Togetherness and Sharing is an event that will bring all of you together in unity and get to know each other more', 0, '1', '649d3d7e6a764.png', '649d3d7e6a5e7.png', '2023-06-29 15:14:54', '2023-06-29 15:14:54');
@@ -132,7 +132,7 @@ CREATE TABLE `tbl_akun` (
 --
 
 INSERT INTO `tbl_akun` (`id`, `first_name`, `last_name`, `email`, `nim`, `class`, `line`, `password`, `major`, `intake`, `remember_token`, `verification_code`, `update_verification_time`) VALUES
-(15, 'Ziven', 'Louis', 'zivenlouisuph@gmail.com', '03082210017', '21TI2', 'zivenlouis25', '12345678', 'Informatics', '2021', '', NULL, NULL);
+(15, 'Ziven', 'Louis', 'zivenlouisuph@gmail.com', '03082210017', '21TI2', 'zivenlouis25', '12345678', 'Informatics', '2021', '86855eb68c3231c2391b1bad6bd4be05', NULL, '2023-06-30 14:53:53');
 
 --
 -- Triggers `tbl_akun`
@@ -183,18 +183,14 @@ CREATE TABLE `tbl_events_registration` (
 --
 
 INSERT INTO `tbl_events_registration` (`id`, `event_id`, `account_id`, `payment_status`, `payment_time`) VALUES
-('649d35320f780', 1, 15, 'Pending', '0000-00-00 00:00:00'),
-('649d354e4d930', 1, 15, 'Pending', '0000-00-00 00:00:00'),
-('649d364433c1f', 1, 15, 'Pending', '0000-00-00 00:00:00'),
-('649d36683cc08', 1, 15, 'Pending', '0000-00-00 00:00:00'),
-('649d3bc21152e', 1, 15, 'Pending', '0000-00-00 00:00:00'),
-('649d3ed08b4b6', 6, 15, 'Pending', '0000-00-00 00:00:00'),
-('649d3ef8b79fc', 9, 15, 'Pending', '0000-00-00 00:00:00'),
-('649d3f2f75156', 8, 15, 'Pending', '0000-00-00 00:00:00'),
-('649d4412169c7', 6, 15, 'Pending', '0000-00-00 00:00:00'),
-('649d4428e70e4', 6, 15, 'Pending', '0000-00-00 00:00:00'),
-('649d44907a84f', 6, 15, 'Pending', '0000-00-00 00:00:00'),
-('649d44bddb73c', 8, 15, 'Pending', '0000-00-00 00:00:00');
+('649e89c146d92', 6, 15, 'Pending', '0000-00-00 00:00:00'),
+('649e8a174bc7e', 6, 15, 'Pending', '0000-00-00 00:00:00'),
+('649e8b1f0a373', 6, 15, 'Pending', '0000-00-00 00:00:00'),
+('649e8e182e593', 6, 15, 'Pending', '0000-00-00 00:00:00'),
+('649e8e46e3df4', 6, 15, 'Pending', '0000-00-00 00:00:00'),
+('649e8e582fb90', 6, 15, 'Pending', '0000-00-00 00:00:00'),
+('649e8e8ada147', 6, 15, 'Success', '2023-06-30 15:13:09'),
+('649e929c6cb17', 8, 15, 'Success', '2023-06-30 15:32:29');
 
 --
 -- Indexes for dumped tables

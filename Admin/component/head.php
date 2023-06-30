@@ -45,5 +45,13 @@
   border-radius: 10px;
 }
 
+label select option {
+    color: black !important;
+}
+
+.main-panel * {
+    color: white;
+}
+
 </style>
 <?php require_once("php/connection.php"); ?>

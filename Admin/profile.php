@@ -144,7 +144,7 @@
                 <h4 class="card-title">Profile Admin</h4>
                 
                 <div class="table-responsive table-wrapper"  >
-                  <table class="table">
+                  <table class="table display" id='table'>
                     <thead>
                       <tr>
                         <th>Title</th>
@@ -204,6 +204,7 @@
                       ?>
                     </tbody>
                   </table>
+                  <script> $('#table').DataTable();</script>
                 </div>
               </div>
             </div>
