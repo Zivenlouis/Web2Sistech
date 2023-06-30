@@ -8,5 +8,9 @@
 <link rel="stylesheet" href="Style/footer.css">
 <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 <?php 
-    include("Php/connection.php");
+    try {
+        include("Php/connection.php");
+    } catch(Exception $e) {
+
+    }
 ?>

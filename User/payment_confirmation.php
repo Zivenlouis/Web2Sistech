@@ -22,7 +22,7 @@
             if(empty($_SESSION['loggedIn'])) header("location: sign_in.php");
 
             require("../Admin/php/CRUDevents.php");
-            require("php/connection.php");
+            require("Php/connection.php");
             $eventData = getEventsFromId($_POST['eventId']);
             $userId = $_SESSION['userId'];
             $query = "SELECT * FROM tbl_akun WHERE id='$userId'";
@@ -37,7 +37,7 @@
         <p>ID Line : <?= $userData['line'] ?> </p>
         <?php $formattedPrice = "Rp " . number_format($eventData['price'],2,',','.'); ?>
         <p>Price to pay : <?= $formattedPrice ?> </p>
-        <form action='proceedPayment.php' method='post'>                 
+        <form action='proceed_payment.php' method='post'>                 
             <input type="hidden" name="eventId" value="<?= $eventData['id'] ?>">           
             <input type="hidden" name="userId" value="<?= $userData['id'] ?>">
             <?php

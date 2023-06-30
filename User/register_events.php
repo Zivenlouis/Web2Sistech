@@ -55,7 +55,7 @@
         <p><?= $data['event_description'] ?></p>
         <?php $formattedPrice = "Rp " . number_format($data['price'],2,',','.'); ?>
         <p>Price: <?= $formattedPrice ?> </p>
-        <form method='post' action='paymentConfirmation.php'>
+        <form method='post' action='payment_confirmation.php'>
           <input type='hidden' name='eventId' value='<?= $id ?>'>
           <input type='submit' name='submit' value='Register Now'>
         </form>

@@ -51,10 +51,10 @@
           </div>
         </a>
 
-        <a class="nav-item" href="registerEvents.php">
+        <a class="nav-item" href="register_events.php">
           <div class="header-item">
             <p>Register</p>
-            <div class="selected-header" style="display: <?= $filename == 'registerEvents.php' ? "block" : "";  ?>"></div>
+            <div class="selected-header" style="display: <?= $filename == 'register_events.php' ? "block" : "";  ?>"></div>
           </div>
         </a>
           

@@ -9,7 +9,7 @@
     <?php
         require_once('vendor/autoload.php');
         require("../Admin/php/CRUDevents.php");
-        require("php/connection.php");
+        require("Php/connection.php");
         $eventData = getEventsFromId($_POST['eventId']);
         $userId = $_POST['userId'];
         $query = "SELECT * FROM tbl_akun WHERE id='$userId'";
@@ -39,6 +39,8 @@
         'customer_details' => array(
             'first_name' => $userData['first_name'],
             'last_name' => $userData['last_name'],
+            'email' => $userData['email'],
+            'phone' => '082374675582'
         ),
 
         'item_details' => array(
