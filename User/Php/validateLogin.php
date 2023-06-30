@@ -10,6 +10,7 @@ if(isset($_POST['submit'])) {
         $_SESSION['password'] = $password;
         $_SESSION['loggedIn'] = true;
         $_SESSION['firstName'] = $row['first_name'];
+        $_SESSION['userId'] = $row['id'];
         if (isset($_POST['message'])) {
             $token = bin2hex(random_bytes(16));
             setcookie('remember_token', $token, time() + (30 * 24 * 60 * 60), '/');

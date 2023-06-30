@@ -31,7 +31,8 @@
                             <?php
                                 require("../Admin/php/CRUDevents.php");
                                 $arr = getEventsToArr();
-                                if(count($arr)/3 > 3) $loop = ceil(count($arr)/3); else $loop = 3;
+                                
+                                if(count($arr)/3 > 3) $loop = ceil(count($arr)/3); else $loop = 3;              
                                 $j = 0;
                                 $maxJ = count($arr)-1;
                                 for($i = 0; $i < $loop; $i++) {

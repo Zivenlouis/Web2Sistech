@@ -60,17 +60,19 @@
                     $description = $_POST['description'];
                     if(isset($_FILES['squareImage'])) $squareImage= $_FILES['squareImage'];
                     if(isset($_FILES['longImage'])) $longImage = $_FILES['longImage']; 
+                    $price = intval($_POST['price']);
+                    $active = $_POST['active'];
                     
                     if(isset($_POST['id'])) {
                       $id = $_POST['id'];
-                      if(updateEvents($id, $title, $description, $squareImage, $longImage)) {
+                      if(updateEvents($id, $title, $description, $squareImage, $longImage, $price, $active)) {
                         echo " <p class='successMessage'>Data updated successfully</p>";
                       } else {
                         echo " <p class='errorMessage'>Data update unsuccessful</p>";
                       }
                     } else {                    
                      
-                      if(insertEvents($title, $description, $squareImage, $longImage)) {
+                      if(insertEvents($title, $description, $squareImage, $longImage, $price, $active)) {
                         echo " <p class='successMessage'>Data inserted successfully</p>";
                       } else {
                         echo " <p class='errorMessage'>Data insertion unsuccessful</p>";
@@ -101,6 +103,21 @@
                   <label for="eventDescription" class="col-sm-3 col-form-label">Event Description</label>
                   <div class="col-sm-9">
                     <textarea style="height: 200px;" class="form-control" required  id="eventDescription" name="description" placeholder="Description" style="color: #ffff"><?php if(isset($arr)) echo $arr['event_description']; ?></textarea>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="eventPrice" class="col-sm-3 col-form-label">Price</label>
+                  <div class="col-sm-9">
+                    <input type="number" required name="price" value="<?php if(isset($arr)) echo $arr['price']; ?>" class="form-control" id="eventPrice" placeholder="Price" style="color: #ffff">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="eventPrice" class="col-sm-3 col-form-label">On Going</label>
+                  <div class="col-sm-9" style="display: flex; align-items: center">
+                    <input type="radio" required name="active" value="1" <?php if(isset($arr) && $arr['active'] == '1') echo " checked "?> id="checkedYes" style="color: #ffff">
+                    <label for="checkedYes" style="margin-bottom: 0; margin-right: 20px; margin-left: 10px;">Yes</label>
+                    <input type="radio" required name="active" value="0" <?php if(isset($arr) && $arr['active'] == '0') echo " checked "?> id="checkedNo" style="color: #ffff">
+                    <label for="checkedNo"  style="margin-bottom: 0; margin-left: 10px;">No</label>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -153,8 +170,10 @@
                         <th>Events Description</th>
                         <th>Events Small Image</th>
                         <th>Events Long Image</th>
+                        <th>Price</th>
+                        <th>On Going</th>
                         <th>Date Created</th>
-                        <th>Last Modified</th>
+                        <th>Last Modified</th>    
                         <th>Edit</th>
                         <th>Delete</th>
                       </tr>
@@ -172,6 +191,11 @@
                           $imageLong = $row['event_long_image']; 
                           echo "<td><img class='showDataImg1' src='../UploadImage/Events/{$imageSquare}' alt='data'></td>";
                           echo "<td><img class='showDataImg2' src='../UploadImage/Events/{$imageLong}' alt='data'></td>";
+                        
+                          $formattedPrice = "Rp " . number_format($row['price'],2,',','.');
+                          echo "<td>{$formattedPrice} </td>";
+                          $isActive = $row['active'] == "0" ? "No" : "Yes";
+                          echo "<td>{$isActive} </td>";
                           echo "<td>{$row['time_created']} </td>";
                           echo "<td>{$row['last_modified']} </td>";
                           $id = $row['id'];
@@ -182,7 +206,7 @@
                                 <input type='hidden' name='id'  value='<?= $id ?>'>
                                 <input class='btn-primary'style='padding:5px 10px;' type='submit' name='edit' value='Edit'>
                               </td>
-                              <td><input class='btn-primary'style='padding:5px 10px;' type='submit' name='delete' value='Delete'></td>
+                              <td><input class='btn-primary'style='padding:5px 10px;' type='submit' name='delete' value='Delete' onclick="return confirm('Are you sure you want to delete this item?');"></td>
                             </form>
                             </tr>
                           <?php

@@ -16,6 +16,7 @@ if(isset($_POST['submit'])) {
         session_start();
         $_SESSION['loggedInAdmin'] = true;
         $_SESSION['usernameAdmin'] = $row['name'];
+        $_SESSION['accountId'] = $row['id'];
         if (isset($_POST['message'])) {
             $conn -> query($sql);
         }

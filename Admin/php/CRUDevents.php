@@ -1,5 +1,5 @@
 <?php
-    function insertEvents($title, $description, $squareImage, $longImage) {
+    function insertEvents($title, $description, $squareImage, $longImage, $price, $active) {
         require("connection.php");
         date_default_timezone_set('Asia/Jakarta');
         $currentTime = date("Y-m-d H:i:s");
@@ -9,7 +9,7 @@
         $description = mysqli_real_escape_string($conn, $description);
         $squareImage = mysqli_real_escape_string($conn, $squareImage);
         $longImage = mysqli_real_escape_string($conn, $longImage);   
-        $query = "INSERT INTO tbl_admin_events (event_title, event_description, event_square_image, event_long_image, time_created, last_modified) VALUES ('$title', '$description', '$squareImage', '$longImage', '$currentTime', '$currentTime')"; 
+        $query = "INSERT INTO tbl_admin_events (event_title, event_description, event_square_image, event_long_image, time_created, last_modified, price, active) VALUES ('$title', '$description', '$squareImage', '$longImage', '$currentTime', '$currentTime', '$price', '$active')"; 
         if ($conn->query($query)) {
             return true;
         }
@@ -39,6 +39,19 @@
         return null;
     }
 
+    function getActiveEventsToArr() {
+        require("connection.php");
+        $query = "SELECT * FROM tbl_admin_events WHERE active='1'";
+        $rows = array();
+        if ($result = $conn -> query($query)) {
+            while($row = mysqli_fetch_assoc($result)) {
+                $rows[] = $row;
+            }
+            return $rows;
+        }
+        return null;
+    }
+
     function getEventsFromId($id) {
         require("connection.php");
         $query = "SELECT * FROM tbl_admin_events where id = $id";
@@ -46,7 +59,7 @@
         return null;
     }
 
-    function updateEvents($id, $title, $description, $squareImage, $longImage) {
+    function updateEvents($id, $title, $description, $squareImage, $longImage, $price, $active) {
         require("connection.php");
         date_default_timezone_set('Asia/Jakarta');
         $currentTime = date("Y-m-d H:i:s");      
@@ -65,7 +78,7 @@
             $longImageQuery = "event_long_image = '" . mysqli_real_escape_string($conn, $longImage) . "',";
         }
         
-        $query = "UPDATE tbl_admin_events SET event_title = '$title', event_description = '" . mysqli_real_escape_string($conn, $description) . "', $squareImageQuery $longImageQuery last_modified = '$currentTime' WHERE id = '$id'"; 
+        $query = "UPDATE tbl_admin_events SET event_title = '$title', event_description = '" . mysqli_real_escape_string($conn, $description) . "', $squareImageQuery $longImageQuery last_modified = '$currentTime', price = '$price', active ='$active' WHERE id = '$id'"; 
         
         if ($conn->query($query)) {
             return true;
