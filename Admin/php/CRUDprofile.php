@@ -5,14 +5,15 @@
         $currentTime = date("Y-m-d H:i:s");
         $image_1 = moveImage('Profile', $image_1);
         $image_2 = moveImage('Profile', $image_2);      
-        $image_3 = moveImage('Profile', $image_3);      
+        $image_3 = moveImage('Profile', $image_3);  
+
         $title = mysqli_real_escape_string($conn, $title);
         $description = mysqli_real_escape_string($conn, $description);
         $image_1 = mysqli_real_escape_string($conn, $image_1);
         $image_2 = mysqli_real_escape_string($conn, $image_2);   
         $image_3 = mysqli_real_escape_string($conn, $image_3);   
-        $query = "INSERT INTO tbl_admin_profile (profile_title, profile_description, profile_image_1, profile_image_2, profile_image_3, data_created, last_modified) VALUES ('$title', '$description', '$image_1', '$image_2', $image_3, '$currentTime', '$currentTime')"; 
-        if ($conn->query($query)) {
+        $sql = "INSERT INTO tbl_admin_profile(profile_title, profile_description, profile_image_1, profile_image_2, profile_image_3, data_created, last_modified) VALUES ('$title', '$description', '$image_1', '$image_2', '$image_3', '$currentTime', '$currentTime')"; 
+        if ($conn->query($sql)) {
             return true;
         }
         return false;
@@ -20,7 +21,7 @@
 
     function deleteProfile($id) {
         require("connection.php");
-        $query = "DELETE FROM tbl_admin_profile WHERE id = $id";
+        $query = "DELETE FROM tbl_admin_profile WHERE profile_id = $id";
         if ($conn -> query($query)) {
             return true;
         }
