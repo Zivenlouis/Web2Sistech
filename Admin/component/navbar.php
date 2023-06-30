@@ -18,7 +18,26 @@
     </div>
     <ul class="nav">
         <li class="nav-item nav-category">
-            <span class="nav-link">Navigation</span>
+            <span class="nav-link">Account</span>
+        </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" href="userAccount.php">
+                <span class="menu-icon">
+                <i class="mdi mdi-account"></i>
+                </span>
+                <span class="menu-title">User Account</span>
+            </a>
+        </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" href="adminAccount.php">
+                <span class="menu-icon">
+                <i class="mdi mdi-account-key"></i>
+                </span>
+                <span class="menu-title">Admin Account</span>
+            </a>
+        </li>
+        <li class="nav-item nav-category">
+            <span class="nav-link">Pages</span>
         </li>
         <li class="nav-item menu-items">
             <a class="nav-link" href="index.php">
@@ -51,6 +70,9 @@
                 </span>
                 <span class="menu-title">Profile</span>
             </a>
+        </li>
+        <li class="nav-item nav-category">
+            <span class="nav-link">Report</span>
         </li>
         <li class="nav-item menu-items">
             <a class="nav-link" href="registration.php">

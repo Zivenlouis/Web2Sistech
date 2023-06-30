@@ -10,6 +10,9 @@
     border-radius: 0 !important;
     }
 
+    textarea:active {
+      color: white !important;
+    }
     .event-description p {
       word-wrap: break-word !important;
       white-space:pre-wrap !important;
@@ -39,6 +42,14 @@
         width: 85% !important;
       }
       
+    }
+
+    label select option {
+      color: black !important;
+    }
+
+    .main-panel * {
+      color: white;
     }
 
 </style>
@@ -163,7 +174,7 @@
                
                 
                 <div class="table-responsive table-wrapper"  >
-                  <table class="table">
+                  <table class="table display" id="table">
                     <thead>
                       <tr>
                         <th>Events Title</th>
@@ -215,6 +226,9 @@
                       ?>
                     </tbody>
                   </table>
+                  <script>
+                    $('#table').DataTable();
+                  </script>
                 </div>
               </div>
             </div>
@@ -223,5 +237,7 @@
       <!-- </div> -->
     </div>
     <?php require_once("component/script.php");?>
+
   </body>
 </html>
+
