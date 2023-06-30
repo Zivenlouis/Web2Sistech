@@ -21,6 +21,7 @@
         
         <?php
             require("../Admin/php/CRUDevents.php");
+            
             $arr = getActiveEventsToArr(); 
             if(isset($_GET['messageCode'])) {
               $messageCode = $_GET['messageCode'];
@@ -63,7 +64,25 @@
         <p>Price: <?= $formattedPrice ?> </p>
         <form method='post' action='payment_confirmation.php'>
           <input type='hidden' name='eventId' value='<?= $id ?>'>
-          <input type='submit' name='submit' value='Register Now'>
+          <?php
+            if(isset($_SESSION['userId'])) {
+              require("php/connection.php");
+              $userId = $_SESSION['userId'];
+              $query = "SELECT * FROM tbl_events_registration WHERE event_id=$id AND account_id=$userId AND payment_status='Success'";
+              if ($result = $conn -> query($query)) {
+                if($result -> fetch_assoc()) {
+                  echo "Already registered to this event";
+                } else {
+                   ?>
+                   <input type='submit' name='submit' value='Register Now'>
+                   <?php
+                }
+              } else {
+                echo $conn -> error;
+              }          
+            }
+          ?>
+          
         </form>
     </main>
 

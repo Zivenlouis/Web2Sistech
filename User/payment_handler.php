@@ -13,8 +13,12 @@
             if($statusCode == 200) {
                 date_default_timezone_set('Asia/Jakarta');
                 $currentTime = date("Y-m-d H:i:s");      
-                $query = "UPDATE tbl_event_registration SET payment_status='Success', payment_time='$currentTime'";
-                header('location: register_events.php?messageCode=3');
+                $query = "UPDATE tbl_events_registration SET payment_status='Success', payment_time='$currentTime' WHERE id='$orderId'";
+                if ($conn->query($query)) {
+                    header('location: register_events.php?messageCode=3');
+                } else {
+                    header('location: register_events.php?messageCode=1');
+                }
             } else {
                 header('location: register_events.php?messageCode=2');
             }
