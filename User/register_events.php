@@ -26,7 +26,13 @@
               $messageCode = $_GET['messageCode'];
               switch($messageCode) {
                 case '1':
-                  echo "Failed to register";
+                  echo "Failed to register: Server error";
+                  break;
+                case '2':
+                  echo "Failed to register: Payment gateway error";
+                  break;
+                case '3':
+                  echo "Event successfully registered. Thank you for registering through this website.";
                   break;
               }
             }
