@@ -78,6 +78,7 @@
             $longImageQuery = "event_long_image = '" . mysqli_real_escape_string($conn, $longImage) . "',";
         }
         
+        $description = str_replace("\n", "<br>", $description);
         $query = "UPDATE tbl_admin_events SET event_title = '$title', event_description = '" . mysqli_real_escape_string($conn, $description) . "', $squareImageQuery $longImageQuery last_modified = '$currentTime', price = '$price', active ='$active' WHERE id = '$id'"; 
         
         if ($conn->query($query)) {

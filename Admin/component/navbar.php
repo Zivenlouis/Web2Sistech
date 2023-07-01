@@ -56,7 +56,7 @@
             </a>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" href="aboutus.php">
+            <a class="nav-link" href="aboutUs.php">
                 <span class="menu-icon">
                 <i class="mdi mdi-web"></i>
                 </span>

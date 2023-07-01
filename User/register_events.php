@@ -14,33 +14,17 @@
       <div class="eclipse4"></div>
     </div>
 
-    <?php require_once("Layout/header.php");?>
+    <?php require_once("Layout/header.php");
+     require("../Admin/php/CRUDevents.php");
+     $arr = getActiveEventsToArr(); 
+     ?>
 
     <main>
       <div class="container">
         <div class="title">
           <h1 class="text-center fs-1">Event Registration</h1>
         </div>
-        <div class="message">
-          <?php
-            require("../Admin/php/CRUDevents.php");
-            $arr = getActiveEventsToArr(); 
-            if(isset($_GET['messageCode'])) {
-              $messageCode = $_GET['messageCode'];
-              switch($messageCode) {
-                case '1':
-                  echo "Failed to register: Server error";
-                  break;
-                case '2':
-                  echo "Failed to register: Payment gateway error";
-                  break;
-                case '3':
-                  echo "Event successfully registered. Thank you for registering through this website.";
-                  break;
-              }
-            }
-          ?>
-        </div>
+
         <div class="form-section">
           <form method='post' action=''>
             <div class="form-group">
@@ -62,6 +46,25 @@
             </div>
           </form>
         </div>
+        <div class="message" style="margin-top: 10px;">
+          <?php
+           
+            if(isset($_GET['messageCode'])) {
+              $messageCode = $_GET['messageCode'];
+              switch($messageCode) {
+                case '1':
+                  echo "<p class='messageError'>Failed to register: Server error</p>";
+                  break;
+                case '2':
+                  echo "<p class='messageError'>Failed to register: Payment gateway error</p>";
+                  break;
+                case '3':
+                  echo "<p class='messageSuccess'>Event successfully registered. Thank you for registering through this website.</p>";
+                  break;
+              }
+            }
+          ?>
+        </div>
         <div class="event-details">
           <?php  
             if(isset($_POST['event'])) $id = $_POST['event']; else $id = getEventsToArr()[0]['id'];
@@ -74,15 +77,14 @@
             <h2><?= $data['event_title'] ?></h2>
             <p><?= $data['event_description'] ?></p>
             <?php $formattedPrice = "Rp " . number_format($data['price'],2,',','.'); ?>
-            <p>Price: <?= $formattedPrice ?> </p>
+            <p class='price'>Price: <?= $formattedPrice ?> </p>
           </div>
         </div>
         <div class="registration-form">
           <form method='post' action='payment_confirmation.php'>
-            <div class="registration-group">
-              <input type='submit' name='submit' value='Register Here!' class="register-btn">
+            <div class="registration-group">           
               <input type='hidden' name='eventId' value='<?= $id ?>'>      
-            </div>
+            
             <?php
               if(isset($_SESSION['userId'])) {
                 require("php/connection.php");
@@ -90,18 +92,21 @@
                 $query = "SELECT * FROM tbl_events_registration WHERE event_id=$id AND account_id=$userId AND payment_status='Success'";
                 if ($result = $conn -> query($query)) {
                   if($result -> fetch_assoc()) {
-                    echo "Already registered to this event";
-                  } 
-                } else {
-                  echo $conn -> error;
-                }          
+                    echo "<p>Already registered to this event</p>";
+                  } else {
+                    ?> <input type='submit' name='submit' value='Register Here!' class="register-btn"> <?php
+                  }
+                }    
+              } else {
+                ?> <input type='submit' name='submit' value='Register Here!' class="register-btn"> <?php
               }
             ?>
+            </div>
           </form>                  
         </div>                
       </div>
     </main>
-
+    <script src='js/mainScript.js'> </script>
   </body>
 </html>
 <style>

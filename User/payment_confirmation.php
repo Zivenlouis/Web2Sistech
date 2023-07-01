@@ -4,7 +4,7 @@
 
     <title>Event Registration</title>
     <?php require_once("Layout/head.php"); ?>
-    <link rel="stylesheet" href="Style/mainRegisterEvents.css">
+    <link rel="stylesheet" href="Style/mainConfirmation.css">
   </head>
   <body style="margin-top:100px; overflow-y:hidden">
     <div class="background">
@@ -30,25 +30,36 @@
             $userData = $result -> fetch_assoc();
         ?>
         <img style='height: 200px;' src="../UploadImage/Events/<?= $eventData['event_long_image'] ?>">
-        <p>Event to be registered: <?= $eventData['event_title'] ?> </p>
-        <p>Name: <?= $userData['first_name'] . ' ' . $userData['last_name'] ?> </p>
-        <p>NIM : <?= $userData['nim'] ?> </p>
-        <p>Class : <?= $userData['class'] ?> </p>
-        <p>ID Line : <?= $userData['line'] ?> </p>
+        <table>
+        <tr>
+          <td class='td-1'>Event name</td> 
+          <td class='td-1'>:</td> <td> <?= $eventData['event_title'] ?> </td>
+        </tr>
+        <tr>
+        <td class='td-1'>Name</td> 
+        <td class='td-1'>: </td> <td><?= $userData['first_name'] . ' ' . $userData['last_name'] ?> </td>
+        </tr>
+        <tr>
+        <td class='td-1'>NIM </td ><td class='td-1'>:</td> <td> <?= $userData['nim'] ?> </td>
+        </tr>
+        <tr>
+        <td class='td-1'>Class </td><td class='td-1'>:</td> <td> <?= $userData['class'] ?> </td>
+        </tr>
+        <tr>
+        <td class='td-1'>ID Line </td><td class='td-1'>:</td> <td> <?= $userData['line'] ?> </td>
+        </tr>
         <?php $formattedPrice = "Rp " . number_format($eventData['price'],2,',','.'); ?>
-        <p>Price to pay : <?= $formattedPrice ?> </p>
+        <td class='td-1'>Price to pay </td><td class='td-1'>: </td> <td><?= $formattedPrice ?> </td>
+        </table>
         <form action='proceed_payment.php' method='post'>                 
           <input type="hidden" name="eventId" value="<?= $eventData['id'] ?>">           
           <input type="hidden" name="userId" value="<?= $userData['id'] ?>">
-          <?php
-            $query = "SELECT * FROM tbl_events_registration WHERE event"
-          ?>
           <input type='submit' name='submit' value='Proceed to pay' class="payment-btn">
         </form>
 
       </div>
     </main>
-
+    <script src='js/mainScript.js'> </script>
   </body>
 </html>
 <style>

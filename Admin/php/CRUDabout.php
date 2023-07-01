@@ -9,7 +9,7 @@
         $description = mysqli_real_escape_string($conn, $description);
         $circleImage = mysqli_real_escape_string($conn, $circleImage);
         $longImage = mysqli_real_escape_string($conn, $longImage);   
-        $query = "INSERT INTO tbl_admin_about (about_title, about_description, about_circle_image, about_long_image, time_created, last_modified, price, active) VALUES ('$title', '$description', '$circleImage', '$longImage', '$currentTime', '$currentTime')"; 
+        $query = "INSERT INTO tbl_admin_about (name, about_title, about_content, time_created, last_modified) VALUES ('$title', '$description', '$circleImage', '$longImage', '$currentTime', '$currentTime')"; 
         if ($conn->query($query)) {
             return true;
         }

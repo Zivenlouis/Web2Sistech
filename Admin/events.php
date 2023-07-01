@@ -103,7 +103,7 @@
                 <div class="form-group row">
                   <label for="eventDescription" class="col-sm-3 col-form-label">Event Description</label>
                   <div class="col-sm-9">
-                    <textarea style="height: 200px;" class="form-control" required  id="eventDescription" name="description" placeholder="Description" style="color: #ffff"><?php if(isset($arr)) echo $arr['event_description']; ?></textarea>
+                    <textarea style="height: 200px;" class="form-control" required  id="eventDescription" name="description" placeholder="Description" style="color: #ffff"><?php if(isset($arr)) { $description = str_replace("<br>", "\n", $arr['event_description']); echo $description; }?></textarea>
                   </div>
                 </div>
                 <div class="form-group row">
