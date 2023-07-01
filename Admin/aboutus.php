@@ -5,20 +5,24 @@
   </head>
   <style>
     .showDataImg1 {
-    width: 100px !important;
+    width: auto !important;
     height: 100px !important;
     border-radius: 0 !important;
+    }
+
+    .sorting {
+      text-align: center !important;
     }
 
     textarea:active {
       color: white !important;
     }
-    .event-description p {
+    .about-description p {
       word-wrap: break-word !important;
       white-space:pre-wrap !important;
       line-height: 20px;
       /* height: auto !important; */
-      width: 500px !important;
+      width: 300px !important;
     } 
 
     .showDataImg2 {
@@ -60,92 +64,87 @@
       
       <div class="main-panel numpang">
         <div class="content-wrapper">
+          <?php if(isset($_POST['edit'])) { ?>
           <div class="card">
             <div class="card-body">
-              <h4 class="card-title">Add About</h4>
+              <h4 class="card-title">Edit About</h4>
               <?php
                   require("php/image.php");
                   require_once("php/CRUDabout.php");
-                  if(isset($_POST['submit'])) {
-                    $title = $_POST['title'];
-                    $description = $_POST['description'];
-                    if(isset($_FILES['circleImage'])) $circleImage= $_FILES['circleImage'];
-                    if(isset($_FILES['longImage'])) $longImage = $_FILES['longImage']; 
+                  if(isset($_POST['edit'])) {
+                  //   $title = $_POST['title'];
+                  //   $description = $_POST['description'];
+                  //   if(isset($_FILES['circleImage'])) $circleImage= $_FILES['circleImage'];
+                  //   if(isset($_FILES['longImage'])) $longImage = $_FILES['longImage']; 
                     
-                    if(isset($_POST['id'])) {
-                      $id = $_POST['id'];
-                      if(updateAbouts($id, $title, $description, $circleImage, $longImage)) {
-                        echo " <p class='successMessage'>Data updated successfully</p>";
-                      } else {
-                        echo " <p class='errorMessage'>Data update unsuccessful</p>";
-                      }
-                    } else {                    
+                  //   if(isset($_POST['id'])) {
+                  //     $id = $_POST['id'];
+                  //     if(updateAbouts($id, $title, $description, $circleImage, $longImage)) {
+                  //       echo " <p class='successMessage'>Data updated successfully</p>";
+                  //     } else {
+                  //       echo " <p class='errorMessage'>Data update unsuccessful</p>";
+                  //     }
+                  //   } else {                    
                      
-                      if(insertAbouts($title, $description, $circleImage, $longImage)) {
-                        echo " <p class='successMessage'>Data inserted successfully</p>";
-                      } else {
-                        echo " <p class='errorMessage'>Data insertion unsuccessful</p>";
-                      }
-                    }
-                  } 
-                  else if (isset($_POST['delete'])) {
-                    if (deleteAbouts($_POST['id'])) {
-                      echo " <p class='successMessage'>Data deleted successfully</p>";
-                    } else {
-                      echo " <p class='errorMessage'>Data deletion unsuccessful</p>";
-                    }
+                  //     if(updateAbouts($title, $description, $circleImage, $longImage)) {
+                  //       echo " <p class='successMessage'>Data inserted successfully</p>";
+                  //     } else {
+                  //       echo " <p class='errorMessage'>Data insertion unsuccessful</p>";
+                  //     }
+                  //   }
+                  // } 
                   }
-                  else if(isset($_POST['edit'])) {
+                  if(isset($_POST['edit'])) {
                     $arr = getAboutsFromId($_POST['id']);
                   }
                   
 
                 ?>               
               <form class="forms-sample" method="post" action=""  enctype="multipart/form-data">
-                <div class="form-group row">
+              <div class="form-group row">
+                <label for="aboutTitle" class="col-sm-3 col-form-label">Name</label>
+                <div class="col-sm-9">
+                  <input type="text" required name="title" value="<?php if(isset($arr)) echo $arr['name']; ?>" class="form-control" id="aboutTitle" placeholder="Title" style="color: #ffff">
+                </div>
+              </div>
+              <?php if($arr['about_title'] != '') { ?> 
+              <div class="form-group row">
                   <label for="aboutTitle" class="col-sm-3 col-form-label">About Title</label>
                   <div class="col-sm-9">
-                    <input type="text" required name="title" value="<?php if(isset($arr)) echo $arr['about_title']; ?>" class="form-control" id="aboutTitle" placeholder="Title" style="color: #ffff">
+                    <input type="text" required name="title" value="<?= $arr['about_title']; ?>" class="form-control" id="aboutTitle" placeholder="Title" style="color: #ffff">
                   </div>
                 </div>
+              <?php } 
+              if($arr['about_content'] != '') { ?> 
                 <div class="form-group row">
                   <label for="aboutDescription" class="col-sm-3 col-form-label">About Description</label>
                   <div class="col-sm-9">
-                    <textarea style="height: 200px;" class="form-control" required  id="aboutDescription" name="description" placeholder="Description" style="color: #ffff"><?php if(isset($arr)) echo $arr['about_description']; ?></textarea>
+                    <textarea style="height: 200px;" class="form-control" required  id="aboutDescription" name="description" placeholder="Description" style="color: #ffff"><?php if(isset($arr)) { $description = str_replace("<br>", "\n", $arr['about_description']); echo $description; }?></textarea>
                   </div>
                 </div>
+              <?php } 
+              if ($arr['about_image'] != '') { ?> 
                 <div class="form-group row">
-                  <label for="aboutImage" class="col-sm-3 col-form-label">Circle Image</label>
+                  <label for="aboutImage" class="col-sm-3 col-form-label">Image</label>
                   <div class="col-sm-9">
                     <?php 
-                      if(isset($arr)) {
-                        $circleImage = $arr['about_circle_image'];
-                        $id = $_POST['id'];
-                        echo "<input type='hidden' name='id' value='$id'>";
-                        echo "<img style='width: 150px; height: 150px; border-radius: 50%; margin-right: 10px;' src='../UploadImage/Aboutus/$circleImage'>";
-                      }
+                    $image = $arr['about_image'];
+                    $id = $_POST['id'];
+                    echo "<input type='hidden' name='id' value='$id'>";
+                    echo "<img style='width: auto; height: 150px; margin-right: 10px;' src='../UploadImage/AboutUs/$image'>";
+                      
                     ?>
                     <input type="file" accept="image/*" name="circleImage" class="" id="aboutImage">
                   </div>
                 </div>
-                <div class="form-group row">
-                  <label for="aboutImage" class="col-sm-3 col-form-label">Long Image</label>
-                  <div class="col-sm-9">
-                    <?php 
-                      if(isset($arr)) {
-                        $longImage = $arr['about_long_image'];
-                        echo "<img style='height: 150px; margin-right: 10px;' src='../UploadImage/Aboutus/$longImage'>";
-                      }
-                    ?>
-                    <input type="file" accept="image/*" name="longImage" class="" id="aboutImage">
-                  </div>
-                </div>
+                <?php } ?>
                 <input type="submit" class="btn btn-primary mr-2" name="submit" value="Submit">              
                 <a href="" class="btn btn-dark">Cancel</a>
                 
               </form>
             </div>
           </div>
+          <?php } ?>
           <br>
           <!-- <div class="table-responsive"> -->
           <div class="card" style="box-sizing:border-box">
@@ -160,14 +159,12 @@
                   <table class="table display" id="table">
                     <thead>
                       <tr>
-                        <th>About Us Title</th>
-                        <th>About Us Description</th>
-                        <th>About Us Circle Image</th>
-                        <th>About Us Long Image</th>
-                        <th>Date Created</th>
+                        <th>Name</th>
+                        <th>Title</th>
+                        <th>Content</th>
+                        <th>Image</th>                        
                         <th>Last Modified</th>    
                         <th>Edit</th>
-                        <th>Delete</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -177,13 +174,11 @@
                         $i = 1;
                         while($row = $result->fetch_assoc()) {
                           echo "<tr>";
-                          echo "<td>{$row['about_title']} </td>";
-                          echo "<td class='about-description'><p>{$row['about_description']}</p></td>";
-                          $imageCircle = $row['about_circle_image']; 
-                          $imageLong = $row['about_long_image']; 
-                          echo "<td><img class='showDataImg1' src='../UploadImage/Aboutus/{$imageCircle}' alt='data'></td>";
-                          echo "<td><img class='showDataImg2' src='../UploadImage/Aboutus/{$imageLong}' alt='data'></td>";
-                          echo "<td>{$row['time_created']} </td>";
+                          echo "<td>{$row['name']} </td>";
+                          echo "<td><p>{$row['about_title']}</p></td>";
+                          echo "<td class='about-description'><p>{$row['about_content']}</p></td>";
+                          $image = $row['about_image']; 
+                          echo "<td><img class='showDataImg1' src='../UploadImage/Aboutus/{$image}' alt='No Image'></td>";
                           echo "<td>{$row['last_modified']} </td>";
                           $id = $row['id'];
                           ?>
@@ -192,8 +187,7 @@
                               <td>
                                 <input type='hidden' name='id'  value='<?= $id ?>'>
                                 <input class='btn-primary'style='padding:5px 10px;' type='submit' name='edit' value='Edit'>
-                              </td>
-                              <td><input class='btn-primary'style='padding:5px 10px;' type='submit' name='delete' value='Delete' onclick="return confirm('Are you sure you want to delete this item?');"></td>
+                              </td>  
                             </form>
                             </tr>
                           <?php
