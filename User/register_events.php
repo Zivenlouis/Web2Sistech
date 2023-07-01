@@ -17,11 +17,13 @@
     <?php require_once("Layout/header.php");?>
 
     <main>
-        <h1 class="text-center fs-1">Event Registration</h1>
-        
-        <?php
+      <div class="container">
+        <div class="title">
+          <h1 class="text-center fs-1">Event Registration</h1>
+        </div>
+        <div class="message">
+          <?php
             require("../Admin/php/CRUDevents.php");
-            
             $arr = getActiveEventsToArr(); 
             if(isset($_GET['messageCode'])) {
               $messageCode = $_GET['messageCode'];
@@ -37,53 +39,70 @@
                   break;
               }
             }
-        ?>
-        <form method='post' action=''>
-            <label for='event'>Select event: </label>
-            <select name='event' id='event'>
-                <?php 
-                    foreach($arr as $item) {
+          ?>
+        </div>
+        <div class="form-section">
+          <form method='post' action=''>
+            <div class="form-group">
+              <div class="select-wrapper">
+                  <label for='event'>Select Events :</label>
+                  <select name='event' id='event'>
+                    <?php
+                      foreach ($arr as $item) {
                         $id = $item['id'];
                         $title = $item['event_title'];
                         $selected = '';
-                        if($_POST['event'] == $id) $selected = 'selected';
+                        if ($_POST['event'] == $id) $selected = 'selected';
                         echo "<option value='$id' $selected >$title</option>";
                     }
-                ?>
-            </select>
-            <input type='submit' name='submit' value='Go'>
-        </form>
-        <?php  
-          if(isset($_POST['event'])) $id = $_POST['event']; else $id = getEventsToArr()[0]['id'];
-          $data = getEventsFromId($id);
-        ?>
-        <img style="height: 200px"  src="../UploadImage/Events/<?= $data['event_long_image'] ?>">
-        <h2><?= $data['event_title'] ?></h2>
-        <p><?= $data['event_description'] ?></p>
-        <?php $formattedPrice = "Rp " . number_format($data['price'],2,',','.'); ?>
-        <p>Price: <?= $formattedPrice ?> </p>
-        <form method='post' action='payment_confirmation.php'>
-          <input type='hidden' name='eventId' value='<?= $id ?>'>
-          <?php
-            if(isset($_SESSION['userId'])) {
-              require("php/connection.php");
-              $userId = $_SESSION['userId'];
-              $query = "SELECT * FROM tbl_events_registration WHERE event_id=$id AND account_id=$userId AND payment_status='Success'";
-              if ($result = $conn -> query($query)) {
-                if($result -> fetch_assoc()) {
-                  echo "Already registered to this event";
-                } else {
-                   ?>
-                   <input type='submit' name='submit' value='Register Now'>
-                   <?php
-                }
-              } else {
-                echo $conn -> error;
-              }          
-            }
+                    ?>
+                  </select>
+                  <input type='submit' name='submit' value='Go' class="submit-btn">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="event-details">
+          <?php  
+            if(isset($_POST['event'])) $id = $_POST['event']; else $id = getEventsToArr()[0]['id'];
+            $data = getEventsFromId($id);
           ?>
-          
-        </form>
+          <div class="event-image">
+            <img src="../UploadImage/Events/<?= $data['event_long_image'] ?>">
+          </div>
+          <div class="event-info">
+            <h2><?= $data['event_title'] ?></h2>
+            <p><?= $data['event_description'] ?></p>
+            <?php $formattedPrice = "Rp " . number_format($data['price'],2,',','.'); ?>
+            <p>Price: <?= $formattedPrice ?> </p>
+          </div>
+        </div>
+        <div class="registration-form">
+          <form method='post' action='payment_confirmation.php'>
+            <input type='hidden' name='eventId' value='<?= $id ?>'>
+            <?php
+              if(isset($_SESSION['userId'])) {
+                require("php/connection.php");
+                $userId = $_SESSION['userId'];
+                $query = "SELECT * FROM tbl_events_registration WHERE event_id=$id AND account_id=$userId AND payment_status='Success'";
+                if ($result = $conn -> query($query)) {
+                  if($result -> fetch_assoc()) {
+                    echo "Already registered to this event";
+                  } else {
+                    ?>
+                    <div class="form-group">
+                      <input type='submit' name='submit' value='Register Now' class="register-btn">
+                    </div>
+                    <?php
+                  }
+                } else {
+                  echo $conn -> error;
+                }          
+              }
+            ?>
+          </form>                  
+        </div>                
+      </div>
     </main>
 
   </body>

@@ -13,10 +13,11 @@
       <div class="eclipse3"></div>
       <div class="eclipse4"></div>
     </div>
-
+0
     <?php require_once("Layout/header.php");?>
 
     <main>
+      <div class="temp">
         <h1 class="text-center fs-1">Event Registration</h1>
         <?php
             if(empty($_SESSION['loggedIn'])) header("location: sign_in.php");
@@ -38,15 +39,15 @@
         <?php $formattedPrice = "Rp " . number_format($eventData['price'],2,',','.'); ?>
         <p>Price to pay : <?= $formattedPrice ?> </p>
         <form action='proceed_payment.php' method='post'>                 
-            <input type="hidden" name="eventId" value="<?= $eventData['id'] ?>">           
-            <input type="hidden" name="userId" value="<?= $userData['id'] ?>">
-            <?php
-              $query = "SELECT * FROM tbl_events_registration WHERE event"
-
-            ?>
-            <input type='submit' name='submit' value='Proceed to pay'>
+          <input type="hidden" name="eventId" value="<?= $eventData['id'] ?>">           
+          <input type="hidden" name="userId" value="<?= $userData['id'] ?>">
+          <?php
+            $query = "SELECT * FROM tbl_events_registration WHERE event"
+          ?>
+          <input type='submit' name='submit' value='Proceed to pay'>
         </form>
 
+      </div>
     </main>
 
   </body>
