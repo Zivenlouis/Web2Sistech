@@ -81,7 +81,7 @@
                       }
                     } else {                    
                      
-                      if(updateAbouts($title, $description, $circleImage, $longImage)) {
+                      if(insertAbouts($title, $description, $circleImage, $longImage)) {
                         echo " <p class='successMessage'>Data inserted successfully</p>";
                       } else {
                         echo " <p class='errorMessage'>Data insertion unsuccessful</p>";
