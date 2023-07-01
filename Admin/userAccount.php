@@ -65,7 +65,7 @@
                     }
                   }
                   else if(isset($_POST['edit'])) {
-                    $arr = getEventsFromId($_POST['id']);
+                    $arr = getUserFromId($_POST['id']);
                   }
                   
 
