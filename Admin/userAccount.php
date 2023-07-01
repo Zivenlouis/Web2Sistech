@@ -26,7 +26,7 @@
       <?php require_once("component/navbar.php");?>
       <div class="main-panel">
         <div class="content-wrapper">
-        <div class="card">
+          <div class="card">
             <div class="card-body">
               <h4 class="card-title">Add User</h4>
               <?php
