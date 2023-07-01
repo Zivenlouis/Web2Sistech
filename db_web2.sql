@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Jun 30, 2023 at 03:58 PM
+-- Generation Time: Jul 01, 2023 at 12:11 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_web2`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_admin_about`
+--
+
+CREATE TABLE `tbl_admin_about` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `about_title` varchar(255) NOT NULL,
+  `about_content` text NOT NULL,
+  `about_image` varchar(255) NOT NULL,
+  `last_modified` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_admin_about`
+--
+
+INSERT INTO `tbl_admin_about` (`id`, `name`, `about_title`, `about_content`, `about_image`, `last_modified`) VALUES
+(1, 'SISTECH Header', '', '', '1.png', '2023-07-01 16:30:25'),
+(2, 'SISTECH Description', 'SISTECH', 'SISTECH UPH Medan Campus has two study programs namely Information Systems and Informatics. Both have a vision of becoming partners in the industrial world.', '2.png', '2023-07-01 11:52:09');
 
 -- --------------------------------------------------------
 
@@ -44,7 +67,7 @@ CREATE TABLE `tbl_admin_events` (
 --
 
 INSERT INTO `tbl_admin_events` (`id`, `event_title`, `event_description`, `price`, `active`, `event_long_image`, `event_square_image`, `time_created`, `last_modified`) VALUES
-(6, 'Bangkit 2023', 'Aim Higher With Bangkit 2023 merupakan program kerja oleh Himpunan Mahasiswa Program Studi Sistem Informasi (HMPSSI) dan Himpunan Mahasiswa Program Studi Informatika (HMPTIF) UPH Kampus Medan yang bertujuan untuk memperkenalkan program MBKM terkhususnya Bangkit untuk mahasiswa/i UPH Kampus Medan...', 25000, '1', '649d3d458f960.png', '649d3d458f7a6.png', '2023-06-29 15:13:57', '2023-06-30 20:29:04'),
+(6, 'Bangkit 2023', 'Aim Higher With Bangkit 2023 merupakan program kerja oleh Himpunan Mahasiswa Program Studi Sistem Informasi (HMPSSI) dan Himpunan Mahasiswa Program Studi Informatika (HMPTIF) UPH Kampus Medan yang bertujuan untuk memperkenalkan program MBKM terkhususnya Bangkit untuk mahasiswa/i UPH Kampus Medan...\r<br>\r<br>', 25000, '1', '649d3d458f960.png', '649d3d458f7a6.png', '2023-06-29 15:13:57', '2023-07-01 17:04:38'),
 (7, 'Menara: Metaverse in Nusantara', 'Menara: Metaverse in Nusantara is an event held by SISTECH to introduce and enrich participants\' knowledge about the technology behind Metaverse and the development of Metaverse in Indonesia...', 35000, '0', '649d3d5a9308c.png', '649d3d5a92ee9.png', '2023-06-29 15:14:18', '2023-06-29 15:15:02'),
 (8, 'Basic Coding Class', 'Techno has been eavesdropping, hearing rumors that some of you are confused on where to start your first coding journey. Therefore, we’re bringing back “Basic Coding Class” as a platform where you can learn about the fundamentals of coding and sharpen your logical skills...', 125000, '1', '649d3d6c509d4.png', '649d3d6c5084c.png', '2023-06-29 15:14:36', '2023-06-29 15:14:36'),
 (9, 'D.O.T.S. 2022', 'Techno is cordially inviting you to join a thrilling event that we’ve curated wholeheartedly for you guys called “Day of Togetherness and Sharing”! Day of Togetherness and Sharing is an event that will bring all of you together in unity and get to know each other more', 0, '1', '649d3d7e6a764.png', '649d3d7e6a5e7.png', '2023-06-29 15:14:54', '2023-06-29 15:14:54');
@@ -84,9 +107,9 @@ CREATE TABLE `tbl_admin_profile` (
   `profile_id` int(11) NOT NULL,
   `profile_title` varchar(40) NOT NULL,
   `profile_description` varchar(40) NOT NULL,
-  `profile_image_1` blob DEFAULT NULL,
-  `profile_image_2` blob DEFAULT NULL,
-  `profile_image_3` blob NOT NULL,
+  `profile_image_1` varchar(255) DEFAULT NULL,
+  `profile_image_2` varchar(255) DEFAULT NULL,
+  `profile_image_3` varchar(255) NOT NULL,
   `data_created` datetime NOT NULL,
   `last_modified` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -96,14 +119,14 @@ CREATE TABLE `tbl_admin_profile` (
 --
 
 INSERT INTO `tbl_admin_profile` (`profile_id`, `profile_title`, `profile_description`, `profile_image_1`, `profile_image_2`, `profile_image_3`, `data_created`, `last_modified`) VALUES
-(119, 'governing body', 'hmpssi 2022/2023', 0x363439383235353937383161342e706e67, 0x363439383235353937383161392e706e67, 0x363439383235353937383161612e706e67, '2023-06-25 13:53:28', '2023-06-25 18:30:33'),
-(120, 'internal relation', 'hmpssi 2022/2023', 0x363439376534393465653338322e706e67, 0x363439376534393465653338652e706e67, 0x363439376534393465653338662e, '2023-06-25 13:54:12', '2023-06-25 13:54:12'),
-(121, 'external relations', 'hmpssi 2022/2023', 0x363439376536336465323938642e706e67, 0x363439376536336465323939342e706e67, 0x363439376536336465323939352e, '2023-06-25 14:01:17', '2023-06-25 14:01:17'),
-(123, 'COMMUNICATION MEDIA AND INFORMATION', 'HMPSSI 2022/2023', 0x363439376537306364313233342e706e67, 0x363439376537306364313233392e706e67, 0x363439376537306364313233612e706e67, '2023-06-25 14:04:44', '2023-06-25 14:04:44'),
-(124, 'governing body', 'hmpsif 2022/2023', 0x363439376537356334363732612e706e67, 0x363439376537356334363732662e706e67, 0x363439376537356334363733302e706e67, '2023-06-25 14:06:04', '2023-06-25 14:06:04'),
-(125, 'public relation ', 'hmpsif 2022/2023', 0x363439376537383139643639302e706e67, 0x363439376537383139643639342e706e67, 0x363439376537383139643639352e706e67, '2023-06-25 14:06:41', '2023-06-25 14:06:41'),
-(126, 'it development', 'HMPSif 2022/2023', 0x363439376537643937313232342e706e67, 0x363439376537643937313232612e706e67, 0x363439376537643937313232622e706e67, '2023-06-25 14:08:09', '2023-06-25 14:08:09'),
-(127, 'COMMUNICATION MEDIA AND INFORMATION', 'HMPSif 2022/2023	', 0x363439376538313138316164342e706e67, 0x363439376538313138316164382e706e67, 0x363439376538313138316164392e, '2023-06-25 14:09:05', '2023-06-25 14:09:05');
+(119, 'governing body', 'hmpssi 2022/2023', '64982559781a4.png', '64982559781a9.png', '64982559781aa.png', '2023-06-25 13:53:28', '2023-06-25 18:30:33'),
+(120, 'internal relation', 'hmpssi 2022/2023', '6497e494ee382.png', '6497e494ee38e.png', '6497e494ee38f.', '2023-06-25 13:54:12', '2023-06-25 13:54:12'),
+(121, 'external relations', 'hmpssi 2022/2023', '6497e63de298d.png', '6497e63de2994.png', '6497e63de2995.', '2023-06-25 14:01:17', '2023-06-25 14:01:17'),
+(123, 'COMMUNICATION MEDIA AND INFORMATION', 'HMPSSI 2022/2023', '6497e70cd1234.png', '6497e70cd1239.png', '6497e70cd123a.png', '2023-06-25 14:04:44', '2023-06-25 14:04:44'),
+(124, 'governing body', 'hmpsif 2022/2023', '6497e75c4672a.png', '6497e75c4672f.png', '6497e75c46730.png', '2023-06-25 14:06:04', '2023-06-25 14:06:04'),
+(125, 'public relation ', 'hmpsif 2022/2023', '6497e7819d690.png', '6497e7819d694.png', '6497e7819d695.png', '2023-06-25 14:06:41', '2023-06-25 14:06:41'),
+(126, 'it development', 'HMPSif 2022/2023', '6497e7d971224.png', '6497e7d97122a.png', '6497e7d97122b.png', '2023-06-25 14:08:09', '2023-06-25 14:08:09'),
+(127, 'COMMUNICATION MEDIA AND INFORMATION', 'HMPSif 2022/2023	', '6497e81181ad4.png', '6497e81181ad8.png', '6497e81181ad9.', '2023-06-25 14:09:05', '2023-06-25 14:09:05');
 
 -- --------------------------------------------------------
 
@@ -197,6 +220,12 @@ INSERT INTO `tbl_events_registration` (`id`, `event_id`, `account_id`, `payment_
 --
 
 --
+-- Indexes for table `tbl_admin_about`
+--
+ALTER TABLE `tbl_admin_about`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_admin_events`
 --
 ALTER TABLE `tbl_admin_events`
@@ -236,6 +265,12 @@ ALTER TABLE `tbl_events_registration`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `tbl_admin_about`
+--
+ALTER TABLE `tbl_admin_about`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_admin_events`
