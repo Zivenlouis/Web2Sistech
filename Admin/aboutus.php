@@ -13,6 +13,18 @@
     .sorting {
       text-align: center !important;
     }
+    .odd {
+      text-align: center !important;
+    }
+    .even {
+      text-align: center !important;
+    }
+    .odd .about-description {
+      text-align: justify !important;
+    }
+    .even .about-description {
+      text-align: justify !important;
+    }
 
     textarea:active {
       color: white !important;
@@ -55,7 +67,11 @@
     .main-panel * {
       color: white;
     }
-
+    .form-control[readonly] {
+    background-color: inherit;
+    color: inherit;
+    cursor: not-allowed !important;
+    }
 </style>
 
   <body>
@@ -102,11 +118,11 @@
                 ?>               
               <form class="forms-sample" method="post" action=""  enctype="multipart/form-data">
               <div class="form-group row">
-                <label for="aboutTitle" class="col-sm-3 col-form-label">Name</label>
-                <div class="col-sm-9">
-                  <input type="text" required name="title" value="<?php if(isset($arr)) echo $arr['name']; ?>" class="form-control" id="aboutTitle" placeholder="Title" style="color: #ffff">
+                  <label for="aboutTitle" class="col-sm-3 col-form-label">Name</label>
+                  <div class="col-sm-9">
+                    <input type="text" required name="title" value="<?php if(isset($arr)) echo $arr['name']; ?>" class="form-control" id="aboutTitle" placeholder="Title" style="color: #ffff" readonly>
                 </div>
-              </div>
+            </div>
               <?php if($arr['about_title'] != '') { ?> 
               <div class="form-group row">
                   <label for="aboutTitle" class="col-sm-3 col-form-label">About Title</label>
@@ -119,7 +135,7 @@
                 <div class="form-group row">
                   <label for="aboutDescription" class="col-sm-3 col-form-label">About Description</label>
                   <div class="col-sm-9">
-                    <textarea style="height: 200px;" class="form-control" required  id="aboutDescription" name="description" placeholder="Description" style="color: #ffff"><?php if(isset($arr)) { $description = str_replace("<br>", "\n", $arr['about_description']); echo $description; }?></textarea>
+                    <textarea style="height: 200px; color :#fff" class="form-control" required  id="aboutDescription" name="description" placeholder="Description" style="color: #ffff"><?php if(isset($arr)) { $description = str_replace("<br>", "\n", $arr['about_content']); echo $description; }?></textarea>
                   </div>
                 </div>
               <?php } 
@@ -159,6 +175,7 @@
                   <table class="table display" id="table">
                     <thead>
                       <tr>
+                        <th>No.</th>
                         <th>Name</th>
                         <th>Title</th>
                         <th>Content</th>
@@ -174,11 +191,12 @@
                         $i = 1;
                         while($row = $result->fetch_assoc()) {
                           echo "<tr>";
+                          echo"<td>{$row['no_urut']} </td>";
                           echo "<td>{$row['name']} </td>";
                           echo "<td><p>{$row['about_title']}</p></td>";
                           echo "<td class='about-description'><p>{$row['about_content']}</p></td>";
                           $image = $row['about_image']; 
-                          echo "<td><img class='showDataImg1' src='../UploadImage/Aboutus/{$image}' alt='No Image'></td>";
+                          echo "<td><img class='showDataImg1' src='../UploadImage/Aboutus/{$image}' alt=''></td>";
                           echo "<td>{$row['last_modified']} </td>";
                           $id = $row['id'];
                           ?>
