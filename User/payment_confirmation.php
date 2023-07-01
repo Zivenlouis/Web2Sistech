@@ -13,7 +13,6 @@
       <div class="eclipse3"></div>
       <div class="eclipse4"></div>
     </div>
-0
     <?php require_once("Layout/header.php");?>
 
     <main>
@@ -44,7 +43,7 @@
           <?php
             $query = "SELECT * FROM tbl_events_registration WHERE event"
           ?>
-          <input type='submit' name='submit' value='Proceed to pay'>
+          <input type='submit' name='submit' value='Proceed to pay' class="payment-btn">
         </form>
 
       </div>

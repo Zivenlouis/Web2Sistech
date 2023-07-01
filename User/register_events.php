@@ -79,7 +79,10 @@
         </div>
         <div class="registration-form">
           <form method='post' action='payment_confirmation.php'>
-            <input type='hidden' name='eventId' value='<?= $id ?>'>
+            <div class="registration-group">
+              <input type='submit' name='submit' value='Register Here!' class="register-btn">
+              <input type='hidden' name='eventId' value='<?= $id ?>'>      
+            </div>
             <?php
               if(isset($_SESSION['userId'])) {
                 require("php/connection.php");
@@ -88,13 +91,7 @@
                 if ($result = $conn -> query($query)) {
                   if($result -> fetch_assoc()) {
                     echo "Already registered to this event";
-                  } else {
-                    ?>
-                    <div class="form-group">
-                      <input type='submit' name='submit' value='Register Now' class="register-btn">
-                    </div>
-                    <?php
-                  }
+                  } 
                 } else {
                   echo $conn -> error;
                 }          
