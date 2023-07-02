@@ -13,14 +13,25 @@
       <div class="eclipse4"></div>
     </div>
 
-    <?php require_once("Layout/header.php");?>
+    <?php 
+      require_once("Layout/header.php");
+      function getDataFromId($id) {
+          require("php/connection.php");
+          $query = "SELECT * FROM tbl_admin_about where id = $id";
+          if ($result = $conn -> query($query)) return $result -> fetch_assoc();
+          return null;
+      }
+    ?>
 
     <main>
       <div class="continue1-content">
         <p>About Us</p>
       </div>
       <div class="continue2-content">
-        <img src="Image/Main/Sistech logo.png" />
+        <?php 
+          $arr = getDataFromId(1);
+        ?>
+        <img src="../UploadImage/Aboutus/<?= $arr['about_image'] ?>" />
       </div>
       <div class="continue3-content">
         <div class="ccon3-1">
