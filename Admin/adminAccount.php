@@ -113,7 +113,7 @@
                     </thead>
                     <tbody>
                     <?php 
-                        $sql = "SELECT * FROM tbl_admin_admin";
+                        $sql = "SELECT * FROM tbl_akun_admin";
                         $result = $conn -> query($sql);
                         $i = 1;
                         while($row = $result->fetch_assoc()) {
