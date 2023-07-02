@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Jul 2023 pada 19.23
+-- Waktu pembuatan: 02 Jul 2023 pada 05.01
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.1.5
 
@@ -138,6 +138,26 @@ INSERT INTO `tbl_admin_profile` (`profile_id`, `profile_title`, `profile_descrip
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tbl_admin_user`
+--
+
+CREATE TABLE `tbl_admin_user` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(100) NOT NULL,
+  `last_name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `nim` varchar(100) NOT NULL,
+  `class` varchar(100) NOT NULL,
+  `line_id` varchar(100) NOT NULL,
+  `major` varchar(100) NOT NULL,
+  `intake` varchar(100) NOT NULL,
+  `time_created` datetime NOT NULL,
+  `last_modified` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tbl_akun`
 --
 
@@ -146,12 +166,7 @@ CREATE TABLE `tbl_akun` (
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `nim` varchar(50) NOT NULL,
-  `class` varchar(50) NOT NULL,
-  `line` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `major` varchar(255) NOT NULL,
-  `intake` varchar(255) NOT NULL,
   `remember_token` varchar(255) NOT NULL,
   `verification_code` varchar(8) DEFAULT NULL,
   `update_verification_time` datetime DEFAULT NULL
@@ -161,8 +176,15 @@ CREATE TABLE `tbl_akun` (
 -- Dumping data untuk tabel `tbl_akun`
 --
 
-INSERT INTO `tbl_akun` (`id`, `first_name`, `last_name`, `email`, `nim`, `class`, `line`, `password`, `major`, `intake`, `remember_token`, `verification_code`, `update_verification_time`) VALUES
-(15, 'Ziven', 'Louis', 'zivenlouisuph@gmail.com', '03082210017', '21TI2', 'zivenlouis25', '12345678', 'Informatics', '2021', '86855eb68c3231c2391b1bad6bd4be05', NULL, '2023-06-30 14:53:53');
+INSERT INTO `tbl_akun` (`id`, `first_name`, `last_name`, `email`, `password`, `remember_token`, `verification_code`, `update_verification_time`) VALUES
+(1, 'Ziven', 'Louis', 'ziven123@gmail.com', '11111111', 'ac927a268636bdc92d4b02a470bf5e91', 'S-742264', NULL),
+(4, 'Erick', 'Thohir', 'erick@gmail.com', '12345678', '', 'S-432949', '2023-06-05 14:38:35'),
+(5, 'Ziven', 'Louis', 'zivenlouisuph@gmail.com', '12345678', '198b8ab4c7772c540dd375ae25f6155d', 'S-663111', '2023-06-12 20:43:51'),
+(6, 'Irwanto', 'Wijaya', 'irwantowijaya0@gmail.com', '12345678', 'eb8ea77f3e911b12307f7a313483c986', 'S-232363', '2023-06-06 18:10:14'),
+(7, 'Jason', 'Tjoa', 'tjoajason2003@gmail.com', '12345678', '', 'S-848583', '2023-06-22 23:18:09'),
+(8, 'Ziven', 'Louis', 'zivenlouis25@gmail.com', '', '', 'S-126958', '2023-06-23 19:30:46'),
+(9, 'Darren', 'Oswaldo', 'darrenoswldo@gmail.com', '11111111', '', 'S-076484', '2023-06-06 18:54:12'),
+(10, 'Erick', 'Ganteng', 'erickleonardo123123@gmail.com', '', '', 'S-070408', '2023-06-07 17:37:19');
 
 --
 -- Trigger `tbl_akun`
@@ -295,7 +317,7 @@ ALTER TABLE `tbl_admin_profile`
 -- AUTO_INCREMENT untuk tabel `tbl_akun`
 --
 ALTER TABLE `tbl_akun`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_akun_admin`
