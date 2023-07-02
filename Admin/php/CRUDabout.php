@@ -66,7 +66,7 @@
             $longImageQuery = "about_long_image = '" . mysqli_real_escape_string($conn, $longImage) . "',";
         }
         $description = str_replace("\n", "<br>", $description);
-        $query = "UPDATE tbl_admin_about SET about_title = '$title', about_description = '" . mysqli_real_escape_string($conn, $description) . "', $circleImageQuery $longImageQuery last_modified = '$currentTime' WHERE id = '$id'"; 
+        $query = "UPDATE tbl_admin_about SET about_title = '$title', about_content = '' . mysqli_real_escape_string($conn, $description) . "', $circleImageQuery $longImageQuery last_modified = '$currentTime' WHERE id = '$id'"; 
         
         if ($conn->query($query)) {
             return true;
