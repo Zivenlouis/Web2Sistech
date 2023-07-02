@@ -45,7 +45,7 @@
           <br><h1><?= $arr['about_title'] ?></h1>
           </div>
           <div class="ccon3-2-2">
-            <p><?= $arr['about_content'] ?></p><br>
+            <p><?= $arr['about_content'] ?></p>
           </div>
         </div>
       </div>

@@ -87,28 +87,19 @@
               <?php
                   require("php/image.php");
                   require_once("php/CRUDabout.php");
-                  if(isset($_POST['edit'])) {
-                  //   $title = $_POST['title'];
-                  //   $description = $_POST['description'];
-                  //   if(isset($_FILES['circleImage'])) $circleImage= $_FILES['circleImage'];
-                  //   if(isset($_FILES['longImage'])) $longImage = $_FILES['longImage']; 
-                    
-                  //   if(isset($_POST['id'])) {
-                  //     $id = $_POST['id'];
-                  //     if(updateAbouts($id, $title, $description, $circleImage, $longImage)) {
-                  //       echo " <p class='successMessage'>Data updated successfully</p>";
-                  //     } else {
-                  //       echo " <p class='errorMessage'>Data update unsuccessful</p>";
-                  //     }
-                  //   } else {                    
-                     
-                  //     if(updateAbouts($title, $description, $circleImage, $longImage)) {
-                  //       echo " <p class='successMessage'>Data inserted successfully</p>";
-                  //     } else {
-                  //       echo " <p class='errorMessage'>Data insertion unsuccessful</p>";
-                  //     }
-                  //   }
-                  // } 
+                  if(isset($_POST['submit'])) {
+                    $title = $_POST['title'];
+                    $description = $_POST['description'];
+                    if(isset($_FILES['image'])) $image= $_FILES['image'];
+                    if(isset($_POST['id'])) {
+                      $id = $_POST['id'];
+                      if(updateAbouts($id, $title, $description, $image)) {
+                        echo " <p class='successMessage'>Data updated successfully</p>";
+                      } 
+                         else {
+                        echo " <p class='errorMessage'>Data update unsuccessful</p>";
+                      }
+                    } 
                   }
                   if(isset($_POST['edit'])) {
                     $arr = getAboutsFromId($_POST['id']);
@@ -150,7 +141,7 @@
                     echo "<img style='width: auto; height: 150px; margin-right: 10px;' src='../UploadImage/AboutUs/$image'>";
                       
                     ?>
-                    <input type="file" accept="image/*" name="circleImage" class="" id="aboutImage">
+                    <input type="file" accept="image/*" name="image" class="" id="aboutImage">
                   </div>
                 </div>
                 <?php } ?>
