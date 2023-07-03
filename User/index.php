@@ -80,13 +80,13 @@
             <input type="radio" name="slider" id="item-3" />
             <div class="cards">
               <label class="card" for="item-1" id="song-1">
-                <img src="<?php  echo 'data:image/jpeg;base64,' . base64_encode(retrieveImageHome(1)); ?>" />
+                <img src="<?= "../UploadImage/Home/" .retrieveImageHome(1)?>" />
               </label>
               <label class="card" for="item-2" id="song-2">
-                <img src="<?php  echo 'data:image/jpeg;base64,' . base64_encode(retrieveImageHome(2)); ?>" />
+                <img src="<?= "../UploadImage/Home/" .retrieveImageHome(2)?>" />
               </label>
               <label class="card" for="item-3" id="song-3">
-                <img src="<?php  echo 'data:image/jpeg;base64,' . base64_encode(retrieveImageHome(3)); ?>" />
+                <img src="<?= "../UploadImage/Home/" .retrieveImageHome(3)?>" />
               </label>
             </div>
           </div>
@@ -113,13 +113,13 @@
           <input type="radio" name="slider2" id="item-6" />
           <div class="cards">
             <label class="card" for="item-4" id="song-4">
-              <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode(retrieveImageHome(4)); ?>" />
+              <img src="<?= "../UploadImage/Home/" .retrieveImageHome(4)?>" />
             </label>
             <label class="card" for="item-5" id="song-5">
-              <img src="<?php  echo 'data:image/jpeg;base64,' . base64_encode(retrieveImageHome(5)); ?>" />
+              <img src="<?= "../UploadImage/Home/" .retrieveImageHome(5)?>" />
             </label>
             <label class="card" for="item-6" id="song-6">
-              <img src="<?php  echo 'data:image/jpeg;base64,' . base64_encode(retrieveImageHome(6)); ?>" />
+              <img src="<?= "../UploadImage/Home/" .retrieveImageHome(6)?>" />
             </label>
           </div>
         </div>

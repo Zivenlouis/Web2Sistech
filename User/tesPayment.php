@@ -22,14 +22,13 @@
             'first_name' => 'John',
             'last_name' => 'Doe',
             'email' => 'john.doe@example.com',
-            'phone' => '081234567890'
         ),
 
         'item_details' => array(
             array(
                 'id' => 'ITEM01',
                 'price' => 50000,
-                'quantity' => 2,
+                'quantity' => 1,
                 'name' => 'Example Item'
             )
         ),

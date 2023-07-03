@@ -166,7 +166,7 @@ swiper-slide img {
 .container-2 {
   margin-top: 90px !important;
   width: 100vw;
-  height: 330vh;
+  padding-bottom: 50px;
   background: rgb(0, 0, 0);
   background: linear-gradient(
     56deg,
@@ -279,10 +279,6 @@ swiper-slide img {
 /* Responsive */
 
 @media screen and (max-width: 1150px) {
-  .container-2 {
-    height: 250vh;
-  }
-
   .container-1-main .card-1 .image-1,
   .container-2-main .card-2 .image-2 {
     background-size: 100%;
@@ -347,10 +343,6 @@ swiper-slide img {
 }
 
 @media screen and (max-width: 900px) {
-  .container-2 {
-    height: 200vh;
-  }
-
   .container-1-main,
   .container-2-main {
     height: 45vh;
@@ -409,10 +401,6 @@ swiper-slide img {
 }
 
 @media screen and (max-width: 740px) {
-  .container-2 {
-    height: 175vh;
-  }
-
   .container-1-main,
   .container-2-main {
     height: 35vh;

@@ -1,161 +1,216 @@
+<!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
   <?php require_once("component/head.php");?>
-</head>
-<style>
-  .showDataImg {
-    width: 50px !important;
-    height: 50px !important;
-    border-radius: 0 !important;
-  }
-  .custom-table-responsive {
-    width:100%;
-  }
+  </head>
+  <style>
+    .showDataImg{
+      width: 100px !important;
+      height: 100px !important;
+      border-radius: 0 !important;
+    }
+    .profile-description p {
+      word-wrap: break-word !important;
+      white-space:pre-wrap !important;
+      line-height: 20px;
+      /* height: auto !important; */
+      width: 500px !important;
+    } 
+
+    .successMessage {
+      color: #3c763d;
+      font-size: 16px;
+    }
+
+    .errorMessage {
+      color: #a94442;
+      font-size: 16px;
+    }
+
+    @media screen and (min-width: 1000px) {
+      .numpang {
+        width: 85% !important;
+      }
+      
+    }
 </style>
-<body>
-  <div class="container-scroller">
-    <?php require_once("component/navbar.php");?>
-    <div class="main-panel">
-      <div class="content-wrapper">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="card-title">Add Profile</h4>
-            <p class="card-description"> Profile Data </p>
-            <form class="forms-sample" method="post" enctype="multipart/form-data">
-              <div class="form-group row">
-                <label for="eventTitle" class="col-sm-3 col-form-label">Profile Title</label>
-                <div class="col-sm-9">
-                  <input type="text" name="title" value="" class="form-control" id="profileTitle" placeholder="Title" style="color: #ffff">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="eventDescription" class="col-sm-3 col-form-label">Profile Description</label>
-                <div class="col-sm-9">
-                  <textarea class="form-control" id="profileDescription" name="description" placeholder="Description" style="color: #ffff"></textarea>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="eventImage" class="col-sm-3 col-form-label">Image 1</label>
-                <div class="col-sm-9">
-                  <input type="file" accept="image/*" name="image-1" id="profileImage">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="eventImage" class="col-sm-3 col-form-label">Image 2</label>
-                <div class="col-sm-9">
-                  <input type="file" accept="image/*" name="image-2" id="profileImage">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="eventImage" class="col-sm-3 col-form-label">Image 3</label>
-                <div class="col-sm-9">
-                  <input type="file" accept="image/*" name="image-3" id="profileImage">
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary mr-2" name="submit">Submit</button>
-              <button class="btn btn-dark">Cancel</button>
-            </form>
-          </div>
-        </div>
-        <br>
-        <div class="table-responsive custom-table-responsive">
+
+  <body>
+    <div class="container-scroller">
+      <?php require_once("component/navbar.php");?>
+      <div class="main-panel numpang">
+        <div class="content-wrapper">
           <div class="card">
             <div class="card-body">
-              <h4 class="card-title">Profile Admin Page</h4>
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Image 1</th>
-                    <th>Image 2</th>
-                    <th>Image 3</th>
-                    <th>Date Created</th>
-                    <th>Last Modified</th>
-                    <th>Edit Data</th>
-                    <th>Delete Data</th>
-                  </tr>
-                </thead>
-                <tbody>
-                <?php
-                  require_once("php/connection.php");
-                  if(isset($_POST['submit'])){
+              <h4 class="card-title">Add Profiles</h4>
+              <?php
+                  require("php/image.php");
+                  require_once("php/CRUDprofile.php");
+                  if(isset($_POST['submit'])) {
                     $title = $_POST['title'];
                     $description = $_POST['description'];
-                    $submittedImage_1 = $_FILES['image-1']['tmp_name'];
-                    $submittedImage_2 = $_FILES['image-2']['tmp_name'];
-                    $submittedImage_3 = $_FILES['image-3']['tmp_name'];
-                    $imageName_1 = uniqid() . '.' . pathinfo($_FILES['image-1']['name'], PATHINFO_EXTENSION);
-                    $imageName_2 = uniqid() . '.' . pathinfo($_FILES['image-2']['name'], PATHINFO_EXTENSION);
-                    $imageName_3 = uniqid() . '.' . pathinfo($_FILES['image-3']['name'], PATHINFO_EXTENSION);
-                    $uploadFolder = '../UploadImage/Profile';
-                    $destination_1 = $uploadFolder . '/' . $imageName_1;
-                    $destination_2 = $uploadFolder . '/' . $imageName_2;
-                    $destination_3 = $uploadFolder . '/' . $imageName_3;
-                    move_uploaded_file($submittedImage_1, $destination_1);
-                    move_uploaded_file($submittedImage_2, $destination_2);
-                    move_uploaded_file($submittedImage_3, $destination_3);
-                    date_default_timezone_set('Asia/Jakarta');
-                    $time = date("Y-m-d H:i:s");
-                    if(!empty($title) && !empty($description)){
-                      $sql = "INSERT INTO tbl_admin_profile(profile_title, profile_description, profile_image_1, profile_image_2, profile_image_3, data_created, last_modified) VALUES ('$title', '$description', '$imageName_1','$imageName_2', '$imageName_3', '$time', '$time')";
-                      $result = $conn->query($sql);
+                    if(isset($_FILES['image_1'])) $image_1= $_FILES['image_1'];
+                    if(isset($_FILES['image_2'])) $image_2= $_FILES['image_2'];
+                    if(isset($_FILES['image_3'])) $image_3= $_FILES['image_3'];
+                  
+                    if(isset($_POST['id'])) {
+                      $id = $_POST['id'];
+                      if(updateProfile($id, $title, $description, $image_1, $image_2, $image_3)) {
+                        echo " <p class='successMessage'>Data updated successfully</p>";
+                      } else {
+                        echo " <p class='errorMessage'>Data update unsuccessful</p>";
+                      }
+                    } else {                    
+                     
+                      if(insertProfile($title, $description, $image_1, $image_2, $image_3)) {
+                        echo " <p class='successMessage'>Data inserted successfully</p>";
+                      } else {
+                        echo " <p class='errorMessage'>Data insertion unsuccessful</p>";
+                      }
+                    }
+                  } 
+                  else if (isset($_POST['delete'])) {
+                    if (deleteProfile($_POST['id'])) {
+                      echo " <p class='successMessage'>Data deleted successfully</p>";
+                    } else {
+                      echo " <p class='errorMessage'>Data deletion unsuccessful</p>";
                     }
                   }
-                    $sql = "SELECT * FROM tbl_admin_profile";
-                    $result = $conn->query($sql);
-                    while ($row = $result->fetch_assoc()) {
-                      $profileTitle = $row['profile_title'];
-                      $profileDescription = $row['profile_description'];
-                      $profileImage_1 = $row['profile_image_1'];
-                      $profileImage_2 = $row['profile_image_2'];
-                      $profileImage_3 = $row['profile_image_3'];
-                      $dateCreated = $row['data_created'];
-                      $lastModified = $row['last_modified'];
-                      $id = $row['profile_id'];
-                      echo "<tr>";
-                      echo "<td>{$profileTitle}</td>";
-                      echo "<td>{$profileDescription}</td>";
-                      if (file_exists("../UploadImage/Profile/{$profileImage_1}")) {
-                          echo "<td><img src='../UploadImage/Profile/{$profileImage_1}' class='showDataImg' alt='Profile Image 1'></td>";
-                      } else {
-                          echo "<td></td>";
+                  else if(isset($_POST['edit'])) {
+                    $arr = getProfileFromId($_POST['id']);
+                  }
+                  
+
+                ?>               
+              <form class="forms-sample" method="post" action=""  enctype="multipart/form-data">
+                <div class="form-group row">
+                  <label for="profileTitle" class="col-sm-3 col-form-label">Profile Title</label>
+                  <div class="col-sm-9">
+                    <input type="text" required name="title" value="<?php if(isset($arr)) echo $arr['profile_title']; ?>" class="form-control" id="profileTitle" placeholder="Title" style="color: #ffff">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="profileDescription" class="col-sm-3 col-form-label">Profile Description</label>
+                  <div class="col-sm-9">
+                    <textarea style="height: 50px;" class="form-control" required  id="profileDescription" name="description" placeholder="Description" style="color: #ffff"><?php if(isset($arr)) echo $arr['profile_description']; ?></textarea>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="profileImage" class="col-sm-3 col-form-label">Image 1</label>
+                  <div class="col-sm-9">
+                    <?php 
+                      if(isset($arr)) {
+                        $image_1 = $arr['profile_image_1'];
+                        $id = $_POST['id'];
+                        echo "<input type='hidden' name='id' value='$id'>";
+                        echo "<img style='width: 150px;  margin-right: 10px;' src='../UploadImage/Profile/$image_1'>";
                       }
-                      if (file_exists("../UploadImage/Profile/{$profileImage_2}")) {
-                          echo "<td><img src='../UploadImage/Profile/{$profileImage_2}' class='showDataImg' alt='Profile Image 2'></td>";
-                      } else {
-                          echo "<td></td>";
+                    ?>
+                    <input type="file" accept="image/*" name="image_1" class="" id="profileImage">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="profileImage" class="col-sm-3 col-form-label">Image 2</label>
+                  <div class="col-sm-9">
+                    <?php 
+                      if(isset($arr)) {
+                        $image_2 = $arr['profile_image_2'];
+                        echo "<img style='height: 150px; margin-right: 10px;' src='../UploadImage/Profile/$image_2'>";
                       }
-                      if (file_exists("../UploadImage/Profile/{$profileImage_3}")) {
-                          echo "<td><img src='../UploadImage/Profile/{$profileImage_3}' class='showDataImg' alt='Profile Image 3'></td>";
-                      } else {
-                          echo "<td></td>";
+                    ?>
+                    <input type="file" accept="image/*" name="image_2" class="" id="profileImage">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="profileImage" class="col-sm-3 col-form-label">Image 3</label>
+                  <div class="col-sm-9">
+                    <?php 
+                      if(isset($arr)) {
+                        $image_3 = $arr['profile_image_3'];
+                        echo "<img style='height: 150px; margin-right: 10px;' src='../UploadImage/Profile/$image_3'>";
                       }
-                      echo "<td>{$dateCreated}</td>";
-                      echo "<td>{$lastModified}</td>";
-                      echo "<td>";
-                      echo "<form method='post' action='editProfile.php'>";
-                      echo "<input type='hidden' name='id' value='{$id}'>";
-                      echo "<button type='submit' class='btn btn-primary'>Edit</button>";
-                      echo "</form>";
-                      echo "</td>";
-                      echo "<td>";
-                      echo "<form method='post' action='deleteProfile.php'>";
-                      echo "<input type='hidden' name='id' value='{$id}'>";
-                      echo "<button type='submit' class='btn btn-primary' onclick='return confirm(\"Are you sure you want to delete this profile?\")'>Delete</button>";
-                      echo "</form>";
-                      echo "</td>";
-                      echo "</tr>";                        
-                    }
-                ?> 
-                </tbody>
-              </table>
+                    ?>
+                    <input type="file" accept="image/*" name="image_3" class="" id="profileImage">
+                  </div>
+                </div>
+                <input type="submit" class="btn btn-primary mr-2" name="submit" value="Submit">              
+                <a href="" class="btn btn-dark">Cancel</a>
+              </form>
+            </div>
+          </div>
+          <br>
+          <div class="card" style="box-sizing:border-box">
+              <div class="card-body">
+                <h4 class="card-title">Profile Admin</h4>
+                
+                <div class="table-responsive table-wrapper"  >
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Image 1</th>
+                        <th>Image 2</th>
+                        <th>Image 3</th>
+                        <th>Date Created</th>
+                        <th>Last Modified</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <?php 
+                        $sql = "SELECT * FROM tbl_admin_profile";
+                        $result = $conn -> query($sql);
+                        $i = 1;
+                        while($row = $result->fetch_assoc()) {
+                          echo "<tr>";
+                          echo "<td>{$row['profile_title']} </td>";
+                          echo "<td class='profile_description'><p>{$row['profile_description']}</p></td>";
+                          $image_1= $row['profile_image_1']; 
+                          $image_2 = $row['profile_image_2']; 
+                          $image_3 = $row['profile_image_3']; 
+                          if (file_exists("../UploadImage/Profile/{$image_1}")) {
+                            echo "<td><img src='../UploadImage/Profile/{$image_1}' class='showDataImg' alt='Profile Image 1'></td>";
+                          } else {
+                            echo "<td></td>";
+                          }
+                          if (file_exists("../UploadImage/Profile/{$image_2}")) {
+                              echo "<td><img src='../UploadImage/Profile/{$image_2}' class='showDataImg' alt='Profile Image 2'></td>";
+                          } else {
+                              echo "<td></td>";
+                          }
+                          if (file_exists("../UploadImage/Profile/{$image_3}")) {
+                              echo "<td><img src='../UploadImage/Profile/{$image_3}' class='showDataImg' alt='Profile Image 3'></td>";
+                          } else {
+                              echo "<td></td>";
+                          }
+                          echo "<td>{$row['data_created']} </td>";
+                          echo "<td>{$row['last_modified']} </td>";
+                          $id = $row['profile_id'];
+                          ?>
+                            <form method="post" action="" enctype="multipart/form-data">
+                              
+                              <td>
+                                <input type='hidden' name='id'  value='<?= $id ?>'>
+                                <input class='btn-primary'style='padding:5px 10px;' type='submit' name='edit' value='Edit'>
+                              </td>
+                              <td><input class='btn-primary'style='padding:5px 10px;' type='submit' name='delete' value='Delete'></td>
+                            </form>
+                            </tr>
+                          <?php
+                          $i++;
+                        }
+                      ?>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      <!-- </div> -->
     </div>
-  </div>
-  <?php require_once("component/script.php");?>
-</body>
+    <?php require_once("component/script.php");?>
+  </body>
 </html>

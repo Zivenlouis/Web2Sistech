@@ -32,15 +32,16 @@
                         while($row = $result->fetch_assoc()) {
                           echo "<tr>";
                           echo "<td>{$row['name']} </td>";
-                          $imageData = $row['dataImage'];
-                          $imageBase64 = base64_encode($imageData);
-                          $imageSrc = 'data:image/jpeg;base64,' . $imageBase64; 
-                          echo "<td><img class='showDataImg' src='{$imageSrc}' alt='data'></td>";
+                          $image = $row['dataImage'];
+                          echo "<td><img class='showDataImg' src='../UploadImage/Home/$image' alt='data'></td>";
                           echo "<td>{$row['last_modified']} </td>";
                           ?>
                             <form method="post" action="" enctype="multipart/form-data">
-                              <td><input type="file" name="<?= 'image'.$i ?>" accept="image/*"></td>
-                              <td><input class='btn-primary'style='padding:5px 10px;' type='submit' name='<?= "update".$i ?>' value='Update'></td>
+                              <td>
+                                <input type='hidden' name='id' value='<?= $row['id'] ?>'>
+                                <input type="file" name="image" accept="image/*">
+                              </td>
+                              <td><input class='btn-primary'style='padding:5px 10px;' type='submit' name='update' value='Update'></td>
                             </form>
                             </tr>
                           <?php

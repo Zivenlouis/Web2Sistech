@@ -51,10 +51,10 @@
           </div>
         </a>
 
-        <a class="nav-item" href="tesPayment.php">
+        <a class="nav-item" href="register_events.php">
           <div class="header-item">
-            <p>Tes Payment </p>
-            <div class="selected-header" style="display: <?= $filename == 'profile.php' ? "block" : "";  ?>"></div>
+            <p>Register</p>
+            <div class="selected-header" style="display: <?= $filename == 'register_events.php' ? "block" : "";  ?>"></div>
           </div>
         </a>
           
