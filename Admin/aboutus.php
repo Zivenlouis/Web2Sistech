@@ -44,12 +44,12 @@
     }
 
     .successMessage {
-      color: #3c763d;
+      color: #3c763d !important;
       font-size: 16px;
     }
 
     .errorMessage {
-      color: #a94442;
+      color: #a94442 !important;
       font-size: 16px;
     }
 
