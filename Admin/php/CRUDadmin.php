@@ -1,12 +1,12 @@
 <?php
-    function insertAdmin($username, $name, $password) {
+    function insertAdmin($user, $nama, $pass) {
         require("connection.php");
-        date_default_timezone_set('Asia/Jakarta');
-        $currentTime = date("Y-m-d H:i:s");      
-        $username = mysqli_real_escape_string($conn, $username);
-        $name = mysqli_real_escape_string($conn, $name);
-        $password = mysqli_real_escape_string($conn, $password);  
-        $query = "INSERT INTO tbl_akun_admin (username, name, password, time_created, last_modified) VALUES ('$username', '$name', '$password', '$currentTime', '$currentTime')"; 
+        // date_default_timezone_set('Asia/Jakarta');
+        // $currentTime = date("Y-m-d H:i:s");      
+        $user = mysqli_real_escape_string($conn, $user);
+        $nama = mysqli_real_escape_string($conn, $nama);
+        $pass = mysqli_real_escape_string($conn, $pass);  
+        $query = "INSERT INTO tbl_akun_admin (username, name, password) VALUES ('$user', '$nama', '$pass')"; 
         if ($conn->query($query)) {
             return true;
         }
@@ -56,13 +56,13 @@
         return null;
     }
 
-    function updateAdmin($id, $username, $name, $password) {
+    function updateAdmin($id, $user, $nama, $pass) {
         require("connection.php");
-        date_default_timezone_set('Asia/Jakarta');
-        $currentTime = date("Y-m-d H:i:s");      
+        // date_default_timezone_set('Asia/Jakarta');
+        // $currentTime = date("Y-m-d H:i:s");      
         $arr = getAdminFromId($id);
     
-        $query = "UPDATE tbl_akun_admin SET username = '$username', name = '$name', password = '$password', last_modified = '$currentTime' WHERE id = '$id'"; 
+        $query = "UPDATE tbl_akun_admin SET username = '$user', name = '$nama', password = '$pass' WHERE id = '$id'"; 
         
         if ($conn->query($query)) {
             return true;

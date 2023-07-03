@@ -31,6 +31,9 @@
               <h4 class="card-title">Add User</h4>
               <?php
                   require_once("php/CRUDuser.php");
+                  if(isset($_POST['edit'])) {
+                    $arr = getUserFromId($_POST['id']);
+                  } else
                   if(isset($_POST['submit'])) {
                     $firstName = $_POST['firstName'];
                     $lastName = $_POST['lastName'];
@@ -41,6 +44,8 @@
                     $major = $_POST['major'];
                     $intake = $_POST['intake'];
                     
+                    
+        
                     if(isset($_POST['id'])) {
                       $id = $_POST['id'];
                       if(updateUser($id, $firstName, $lastName, $email, $nim, $class, $lineId, $major, $intake)) {
@@ -48,9 +53,10 @@
                       } else {
                         echo " <p class='errorMessage'>Data update unsuccessful</p>";
                       }
+                      unset($_POST['id']);
                     } else {                    
                      
-                      if(insertUser($id, $firstName, $lastName, $email, $nim, $class, $lineId, $major, $intake)) {
+                      if(insertUser($firstName, $lastName, $email, $nim, $class, $lineId, $major, $intake)) {
                         echo " <p class='successMessage'>Data inserted successfully</p>";
                       } else {
                         echo " <p class='errorMessage'>Data insertion unsuccessful</p>";
@@ -63,9 +69,7 @@
                     } else {
                       echo " <p class='errorMessage'>Data deletion unsuccessful</p>";
                     }
-                  }
-                  else if(isset($_POST['edit'])) {
-                    $arr = getUserFromId($_POST['id']);
+                    unset($_POST['id']);
                   }
                   
 
@@ -119,6 +123,9 @@
                     <input type="text" required name="intake" value="<?php if(isset($arr)) echo $arr['intake']; ?>" class="form-control" id="intake" placeholder="Intake" style="color: #ffff">
                   </div>
                 </div>
+                <?php if(isset($_POST['id'])) { ?>
+                <input type='hidden' name='id' value='<?= $_POST["id"]?>'>
+                <?php } ?>
                 <input type="submit" class="btn btn-primary mr-2" name="submit" value="Submit">              
                 <a href="" class="btn btn-dark">Cancel</a>
                 
@@ -145,8 +152,8 @@
                         <th>Line ID</th>
                         <th>Major</th>
                         <th>Intake</th>
-                        <th>Date Created</th>
-                        <th>Last Modified</th>    
+                        <!-- <th>Date Created</th>
+                        <th>Last Modified</th>     -->
                         <th>Edit</th>
                         <th>Delete</th>
                       </tr>
@@ -166,8 +173,8 @@
                           echo "<td>{$row['line_id']} </td>";
                           echo "<td>{$row['major']} </td>";
                           echo "<td>{$row['intake']} </td>";
-                          echo "<td>{$row['time_created']} </td>";
-                          echo "<td>{$row['last_modified']} </td>";
+                          // echo "<td>{$row['time_created']} </td>";
+                          // echo "<td>{$row['last_modified']} </td>";
                           $id = $row['id'];
                           ?>
                             <form method="post" action="">
