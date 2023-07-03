@@ -53,18 +53,21 @@
         $currentTime = date("Y-m-d H:i:s");      
         $ImageQuery = '';
         $arr = getAboutsFromId($id);
+        if ($title != '') $queryTitle = "about_title = '$title',"; else $queryTitle = "";
+        if ($description != '') $queryDescription = "about_content ='" . mysqli_real_escape_string($conn, $description) . "',"; else $queryDescription = "";
         if (isset($image['size']) && $image['size'] != 0) {
+            deleteImage('Events', $arr['about_image']);
             $image = moveImage('Aboutus', $image);
             $ImageQuery = "about_image = '" . mysqli_real_escape_string($conn, $image) . "',";
         }
         
         $description = str_replace("\n", "<br>", $description);
-        $query = "UPDATE tbl_admin_about SET about_title = '$title', about_content = '" . mysqli_real_escape_string($conn, $description) . "', $ImageQuery last_modified = '$currentTime' WHERE id = '$id'"; 
+        $query = "UPDATE tbl_admin_about SET $queryTitle $queryDescription $ImageQuery last_modified = '$currentTime' WHERE id = '$id'"; 
         
         if ($conn->query($query)) {
             return true;
         }
-        
+        echo $conn -> error;
         return false;
         
         
