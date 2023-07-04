@@ -84,25 +84,7 @@
               <?php
                   require("php/image.php");
                   require_once("php/CRUDabout.php");
-<<<<<<< HEAD
-                  if(isset($_POST['submit'])) {
-                    $id = $_POST['id'];
-                    $title = $_POST['title'];
-                    $description = $_POST['description'];
-                    if(isset($_FILES['image'])) $image= $_FILES['image'];
-                    if(isset($_POST['id'])) {
-                      $id = $_POST['id'];
-                      if(updateAbouts($id, $title, $description, $image)) {
-                        echo " <p class='successMessage'>Data updated successfully</p>";
-                      } 
-                         else {
-                        echo " <p class='errorMessage'>Data update unsuccessful</p>";
-                      }
-                    } 
-                  }
-=======
     
->>>>>>> d841f27f263d95e52b45b1195176f1cd87d4367e
                   if(isset($_POST['edit'])) {
                     $id = $_POST['id'];
                     $arr = getAboutsFromId($_POST['id']);
