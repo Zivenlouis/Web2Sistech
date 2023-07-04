@@ -160,7 +160,7 @@
                     </thead>
                     <tbody>
                     <?php 
-                        $sql = "SELECT * FROM tbl_admin_user";
+                        $sql = "SELECT * FROM tbl_akun";
                         $result = $conn -> query($sql);
                         $i = 1;
                         while($row = $result->fetch_assoc()) {
