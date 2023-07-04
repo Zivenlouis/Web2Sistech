@@ -5,7 +5,8 @@
     <?php require_once("Layout/head.php"); ?>
     <link rel="stylesheet" href="Style/mainSignIn.css">
   </head>
-  <body style="margin-top:100px; overflow-y:hidden">
+  <body>
+    <!-- style="margin-top:100px; overflow-y:hidden" -->
     <div class="background">
       <div class="eclipse1"></div>
       <div class="eclipse2"></div>
