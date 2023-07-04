@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 02 Jul 2023 pada 05.01
--- Versi server: 10.4.24-MariaDB
--- Versi PHP: 8.1.5
+-- Host: 127.0.0.1:3307
+-- Generation Time: Jul 04, 2023 at 12:54 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_admin_about`
+-- Table structure for table `tbl_admin_about`
 --
 
 CREATE TABLE `tbl_admin_about` (
@@ -35,15 +35,15 @@ CREATE TABLE `tbl_admin_about` (
   `about_image` varchar(255) NOT NULL,
   `last_modified` datetime NOT NULL,
   `no_urut` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `tbl_admin_about`
+-- Dumping data for table `tbl_admin_about`
 --
 
 INSERT INTO `tbl_admin_about` (`id`, `name`, `about_title`, `about_content`, `about_image`, `last_modified`, `no_urut`) VALUES
-(1, 'SISTECH Header', '', '', '1.png', '2023-07-01 16:30:25', 1),
-(2, 'SISTECH Description', 'SISTECH', 'SISTECH UPH Medan Campus has two study programs namely Information Systems and Informatics. Both have a vision of becoming partners in the industrial world.', '2.png', '2023-07-01 11:52:09', 2),
+(1, 'SISTECH Header', 'SISTECH Header', '', '64a2b2bc04605.png', '2023-07-03 18:41:21', 1),
+(2, 'SISTECH Description', 'SISTECH', 'SISTECH UPH Medan Campus has two study programs namely Information Systems and Informatics. Both have a vision of becoming partners in the industrial world.dsfsd', '64a2b31e74b8d.png', '2023-07-03 18:38:06', 2),
 (3, 'HMPSSI Description', 'HMPSSI', 'HMPSSI-UPH is a Student Organization (OK) which was formed to answer the needs of students and improve the academic and non-academic quality of students. HMPSSI strives to encourage students to participate in every activity to create positive values of togetherness and kinship among Information Systems study program students.', '3.png', '2023-07-01 23:16:26', 3),
 (4, 'HMPSSI Vision', 'BETTER TOGETHER', 'Menjadikan HMPSSI sebagai wadah mahasiswa/i berkumpul dan beraspirasi guna meningkatkan potensi mahasiswa/i program studi Sistem Informasi baik dalam bidang akademik maupun non-akademik dengan melaksanakan program kerja yang unggul dan berkualitas.', '', '2023-07-01 18:19:01', 4),
 (5, 'HMPSSI Mission', 'FIT', '1.Facilitate\nMenyediakan wadah bagi mahasiswa/i melalui kesempatan bertumbuh dan berkembang guna menumbuhkan pribadi yang aktif, berkompeten dan berkarakter.\n2.Inspire\nMenginspirasi mahasiswa/i untuk mencari dan mengembangkan minat dan bakatnya masing-masing melalui program kerja yang membina, eksploratif dan informatif.\n3.Togetherness\nMenjalin hubungan baik antar organisasi di dalam, di luar UPH maupun antar mahasiswa/i program studi Sistem Informasi.', '', '2023-07-01 18:19:01', 5),
@@ -54,7 +54,7 @@ INSERT INTO `tbl_admin_about` (`id`, `name`, `about_title`, `about_content`, `ab
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_admin_events`
+-- Table structure for table `tbl_admin_events`
 --
 
 CREATE TABLE `tbl_admin_events` (
@@ -67,10 +67,10 @@ CREATE TABLE `tbl_admin_events` (
   `event_square_image` varchar(255) NOT NULL,
   `time_created` datetime NOT NULL,
   `last_modified` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `tbl_admin_events`
+-- Dumping data for table `tbl_admin_events`
 --
 
 INSERT INTO `tbl_admin_events` (`id`, `event_title`, `event_description`, `price`, `active`, `event_long_image`, `event_square_image`, `time_created`, `last_modified`) VALUES
@@ -82,7 +82,7 @@ INSERT INTO `tbl_admin_events` (`id`, `event_title`, `event_description`, `price
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_admin_home`
+-- Table structure for table `tbl_admin_home`
 --
 
 CREATE TABLE `tbl_admin_home` (
@@ -90,10 +90,10 @@ CREATE TABLE `tbl_admin_home` (
   `name` varchar(100) NOT NULL,
   `last_modified` datetime NOT NULL,
   `dataImage` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `tbl_admin_home`
+-- Dumping data for table `tbl_admin_home`
 --
 
 INSERT INTO `tbl_admin_home` (`id`, `name`, `last_modified`, `dataImage`) VALUES
@@ -107,7 +107,7 @@ INSERT INTO `tbl_admin_home` (`id`, `name`, `last_modified`, `dataImage`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_admin_profile`
+-- Table structure for table `tbl_admin_profile`
 --
 
 CREATE TABLE `tbl_admin_profile` (
@@ -119,10 +119,10 @@ CREATE TABLE `tbl_admin_profile` (
   `profile_image_3` varchar(255) NOT NULL,
   `data_created` datetime NOT NULL,
   `last_modified` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `tbl_admin_profile`
+-- Dumping data for table `tbl_admin_profile`
 --
 
 INSERT INTO `tbl_admin_profile` (`profile_id`, `profile_title`, `profile_description`, `profile_image_1`, `profile_image_2`, `profile_image_3`, `data_created`, `last_modified`) VALUES
@@ -138,7 +138,7 @@ INSERT INTO `tbl_admin_profile` (`profile_id`, `profile_title`, `profile_descrip
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_admin_user`
+-- Table structure for table `tbl_admin_user`
 --
 
 CREATE TABLE `tbl_admin_user` (
@@ -153,12 +153,12 @@ CREATE TABLE `tbl_admin_user` (
   `intake` varchar(100) NOT NULL,
   `time_created` datetime NOT NULL,
   `last_modified` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_akun`
+-- Table structure for table `tbl_akun`
 --
 
 CREATE TABLE `tbl_akun` (
@@ -167,27 +167,32 @@ CREATE TABLE `tbl_akun` (
   `last_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `class` varchar(10) NOT NULL,
+  `nim` varchar(20) NOT NULL,
+  `line` varchar(30) NOT NULL,
+  `major` varchar(30) NOT NULL,
+  `intake` varchar(20) NOT NULL,
   `remember_token` varchar(255) NOT NULL,
   `verification_code` varchar(8) DEFAULT NULL,
   `update_verification_time` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `tbl_akun`
+-- Dumping data for table `tbl_akun`
 --
 
-INSERT INTO `tbl_akun` (`id`, `first_name`, `last_name`, `email`, `password`, `remember_token`, `verification_code`, `update_verification_time`) VALUES
-(1, 'Ziven', 'Louis', 'ziven123@gmail.com', '11111111', 'ac927a268636bdc92d4b02a470bf5e91', 'S-742264', NULL),
-(4, 'Erick', 'Thohir', 'erick@gmail.com', '12345678', '', 'S-432949', '2023-06-05 14:38:35'),
-(5, 'Ziven', 'Louis', 'zivenlouisuph@gmail.com', '12345678', '198b8ab4c7772c540dd375ae25f6155d', 'S-663111', '2023-06-12 20:43:51'),
-(6, 'Irwanto', 'Wijaya', 'irwantowijaya0@gmail.com', '12345678', 'eb8ea77f3e911b12307f7a313483c986', 'S-232363', '2023-06-06 18:10:14'),
-(7, 'Jason', 'Tjoa', 'tjoajason2003@gmail.com', '12345678', '', 'S-848583', '2023-06-22 23:18:09'),
-(8, 'Ziven', 'Louis', 'zivenlouis25@gmail.com', '', '', 'S-126958', '2023-06-23 19:30:46'),
-(9, 'Darren', 'Oswaldo', 'darrenoswldo@gmail.com', '11111111', '', 'S-076484', '2023-06-06 18:54:12'),
-(10, 'Erick', 'Ganteng', 'erickleonardo123123@gmail.com', '', '', 'S-070408', '2023-06-07 17:37:19');
+INSERT INTO `tbl_akun` (`id`, `first_name`, `last_name`, `email`, `password`, `class`, `nim`, `line`, `major`, `intake`, `remember_token`, `verification_code`, `update_verification_time`) VALUES
+(1, 'Ziven', 'Louis', 'ziven123@gmail.com', '11111111', '', '', '', '', '', 'ac927a268636bdc92d4b02a470bf5e91', 'S-742264', NULL),
+(4, 'Erick', 'Thohir', 'erick@gmail.com', '12345678', '', '', '', '', '', '', 'S-432949', '2023-06-05 14:38:35'),
+(5, 'Ziven', 'Louis', 'zivenlouisuph@gmail.com', '12345678', '', '', '', '', '', '198b8ab4c7772c540dd375ae25f6155d', 'S-663111', '2023-06-12 20:43:51'),
+(6, 'Irwanto', 'Wijaya', 'irwantowijaya0@gmail.com', '12345678', '', '', '', '', '', 'eb8ea77f3e911b12307f7a313483c986', 'S-232363', '2023-06-06 18:10:14'),
+(7, 'Jason', 'Tjoa', 'tjoajason2003@gmail.com', '12345678', '', '', '', '', '', '', 'S-848583', '2023-06-22 23:18:09'),
+(8, 'Ziven', 'Louis', 'zivenlouis25@gmail.com', '', '', '', '', '', '', '', 'S-126958', '2023-06-23 19:30:46'),
+(9, 'Darren', 'Oswaldo', 'darrenoswldo@gmail.com', '11111111', '', '', '', '', '', '', 'S-076484', '2023-06-06 18:54:12'),
+(10, 'Erick', 'Ganteng', 'erickleonardo123123@gmail.com', '', '', '', '', '', '', '', 'S-070408', '2023-06-07 17:37:19');
 
 --
--- Trigger `tbl_akun`
+-- Triggers `tbl_akun`
 --
 DELIMITER $$
 CREATE TRIGGER `update_trigger` BEFORE UPDATE ON `tbl_akun` FOR EACH ROW BEGIN
@@ -199,7 +204,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_akun_admin`
+-- Table structure for table `tbl_akun_admin`
 --
 
 CREATE TABLE `tbl_akun_admin` (
@@ -207,10 +212,10 @@ CREATE TABLE `tbl_akun_admin` (
   `username` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `tbl_akun_admin`
+-- Dumping data for table `tbl_akun_admin`
 --
 
 INSERT INTO `tbl_akun_admin` (`id`, `username`, `name`, `password`) VALUES
@@ -219,7 +224,7 @@ INSERT INTO `tbl_akun_admin` (`id`, `username`, `name`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_events_registration`
+-- Table structure for table `tbl_events_registration`
 --
 
 CREATE TABLE `tbl_events_registration` (
@@ -228,10 +233,10 @@ CREATE TABLE `tbl_events_registration` (
   `account_id` int(11) NOT NULL,
   `payment_status` varchar(255) NOT NULL,
   `payment_time` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `tbl_events_registration`
+-- Dumping data for table `tbl_events_registration`
 --
 
 INSERT INTO `tbl_events_registration` (`id`, `event_id`, `account_id`, `payment_status`, `payment_time`) VALUES
@@ -249,78 +254,78 @@ INSERT INTO `tbl_events_registration` (`id`, `event_id`, `account_id`, `payment_
 --
 
 --
--- Indeks untuk tabel `tbl_admin_about`
+-- Indexes for table `tbl_admin_about`
 --
 ALTER TABLE `tbl_admin_about`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `tbl_admin_events`
+-- Indexes for table `tbl_admin_events`
 --
 ALTER TABLE `tbl_admin_events`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `tbl_admin_home`
+-- Indexes for table `tbl_admin_home`
 --
 ALTER TABLE `tbl_admin_home`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `tbl_admin_profile`
+-- Indexes for table `tbl_admin_profile`
 --
 ALTER TABLE `tbl_admin_profile`
   ADD PRIMARY KEY (`profile_id`);
 
 --
--- Indeks untuk tabel `tbl_akun`
+-- Indexes for table `tbl_akun`
 --
 ALTER TABLE `tbl_akun`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Indeks untuk tabel `tbl_akun_admin`
+-- Indexes for table `tbl_akun_admin`
 --
 ALTER TABLE `tbl_akun_admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `tbl_events_registration`
+-- Indexes for table `tbl_events_registration`
 --
 ALTER TABLE `tbl_events_registration`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_admin_about`
+-- AUTO_INCREMENT for table `tbl_admin_about`
 --
 ALTER TABLE `tbl_admin_about`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_admin_events`
+-- AUTO_INCREMENT for table `tbl_admin_events`
 --
 ALTER TABLE `tbl_admin_events`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_admin_profile`
+-- AUTO_INCREMENT for table `tbl_admin_profile`
 --
 ALTER TABLE `tbl_admin_profile`
   MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_akun`
+-- AUTO_INCREMENT for table `tbl_akun`
 --
 ALTER TABLE `tbl_akun`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_akun_admin`
+-- AUTO_INCREMENT for table `tbl_akun_admin`
 --
 ALTER TABLE `tbl_akun_admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
