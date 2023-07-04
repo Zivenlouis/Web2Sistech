@@ -1,8 +1,8 @@
 <?php
     function insertUser($firstName, $lastName, $email, $nim, $class, $lineId, $major, $intake) {
         require("connection.php");
-        date_default_timezone_set('Asia/Jakarta');
-        $currentTime = date("Y-m-d H:i:s");      
+        // date_default_timezone_set('Asia/Jakarta');
+        // $currentTime = date("Y-m-d H:i:s");   
         $firstName = mysqli_real_escape_string($conn, $firstName);
         $lastName = mysqli_real_escape_string($conn, $lastName);
         $email = mysqli_real_escape_string($conn, $email);
@@ -11,7 +11,7 @@
         $lineId = mysqli_real_escape_string($conn, $lineId);
         $major = mysqli_real_escape_string($conn, $major);
         $intake = mysqli_real_escape_string($conn, $intake);   
-        $query = "INSERT INTO tbl_admin_user (first_name, last_name, email, nim, class, line_id, major, intake, time_created, last_modified) VALUES ('$firstName', '$lastName', '$email', '$nim', '$class', '$lineId', '$major', '$intake', '$currentTime', '$currentTime')"; 
+        $query = "INSERT INTO tbl_admin_user (first_name, last_name, email, nim, class, line_id, major, intake) VALUES ('$firstName', '$lastName', '$email', '$nim', '$class', '$lineId', '$major', '$intake')"; 
         if ($conn->query($query)) {
             return true;
         }
@@ -63,11 +63,11 @@
 
     function updateUser($id, $firstName, $lastName, $email, $nim, $class, $lineId, $major, $intake) {
         require("connection.php");
-        date_default_timezone_set('Asia/Jakarta');
-        $currentTime = date("Y-m-d H:i:s");      
+        // date_default_timezone_set('Asia/Jakarta');
+        // $currentTime = date("Y-m-d H:i:s");      
         $arr = getUserFromId($id);
     
-        $query = "UPDATE tbl_admin_user SET first_name = '$firstName', last_name = '$lastName', email = '$email', nim ='$nim', class = '$class', line_id = '$lineId', major = '$major', intake ='$intake', last_modified = '$currentTime' WHERE id = '$id'"; 
+        $query = "UPDATE tbl_admin_user SET first_name = '$firstName', last_name = '$lastName', email = '$email', nim ='$nim', class = '$class', line_id = '$lineId', major = '$major', intake ='$intake' WHERE id = '$id'"; 
         
         if ($conn->query($query)) {
             return true;

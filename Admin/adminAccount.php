@@ -45,7 +45,7 @@
                       }
                     } else {                    
                      
-                      if(insertAdmin($id, $username, $name, $password)) {
+                      if(insertAdmin($username, $name, $password)) {
                         echo " <p class='successMessage'>Data inserted successfully</p>";
                       } else {
                         echo " <p class='errorMessage'>Data insertion unsuccessful</p>";
@@ -84,6 +84,9 @@
                     <input type="text" required name="password" value="<?php if(isset($arr)) echo $arr['password']; ?>" class="form-control" id="password" placeholder="Password" style="color: #ffff">
                   </div>
                 </div>
+                <?php if(isset($_POST['id'])) { ?>
+                <input type='hidden' name='id' value='<?= $_POST["id"]?>'>
+                <?php } ?>
                 <input type="submit" class="btn btn-primary mr-2" name="submit" value="Submit">              
                 <a href="" class="btn btn-dark">Cancel</a>
                 
@@ -105,8 +108,8 @@
                         <th>Username</th>
                         <th>Name</th>
                         <th>Password</th>
-                        <th>Date Created</th>
-                        <th>Last Modified</th>    
+                        <!-- <th>Date Created</th>
+                        <th>Last Modified</th>     -->
                         <th>Edit</th>
                         <th>Delete</th>
                       </tr>
@@ -121,8 +124,8 @@
                           echo "<td>{$row['username']} </td>";
                           echo "<td>{$row['name']} </td>";
                           echo "<td>{$row['password']} </td>";
-                          echo "<td>{$row['time_created']} </td>";
-                          echo "<td>{$row['last_modified']} </td>";
+                          // echo "<td>{$row['time_created']} </td>";
+                          // echo "<td>{$row['last_modified']} </td>";
                           $id = $row['id'];
                           ?>
                             <form method="post" action="">
