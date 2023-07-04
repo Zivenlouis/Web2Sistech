@@ -88,6 +88,7 @@
                   require("php/image.php");
                   require_once("php/CRUDabout.php");
                   if(isset($_POST['submit'])) {
+                    $id = $_POST['id'];
                     $title = $_POST['title'];
                     $description = $_POST['description'];
                     if(isset($_FILES['image'])) $image= $_FILES['image'];
@@ -111,10 +112,13 @@
               <div class="form-group row">
                   <label for="aboutTitle" class="col-sm-3 col-form-label">Name</label>
                   <div class="col-sm-9">
-                    <input type="text" required name="title" value="<?php if(isset($arr)) echo $arr['name']; ?>" class="form-control" id="aboutTitle" placeholder="Title" style="color: #ffff" readonly>
+                    <input type="text" required name="title" value="<?php if(isset($arr)) echo $arr['name'];             ?>" class="form-control" id="aboutTitle" placeholder="Title" style="color: #ffff" readonly>
                 </div>
             </div>
-              <?php if($arr['about_title'] != '') { ?> 
+              <?php 
+              $id = $_POST['id'];
+              echo "<input type='hidden' name='id' value='$id'>";
+              if($arr['about_title'] != '') { ?> 
               <div class="form-group row">
                   <label for="aboutTitle" class="col-sm-3 col-form-label">About Title</label>
                   <div class="col-sm-9">
@@ -136,8 +140,6 @@
                   <div class="col-sm-9">
                     <?php 
                     $image = $arr['about_image'];
-                    $id = $_POST['id'];
-                    echo "<input type='hidden' name='id' value='$id'>";
                     echo "<img style='width: auto; height: 150px; margin-right: 10px;' src='../UploadImage/AboutUs/$image'>";
                       
                     ?>
