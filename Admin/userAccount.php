@@ -20,11 +20,19 @@
       }
       
     }
+
+    label select option {
+      color: black !important;
+    }
+
+    .main-panel * {
+      color: white;
+    }
   </style>
   <body>
     <div class="container-scroller">
       <?php require_once("component/navbar.php");?>
-      <div class="main-panel">
+      <div class="main-panel numpang">
         <div class="content-wrapper">
           <div class="card">
             <div class="card-body">
