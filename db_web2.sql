@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Jul 05, 2023 at 03:12 PM
+-- Generation Time: Jul 05, 2023 at 03:55 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -172,6 +172,7 @@ CREATE TABLE `tbl_akun` (
   `line` varchar(30) NOT NULL,
   `major` varchar(30) NOT NULL,
   `intake` varchar(20) NOT NULL,
+  `active` varchar(10) NOT NULL,
   `remember_token` varchar(255) NOT NULL,
   `verification_code` varchar(8) DEFAULT NULL,
   `update_verification_time` datetime DEFAULT NULL
@@ -181,8 +182,8 @@ CREATE TABLE `tbl_akun` (
 -- Dumping data for table `tbl_akun`
 --
 
-INSERT INTO `tbl_akun` (`id`, `first_name`, `last_name`, `email`, `password`, `class`, `nim`, `line`, `major`, `intake`, `remember_token`, `verification_code`, `update_verification_time`) VALUES
-(15, 'Ziven', 'Louis', 'zivenlouisuph@gmail.com', '12345678', '21TI2', '03082210017', 'zivenlouis25', 'Informatics', '2021', '', NULL, '2023-07-05 17:08:40');
+INSERT INTO `tbl_akun` (`id`, `first_name`, `last_name`, `email`, `password`, `class`, `nim`, `line`, `major`, `intake`, `active`, `remember_token`, `verification_code`, `update_verification_time`) VALUES
+(15, 'Ziven', 'Louis', 'zivenlouisuph@gmail.com', '12345678', '21TI2', '03082210017', 'zivenlouis25', 'Informatics', '2021', '1', '', NULL, '2023-07-05 20:53:18');
 
 --
 -- Triggers `tbl_akun`
