@@ -1,5 +1,5 @@
 <?php
-    function insertUser($firstName, $lastName, $email, $nim, $class, $lineId, $major, $intake) {
+    function insertUser($firstName, $lastName, $email, $nim, $class, $line, $major, $intake, $active) {
         require("connection.php");
         // date_default_timezone_set('Asia/Jakarta');
         // $currentTime = date("Y-m-d H:i:s");   
@@ -8,10 +8,10 @@
         $email = mysqli_real_escape_string($conn, $email);
         $nim = mysqli_real_escape_string($conn, $nim);
         $class = mysqli_real_escape_string($conn, $class);
-        $lineId = mysqli_real_escape_string($conn, $lineId);
+        $line = mysqli_real_escape_string($conn, $line);
         $major = mysqli_real_escape_string($conn, $major);
         $intake = mysqli_real_escape_string($conn, $intake);   
-        $query = "INSERT INTO tbl_akun (first_name, last_name, email, nim, class, line_id, major, intake) VALUES ('$firstName', '$lastName', '$email', '$nim', '$class', '$lineId', '$major', '$intake')"; 
+        $query = "INSERT INTO tbl_akun (first_name, last_name, email, nim, class, line_id, major, intake, active) VALUES ('$firstName', '$lastName', '$email', '$nim', '$class', '$line', '$major', '$intake', '$active')"; 
         if ($conn->query($query)) {
             return true;
         }
@@ -19,14 +19,14 @@
         return false;
     }
 
-    function deleteUser($id) {
-        require("connection.php");
-        $query = "DELETE FROM tbl_akun WHERE id = $id";
-        if ($conn -> query($query)) {
-            return true;
-        }
-        return false;
-    }
+    // function deleteUser($id) {
+    //     require("connection.php");
+    //     $query = "DELETE FROM tbl_akun WHERE id = $id";
+    //     if ($conn -> query($query)) {
+    //         return true;
+    //     }
+    //     return false;
+    // }
 
     function getUserToArr() {
         require("connection.php");
@@ -61,13 +61,13 @@
         return null;
     }
 
-    function updateUser($id, $firstName, $lastName, $email, $nim, $class, $lineId, $major, $intake) {
+    function updateUser($id, $firstName, $lastName, $email, $nim, $class, $line, $major, $intake, $active) {
         require("connection.php");
         // date_default_timezone_set('Asia/Jakarta');
         // $currentTime = date("Y-m-d H:i:s");      
         $arr = getUserFromId($id);
     
-        $query = "UPDATE tbl_akun SET first_name = '$firstName', last_name = '$lastName', email = '$email', nim ='$nim', class = '$class', line_id = '$lineId', major = '$major', intake ='$intake' WHERE id = '$id'"; 
+        $query = "UPDATE tbl_akun SET first_name = '$firstName', last_name = '$lastName', email = '$email', nim ='$nim', class = '$class', line_id = '$line', major = '$major', intake ='$intake', active ='$active' WHERE id = '$id'"; 
         
         if ($conn->query($query)) {
             return true;
