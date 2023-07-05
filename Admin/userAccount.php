@@ -115,7 +115,7 @@
                 <div class="form-group row">
                   <label for="line" class="col-sm-3 col-form-label">Line ID</label>
                   <div class="col-sm-9">
-                    <input type="text" required name="line" value="<?php if(isset($arr)) echo $arr['line_id']; ?>" class="form-control" id="line" placeholder="Line ID" style="color: #ffff">
+                    <input type="text" required name="line" value="<?php if(isset($arr)) echo $arr['line']; ?>" class="form-control" id="line" placeholder="Line ID" style="color: #ffff">
                   </div>
                 </div>
                 <div class="form-group row">
@@ -131,12 +131,12 @@
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label for="onGoing" class="col-sm-3 col-form-label">On Going</label>
+                  <label for="onGoing" class="col-sm-3 col-form-label">Status</label>
                   <div class="col-sm-9" style="display: flex; align-items: center">
                     <input type="radio" required name="active" value="1" <?php if(isset($arr) && $arr['active'] == '1') echo " checked "?> id="checkedYes" style="color: #ffff">
-                    <label for="checkedYes" style="margin-bottom: 0; margin-right: 20px; margin-left: 10px;">Yes</label>
+                    <label for="checkedYes" style="margin-bottom: 0; margin-right: 20px; margin-left: 10px;">Active</label>
                     <input type="radio" required name="active" value="0" <?php if(isset($arr) && $arr['active'] == '0') echo " checked "?> id="checkedNo" style="color: #ffff">
-                    <label for="checkedNo"  style="margin-bottom: 0; margin-left: 10px;">No</label>
+                    <label for="checkedNo"  style="margin-bottom: 0; margin-left: 10px;">Disabled</label>
                   </div>
                 </div>
                 <?php if(isset($_POST['id'])) { ?>
@@ -168,7 +168,7 @@
                         <th>Line ID</th>
                         <th>Major</th>
                         <th>Intake</th>
-                        <th>On Going</th>
+                        <th>Active</th>
                         <!-- <th>Date Created</th>
                         <th>Last Modified</th>     -->
                         <th>Edit</th>
@@ -187,10 +187,10 @@
                           echo "<td>{$row['email']} </td>";
                           echo "<td>{$row['nim']} </td>";
                           echo "<td>{$row['class']} </td>";
-                          echo "<td>{$row['line_id']} </td>";
+                          echo "<td>{$row['line']} </td>";
                           echo "<td>{$row['major']} </td>";
                           echo "<td>{$row['intake']} </td>"; 
-                          $isActive = $row['active'] == "0" ? "No" : "Yes";
+                          $isActive = $row['active'] == "0" ? "Disabled" : "Active";
                           echo "<td>{$isActive} </td>";
                           // echo "<td>{$row['time_created']} </td>";
                           // echo "<td>{$row['last_modified']} </td>";
