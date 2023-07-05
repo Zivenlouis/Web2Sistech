@@ -30,8 +30,19 @@
       
         elseif ($info['mime'] == 'image/png') 
           $image = imagecreatefrompng($source);
+          imagealphablending($image, false);
+          imagesavealpha($image, true);
       
-        if (imagejpeg($image, $destination, $quality)) return true;
+      
+        if ($info['mime'] == 'image/png') {
+          if (imagepng($image, $destination, round(9 * $quality / 100))) {
+            return true;
+          }
+        } else {
+            if (imagejpeg($image, $destination, $quality)) {
+              return true;
+          }
+        }
         return false;
       
       }

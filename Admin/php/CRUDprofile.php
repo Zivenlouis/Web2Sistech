@@ -21,7 +21,7 @@
 
     function deleteProfile($id) {
         require("connection.php");
-        $query = "DELETE FROM tbl_admin_profile WHERE profile_id = $id";
+        $query = "DELETE FROM tbl_admin_profile WHERE id = $id";
         if ($conn -> query($query)) {
             return true;
         }
@@ -43,7 +43,7 @@
 
     function getProfileFromId($id) {
         require("connection.php");
-        $query = "SELECT * FROM tbl_admin_profile where profile_id = $id";
+        $query = "SELECT * FROM tbl_admin_profile where id = $id";
         if ($result = $conn -> query($query)) return $result -> fetch_assoc();
         return null;
     }
@@ -62,12 +62,12 @@
             $image1Query = "profile_image_1 = '" . mysqli_real_escape_string($conn, $image_1) . "',";
         }
         
-        if ($image2['size'] != 0) {
+        if ($image_2['size'] != 0) {
             deleteImage('profile', $arr['profile_image_2']);
             $image_2 = moveImage('Profile', $image_2);
             $image2Query = "profile_image_2 = '" . mysqli_real_escape_string($conn, $image_2) . "',";
         }
-        if ($image3['size'] != 0) {
+        if ($image_3['size'] != 0) {
             deleteImage('profile', $arr['profile_image_3']);
             $image_3 = moveImage('Profile', $image_3);
             $image3Query = "profile_image_3 = '" . mysqli_real_escape_string($conn, $image_3) . "',";
@@ -77,7 +77,7 @@
         if ($conn->query($query)) {
             return true;
         }
-        
+        echo $conn -> error;
         return false;
         
         

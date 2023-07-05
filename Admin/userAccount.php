@@ -116,7 +116,7 @@
                 <div class="form-group row">
                   <label for="lineId" class="col-sm-3 col-form-label">Line ID</label>
                   <div class="col-sm-9">
-                    <input type="text" required name="lineId" value="<?php if(isset($arr)) echo $arr['line_id']; ?>" class="form-control" id="lineId" placeholder="Line ID" style="color: #ffff">
+                    <input type="text" required name="lineId" value="<?php if(isset($arr)) echo $arr['line']; ?>" class="form-control" id="lineId" placeholder="Line ID" style="color: #ffff">
                   </div>
                 </div>
                 <div class="form-group row">
@@ -178,7 +178,7 @@
                           echo "<td>{$row['email']} </td>";
                           echo "<td>{$row['nim']} </td>";
                           echo "<td>{$row['class']} </td>";
-                          echo "<td>{$row['line_id']} </td>";
+                          echo "<td>{$row['line']} </td>";
                           echo "<td>{$row['major']} </td>";
                           echo "<td>{$row['intake']} </td>";
                           // echo "<td>{$row['time_created']} </td>";

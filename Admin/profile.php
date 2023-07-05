@@ -49,9 +49,9 @@
                   if(isset($_POST['submit'])) {
                     $title = $_POST['title'];
                     $description = $_POST['description'];
-                    if(isset($_FILES['image_1'])) $image_1= $_FILES['image_1'];
-                    if(isset($_FILES['image_2'])) $image_2= $_FILES['image_2'];
-                    if(isset($_FILES['image_3'])) $image_3= $_FILES['image_3'];
+                    $image_1 = $_FILES['image_1'];
+                    $image_2 = $_FILES['image_2'];
+                    $image_3 = $_FILES['image_3'];
                   
                     if(isset($_POST['id'])) {
                       $id = $_POST['id'];
@@ -79,8 +79,6 @@
                   else if(isset($_POST['edit'])) {
                     $arr = getProfileFromId($_POST['id']);
                   }
-                  
-
                 ?>               
               <form class="forms-sample" method="post" action=""  enctype="multipart/form-data">
                 <div class="form-group row">
@@ -99,7 +97,7 @@
                   <label for="profileImage" class="col-sm-3 col-form-label">Image 1</label>
                   <div class="col-sm-9">
                     <?php 
-                      if(isset($arr)) {
+                      if(isset($arr) && $arr['profile_image_2'] != '') {
                         $image_1 = $arr['profile_image_1'];
                         $id = $_POST['id'];
                         echo "<input type='hidden' name='id' value='$id'>";
@@ -113,7 +111,7 @@
                   <label for="profileImage" class="col-sm-3 col-form-label">Image 2</label>
                   <div class="col-sm-9">
                     <?php 
-                      if(isset($arr)) {
+                      if(isset($arr) && $arr['profile_image_2'] != '') {
                         $image_2 = $arr['profile_image_2'];
                         echo "<img style='height: 150px; margin-right: 10px;' src='../UploadImage/Profile/$image_2'>";
                       }
@@ -125,7 +123,7 @@
                   <label for="profileImage" class="col-sm-3 col-form-label">Image 3</label>
                   <div class="col-sm-9">
                     <?php 
-                      if(isset($arr)) {
+                      if(isset($arr) && $arr['profile_image_3'] != '') {
                         $image_3 = $arr['profile_image_3'];
                         echo "<img style='height: 150px; margin-right: 10px;' src='../UploadImage/Profile/$image_3'>";
                       }
@@ -144,7 +142,7 @@
                 <h4 class="card-title">Profile Admin</h4>
                 
                 <div class="table-responsive table-wrapper"  >
-                  <table class="table">
+                  <table class="table" id='table'>
                     <thead>
                       <tr>
                         <th>Title</th>
@@ -187,7 +185,7 @@
                           }
                           echo "<td>{$row['data_created']} </td>";
                           echo "<td>{$row['last_modified']} </td>";
-                          $id = $row['profile_id'];
+                          $id = $row['id'];
                           ?>
                             <form method="post" action="" enctype="multipart/form-data">
                               
@@ -204,12 +202,16 @@
                       ?>
                     </tbody>
                   </table>
+                  <script>
+                    $('#table').DataTable();
+                  </script>
                 </div>
               </div>
             </div>
           </div>
         </div>
       <!-- </div> -->
+    
     </div>
     <?php require_once("component/script.php");?>
   </body>
