@@ -48,15 +48,14 @@
                     $email = $_POST['email'];
                     $nim = $_POST['nim'];
                     $class = $_POST['class'];
-                    $lineId = $_POST['lineId'];
+                    $line = $_POST['line'];
                     $major = $_POST['major'];
                     $intake = $_POST['intake'];
-                    
-                    
+                    $active = $_POST['active'];
         
                     if(isset($_POST['id'])) {
                       $id = $_POST['id'];
-                      if(updateUser($id, $firstName, $lastName, $email, $nim, $class, $lineId, $major, $intake)) {
+                      if(updateUser($id, $firstName, $lastName, $email, $nim, $class, $line, $major, $intake, $active)) {
                         echo " <p class='successMessage'>Data updated successfully</p>";
                       } else {
                         echo " <p class='errorMessage'>Data update unsuccessful</p>";
@@ -64,21 +63,21 @@
                       unset($_POST['id']);
                     } else {                    
                      
-                      if(insertUser($firstName, $lastName, $email, $nim, $class, $lineId, $major, $intake)) {
+                      if(insertUser($firstName, $lastName, $email, $nim, $class, $line, $major, $intake, $active)) {
                         echo " <p class='successMessage'>Data inserted successfully</p>";
                       } else {
                         echo " <p class='errorMessage'>Data insertion unsuccessful</p>";
                       }
                     }
                   } 
-                  else if (isset($_POST['delete'])) {
-                    if (deleteUser($_POST['id'])) {
-                      echo " <p class='successMessage'>Data deleted successfully</p>";
-                    } else {
-                      echo " <p class='errorMessage'>Data deletion unsuccessful</p>";
-                    }
-                    unset($_POST['id']);
-                  }
+                  // else if (isset($_POST['delete'])) {
+                  //   if (deleteUser($_POST['id'])) {
+                  //     echo " <p class='successMessage'>Data deleted successfully</p>";
+                  //   } else {
+                  //     echo " <p class='errorMessage'>Data deletion unsuccessful</p>";
+                  //   }
+                  //   unset($_POST['id']);
+                  // }
                   
 
                 ?>               
@@ -114,9 +113,9 @@
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label for="lineId" class="col-sm-3 col-form-label">Line ID</label>
+                  <label for="line" class="col-sm-3 col-form-label">Line ID</label>
                   <div class="col-sm-9">
-                    <input type="text" required name="lineId" value="<?php if(isset($arr)) echo $arr['line']; ?>" class="form-control" id="lineId" placeholder="Line ID" style="color: #ffff">
+                    <input type="text" required name="line" value="<?php if(isset($arr)) echo $arr['line_id']; ?>" class="form-control" id="line" placeholder="Line ID" style="color: #ffff">
                   </div>
                 </div>
                 <div class="form-group row">
@@ -129,6 +128,15 @@
                   <label for="intake" class="col-sm-3 col-form-label">Intake</label>
                   <div class="col-sm-9">
                     <input type="text" required name="intake" value="<?php if(isset($arr)) echo $arr['intake']; ?>" class="form-control" id="intake" placeholder="Intake" style="color: #ffff">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="onGoing" class="col-sm-3 col-form-label">On Going</label>
+                  <div class="col-sm-9" style="display: flex; align-items: center">
+                    <input type="radio" required name="active" value="1" <?php if(isset($arr) && $arr['active'] == '1') echo " checked "?> id="checkedYes" style="color: #ffff">
+                    <label for="checkedYes" style="margin-bottom: 0; margin-right: 20px; margin-left: 10px;">Yes</label>
+                    <input type="radio" required name="active" value="0" <?php if(isset($arr) && $arr['active'] == '0') echo " checked "?> id="checkedNo" style="color: #ffff">
+                    <label for="checkedNo"  style="margin-bottom: 0; margin-left: 10px;">No</label>
                   </div>
                 </div>
                 <?php if(isset($_POST['id'])) { ?>
@@ -160,10 +168,11 @@
                         <th>Line ID</th>
                         <th>Major</th>
                         <th>Intake</th>
+                        <th>On Going</th>
                         <!-- <th>Date Created</th>
                         <th>Last Modified</th>     -->
                         <th>Edit</th>
-                        <th>Delete</th>
+                        <!-- <th>Delete</th> -->
                       </tr>
                     </thead>
                     <tbody>
@@ -178,9 +187,11 @@
                           echo "<td>{$row['email']} </td>";
                           echo "<td>{$row['nim']} </td>";
                           echo "<td>{$row['class']} </td>";
-                          echo "<td>{$row['line']} </td>";
+                          echo "<td>{$row['line_id']} </td>";
                           echo "<td>{$row['major']} </td>";
-                          echo "<td>{$row['intake']} </td>";
+                          echo "<td>{$row['intake']} </td>"; 
+                          $isActive = $row['active'] == "0" ? "No" : "Yes";
+                          echo "<td>{$isActive} </td>";
                           // echo "<td>{$row['time_created']} </td>";
                           // echo "<td>{$row['last_modified']} </td>";
                           $id = $row['id'];
@@ -191,7 +202,7 @@
                                 <input type='hidden' name='id'  value='<?= $id ?>'>
                                 <input class='btn-primary'style='padding:5px 10px;' type='submit' name='edit' value='Edit'>
                               </td>
-                              <td><input class='btn-primary'style='padding:5px 10px;' type='submit' name='delete' value='Delete' onclick="return confirm('Are you sure you want to delete this item?');"></td>
+                              <!-- <td><input class='btn-primary'style='padding:5px 10px;' type='submit' name='delete' value='Delete' onclick="return confirm('Are you sure you want to delete this item?');"></td> -->
                             </form>
                             </tr>
                           <?php
