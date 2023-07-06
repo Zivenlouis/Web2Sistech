@@ -30,12 +30,7 @@ main {
 }
 
 h1 {
-  background: linear-gradient(
-    86.06deg,
-    #1b7d98 -44.31%,
-    #25aa96 89.3%,
-    #26ad95 99.33%
-  );
+  background: linear-gradient(86.06deg, #1b7d98 -44.31%, #25aa96 89.3%,#26ad95 99.33%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
