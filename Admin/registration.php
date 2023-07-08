@@ -60,9 +60,9 @@
                  </thead>
                  <tbody>
                     <?php
+                      $selectQuery = '';
                       if(isset($_POST['event'])) {
                         $id = $_POST['event'];
-                        $selectQuery = '';
                         if($id != 'all') {
                           $selectQuery = "AND event_id='$id'";
                         }

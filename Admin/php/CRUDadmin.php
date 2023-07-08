@@ -1,12 +1,12 @@
 <?php
-    function insertAdmin($user, $nama, $pass) {
+    function insertAdmin($user, $nama, $pass, $role) {
         require("connection.php");
         // date_default_timezone_set('Asia/Jakarta');
         // $currentTime = date("Y-m-d H:i:s");      
         $user = mysqli_real_escape_string($conn, $user);
         $nama = mysqli_real_escape_string($conn, $nama);
         $pass = mysqli_real_escape_string($conn, $pass);  
-        $query = "INSERT INTO tbl_akun_admin (username, name, password) VALUES ('$user', '$nama', '$pass')"; 
+        $query = "INSERT INTO tbl_akun_admin (username, name, password, role) VALUES ('$user', '$nama', '$pass', '$role')"; 
         if ($conn->query($query)) {
             return true;
         }
@@ -56,13 +56,13 @@
         return null;
     }
 
-    function updateAdmin($id, $user, $nama, $pass) {
+    function updateAdmin($id, $user, $nama, $pass, $role) {
         require("connection.php");
         // date_default_timezone_set('Asia/Jakarta');
         // $currentTime = date("Y-m-d H:i:s");      
         $arr = getAdminFromId($id);
     
-        $query = "UPDATE tbl_akun_admin SET username = '$user', name = '$nama', password = '$pass' WHERE id = '$id'"; 
+        $query = "UPDATE tbl_akun_admin SET username = '$user', name = '$nama', password = '$pass', role = '$role' WHERE id = '$id'"; 
         
         if ($conn->query($query)) {
             return true;

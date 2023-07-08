@@ -2,7 +2,7 @@
 if(isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $sql = "SELECT * FROM tbl_akun WHERE email='{$email}' AND password='{$password}'";
+    $sql = "SELECT * FROM tbl_akun WHERE email='{$email}' AND password='{$password}' AND active='1'";
     $result = $conn -> query($sql);
     if ($row = $result->fetch_assoc()) {
         session_start();

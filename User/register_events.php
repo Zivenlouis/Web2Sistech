@@ -26,7 +26,7 @@
         </div>
 
         <div class="form-section">
-          <form method='post' action=''>
+          <form method='get' action='#'>
             <div class="form-group">
               <div class="select-wrapper">
                   <label for='event'>Select Events :</label>
@@ -36,7 +36,7 @@
                         $id = $item['id'];
                         $title = $item['event_title'];
                         $selected = '';
-                        if ($_POST['event'] == $id) $selected = 'selected';
+                        if ($_GET['event'] == $id) $selected = 'selected';
                         echo "<option value='$id' $selected >$title</option>";
                     }
                     ?>
@@ -59,7 +59,7 @@
                   echo "<p class='messageError'>Failed to register: Payment gateway error</p>";
                   break;
                 case '3':
-                  echo "<p class='messageSuccess'>Event successfully registered. Thank you for registering through this website.</p>";
+                  echo "<p class='messageSuccess' style='color:green;'>Event successfully registered. Thank you for registering through this website.</p>";
                   break;
               }
             }
@@ -67,7 +67,7 @@
         </div>
         <div class="event-details">
           <?php  
-            if(isset($_POST['event'])) $id = $_POST['event']; else $id = getEventsToArr()[0]['id'];
+            if(isset($_GET['event'])) $id = $_GET['event']; else $id = getEventsToArr()[0]['id'];
             $data = getEventsFromId($id);
           ?>
           <div class="event-image">
@@ -76,7 +76,13 @@
           <div class="event-info">
             <h2><?= $data['event_title'] ?></h2>
             <p><?= $data['event_description'] ?></p>
-            <?php $formattedPrice = "Rp " . number_format($data['price'],2,',','.'); ?>
+            <?php 
+            if($data['price'] != '0') {
+              $formattedPrice = "Rp " . number_format($data['price'],2,',','.'); 
+            } else {
+              $formattedPrice = "Free";
+            }
+            ?>
             <p class='price'>Price: <?= $formattedPrice ?> </p>
           </div>
         </div>
