@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Jul 05, 2023 at 03:55 PM
+-- Generation Time: Jul 08, 2023 at 08:57 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -42,12 +42,12 @@ CREATE TABLE `tbl_admin_about` (
 --
 
 INSERT INTO `tbl_admin_about` (`id`, `name`, `about_title`, `about_content`, `about_image`, `last_modified`, `no_urut`) VALUES
-(1, 'SISTECH Header', 'SISTECH Header', '', '64a2b2bc04605.png', '2023-07-03 18:41:21', 1),
-(2, 'SISTECH Description', 'SISTECH', 'SISTECH UPH Medan Campus has two study programs namely Information Systems and Informatics. Both have a vision of becoming partners in the industrial world.dsfsd', '64a2b31e74b8d.png', '2023-07-03 18:38:06', 2),
+(1, 'SISTECH Header', 'SISTECH Header', '', '64a662160edf7.png', '2023-07-06 13:41:26', 1),
+(2, 'SISTECH Description', 'SISTECH', 'SISTECH UPH Medan Campus has two study programs namely Information Systems and Informatics. Both have a vision of becoming partners in the industrial world.dsfsd', '64a6621f135f1.png', '2023-07-06 13:41:35', 2),
 (3, 'HMPSSI Description', 'HMPSSI', 'HMPSSI-UPH is a Student Organization (OK) which was formed to answer the needs of students and improve the academic and non-academic quality of students. HMPSSI strives to encourage students to participate in every activity to create positive values of togetherness and kinship among Information Systems study program students.', '3.png', '2023-07-01 23:16:26', 3),
 (4, 'HMPSSI Vision', 'BETTER TOGETHER', 'Menjadikan HMPSSI sebagai wadah mahasiswa/i berkumpul dan beraspirasi guna meningkatkan potensi mahasiswa/i program studi Sistem Informasi baik dalam bidang akademik maupun non-akademik dengan melaksanakan program kerja yang unggul dan berkualitas.', '', '2023-07-01 18:19:01', 4),
 (5, 'HMPSSI Mission', 'FIT', '1.Facilitate\nMenyediakan wadah bagi mahasiswa/i melalui kesempatan bertumbuh dan berkembang guna menumbuhkan pribadi yang aktif, berkompeten dan berkarakter.\n2.Inspire\nMenginspirasi mahasiswa/i untuk mencari dan mengembangkan minat dan bakatnya masing-masing melalui program kerja yang membina, eksploratif dan informatif.\n3.Togetherness\nMenjalin hubungan baik antar organisasi di dalam, di luar UPH maupun antar mahasiswa/i program studi Sistem Informasi.', '', '2023-07-01 18:19:01', 5),
-(6, 'HMPSIF Vision', 'HDD(Help - Devote - Develop)', 'Menjadikan HMPSIF sebagai organisasi yang berkomitmen dalam membantu, mempererat hubungan kebersamaan serta mengembangkan potensi yang dimiliki mahasiswa/i program studi Informatika baik dalam bidang akademik maupun non-akademik.', '', '2023-07-01 18:19:01', 7),
+(6, 'HMPSIF Vision', 'HDD(Help - Devote - Develop)', 'Menjadikan HMPSIF sebagai organisasi yang berkomitmen dalam membantu, mempererat hubungan kebersamaan serta mengembangkan potensi yang dimiliki mahasiswa/i program studi Informatika baik dalam bidang akademik maupun non-akademik.', '64a6627d11e72.png', '2023-07-06 13:43:09', 7),
 (7, 'HMPSIF Mission', 'DREAM', '1.Drive\nMenjadi wadah untuk menampung dan menyalur aspirasi serta bakat dari mahasiswa/i program studi Informatika.\n2.Relation\nMembangun hubungan yang harmonis antara sesama mahasiswa/i program studi Informatika.\n3.Educate	\nMengadakan program kerja yang dapat menjadi sumber ilmu dan wawasan mahasiswa/i program studi Informatika.\n4.Active	\nMenjadikan mahasiswa/i program studi Informatika sebagai mahasiswa/i yang lebih aktif dalam mengekspresikan diri melalui program kerja yang akan dilaksanakan.\n5.Model	\nMenjadi seorang pemimpin yang dapat memotivasi mahasiswa/i.', '', '2023-07-01 18:19:01', 8),
 (8, 'HMPSIF Description', 'HMPSIF', 'HMPSIF-UPH is a Student Organization (OK) which was formed to answer the needs of students and improve the academic and non-academic quality of students. HMPSIF strives to encourage students to participate in every activity to create positive values of togetherness and kinship among Informatics study program students.', '4.png', '2023-07-02 00:08:31', 6);
 
@@ -183,7 +183,8 @@ CREATE TABLE `tbl_akun` (
 --
 
 INSERT INTO `tbl_akun` (`id`, `first_name`, `last_name`, `email`, `password`, `class`, `nim`, `line`, `major`, `intake`, `active`, `remember_token`, `verification_code`, `update_verification_time`) VALUES
-(15, 'Ziven', 'Louis', 'zivenlouisuph@gmail.com', '12345678', '21TI2', '03082210017', 'zivenlouis25', 'Informatics', '2021', '1', '', NULL, '2023-07-05 20:53:18');
+(15, 'Ziven', 'Louis', 'zivenlouisuph@gmail.com', '12345678', '21TI2', '03082210017', 'zivenlouis25', 'Informatics', '2021', '1', '', NULL, '2023-07-05 20:53:18'),
+(17, 'Ziven', 'Louis', 'zivenlouis25@gmail.com', '12345678', '21TI2', '03082210017', 'zivenlouis25', 'Informatics', '2021', '1', '83f58a9d90498fcc5f110e1127c96b90', NULL, '2023-07-08 13:32:27');
 
 --
 -- Triggers `tbl_akun`
@@ -205,15 +206,17 @@ CREATE TABLE `tbl_akun_admin` (
   `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `role` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_akun_admin`
 --
 
-INSERT INTO `tbl_akun_admin` (`id`, `username`, `name`, `password`) VALUES
-(1, 'admin', 'Admin', 'admin');
+INSERT INTO `tbl_akun_admin` (`id`, `username`, `name`, `password`, `role`) VALUES
+(1, 'admin2', 'Admin2', 'admin2', 'Normal'),
+(2, 'admin', 'Admin', 'admin', 'Master');
 
 -- --------------------------------------------------------
 
@@ -235,7 +238,9 @@ CREATE TABLE `tbl_events_registration` (
 
 INSERT INTO `tbl_events_registration` (`id`, `event_id`, `account_id`, `payment_status`, `payment_time`) VALUES
 ('649e8e8ada147', 6, 15, 'Success', '2023-06-30 15:13:09'),
-('649e929c6cb17', 8, 15, 'Success', '2023-06-30 15:32:29');
+('649e929c6cb17', 8, 15, 'Success', '2023-06-30 15:32:29'),
+('64a90340d3a0a', 9, 17, 'Success', '2023-07-08 13:33:39'),
+('64a904fdb01d1', 6, 17, 'Pending', '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -310,13 +315,13 @@ ALTER TABLE `tbl_admin_profile`
 -- AUTO_INCREMENT for table `tbl_akun`
 --
 ALTER TABLE `tbl_akun`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tbl_akun_admin`
 --
 ALTER TABLE `tbl_akun_admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
