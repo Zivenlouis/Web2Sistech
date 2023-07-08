@@ -34,6 +34,9 @@
       <?php require_once("component/navbar.php");?>
       <div class="main-panel numpang">
         <div class="content-wrapper">
+          <?php
+            if($_SESSION['role'] == 'Master') {
+          ?>
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">Add Admin</h4>
@@ -43,17 +46,17 @@
                     $username = $_POST['username'];
                     $name = $_POST['name'];
                     $password = $_POST['password'];
-                    
+                    $role = ($_POST['role']=='1') ? "Master" : "Normal";                   
                     if(isset($_POST['id'])) {
                       $id = $_POST['id'];
-                      if(updateAdmin($id, $username, $name, $password)) {
+                      if(updateAdmin($id, $username, $name, $password, $role)) {
                         echo " <p class='successMessage'>Data updated successfully</p>";
                       } else {
                         echo " <p class='errorMessage'>Data update unsuccessful</p>";
                       }
                     } else {                    
                      
-                      if(insertAdmin($username, $name, $password)) {
+                      if(insertAdmin($username, $name, $password, $role)) {
                         echo " <p class='successMessage'>Data inserted successfully</p>";
                       } else {
                         echo " <p class='errorMessage'>Data insertion unsuccessful</p>";
@@ -92,6 +95,15 @@
                     <input type="text" required name="password" value="<?php if(isset($arr)) echo $arr['password']; ?>" class="form-control" id="password" placeholder="Password" style="color: #ffff">
                   </div>
                 </div>
+                <div class="form-group row">
+                  <label for="onGoing" class="col-sm-3 col-form-label">Role</label>
+                  <div class="col-sm-9" style="display: flex; align-items: center">
+                    <input type="radio" required name="role" value="1" <?php if(isset($arr) && $arr['role'] == 'Master') echo " checked "?> id="checkedYes" style="color: #ffff">
+                    <label for="checkedYes" style="margin-bottom: 0; margin-right: 20px; margin-left: 10px;">Master</label>
+                    <input type="radio" required name="role" value="0" <?php if(isset($arr) && $arr['role'] == 'Normal') echo " checked "?> id="checkedNo" style="color: #ffff">
+                    <label for="checkedNo"  style="margin-bottom: 0; margin-left: 10px;">Normal</label>
+                  </div>
+                </div>
                 <?php if(isset($_POST['id'])) { ?>
                 <input type='hidden' name='id' value='<?= $_POST["id"]?>'>
                 <?php } ?>
@@ -101,7 +113,11 @@
               </form>
             </div>
           </div>
+        
           <br>
+          <?php
+            }
+          ?>
           <!-- <div class="table-responsive"> -->
           <div class="card" style="box-sizing:border-box">
            
@@ -116,10 +132,13 @@
                         <th>Username</th>
                         <th>Name</th>
                         <th>Password</th>
-                        <!-- <th>Date Created</th>
-                        <th>Last Modified</th>     -->
+                        <th>Role</th>
+                        <?php 
+                        if($_SESSION['role'] == 'Master') {
+                        ?>
                         <th>Edit</th>
                         <th>Delete</th>
+                        <?php } ?>
                       </tr>
                     </thead>
                     <tbody>
@@ -132,12 +151,13 @@
                           echo "<td>{$row['username']} </td>";
                           echo "<td>{$row['name']} </td>";
                           echo "<td>{$row['password']} </td>";
-                          // echo "<td>{$row['time_created']} </td>";
-                          // echo "<td>{$row['last_modified']} </td>";
+                          echo "<td>{$row['role']}</td>";
                           $id = $row['id'];
+                          
+                          if($_SESSION['role'] == 'Master') {
                           ?>
-                            <form method="post" action="">
-                              
+                        
+                            <form method="post" action=""> 
                               <td>
                                 <input type='hidden' name='id'  value='<?= $id ?>'>
                                 <input class='btn-primary'style='padding:5px 10px;' type='submit' name='edit' value='Edit'>
@@ -146,7 +166,9 @@
                             </form>
                             </tr>
                           <?php
+                           }
                           $i++;
+                         
                         }
                       ?>
                     </tbody>

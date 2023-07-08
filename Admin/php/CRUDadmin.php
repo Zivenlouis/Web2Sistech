@@ -66,11 +66,8 @@
         
         if ($conn->query($query)) {
             return true;
-        }
-        
-        return false;
-        
-        
+        }        
+        return false;        
     }
 
 ?>
