@@ -2,6 +2,11 @@
   font-family: "Roboto";
 }
 
+/* body {
+  margin-top: 150px; 
+  overflow-y: hidden;
+} */
+
 main {
   display: flex;
   flex-direction: column;
@@ -96,16 +101,16 @@ input[type="checkbox"] {
   margin-left: 0;
 }
 
-.forgot {
+/* .change {
   font-size: 15px;
   color: #4fa485;
   text-decoration: none;
   margin-left: 30%;
 }
 
-.forgot:hover {
+.change:hover {
   color: #169b45;
-}
+} */
 
 #error {
   color: red;
@@ -125,7 +130,7 @@ input[type="checkbox"] {
   /* margin-top: 5vh; */
   width: auto;
   height: 6vh;
-  font-family: "Roboto";
+  /* font-family: "Roboto"; */
   font-style: normal;
   font-weight: 700;
   border-width: 3px;
@@ -163,34 +168,6 @@ input[type="checkbox"] {
   background: none;
 }
 
-.chat {
-  position: relative;
-  width: 50%;
-  height: 40%;
-  top: 50px;
-  left: 50px;
-}
-
-.techno {
-  position: relative;
-  width: 75%;
-  height: 90%;
-  top: -5%;
-  left: 20%;
-}
-
-@media screen and (max-width: 1000px) {
-  body {
-    overflow-y: auto;
-  }
-
-  .container {
-    display: flex;
-    flex-flow: column-reverse;
-    justify-content: center;
-  }
-}
-
 .noAccount {
   display: flex;
   align-items: center;
@@ -204,6 +181,39 @@ input[type="checkbox"] {
   margin-right: 10px;
 }
 
-.noAccount a {
-  color: #1b7d98;
+/* .noAccount a {
+  /* color: #1b7d98;
+  margin-left: 0;
+} */
+
+/* .chat {
+  position: relative;
+  width: 50%;
+  height: 40%;
+  top: 50px;
+  left: 50px;
+} */
+
+/* .techno {
+  position: relative;
+  width: 75%;
+  height: 90%;
+  top: -15%;
+  left: 20%;
+} */
+
+@media screen and (max-width: 1000px) {
+  /* body {
+    overflow-y: auto;
+  } */
+
+  .container {
+    display: flex;
+    flex-flow: column-reverse;
+    justify-content: center;
+  }
+
+  /* .techno {
+    left: 10%;
+  } */
 }

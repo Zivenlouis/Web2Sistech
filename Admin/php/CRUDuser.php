@@ -1,17 +1,18 @@
 <?php
-    function insertUser($firstName, $lastName, $email, $nim, $class, $line, $major, $intake, $active) {
+    function insertUser($firstName, $lastName, $email, $pass, $nim, $class, $line, $major, $intake, $active) {
         require("connection.php");
         // date_default_timezone_set('Asia/Jakarta');
         // $currentTime = date("Y-m-d H:i:s");   
         $firstName = mysqli_real_escape_string($conn, $firstName);
         $lastName = mysqli_real_escape_string($conn, $lastName);
         $email = mysqli_real_escape_string($conn, $email);
+        $pass = mysqli_real_escape_string($conn, $pass); 
         $nim = mysqli_real_escape_string($conn, $nim);
         $class = mysqli_real_escape_string($conn, $class);
         $line = mysqli_real_escape_string($conn, $line);
         $major = mysqli_real_escape_string($conn, $major);
         $intake = mysqli_real_escape_string($conn, $intake);   
-        $query = "INSERT INTO tbl_akun (first_name, last_name, email, nim, class, line_id, major, intake, active) VALUES ('$firstName', '$lastName', '$email', '$nim', '$class', '$line', '$major', '$intake', '$active')"; 
+        $query = "INSERT INTO tbl_akun (first_name, last_name, email, password, nim, class, line, major, intake, active) VALUES ('$firstName', '$lastName', '$email', '$pass', '$nim', '$class', '$line', '$major', '$intake', '$active')"; 
         if ($conn->query($query)) {
             return true;
         }
@@ -61,13 +62,13 @@
         return null;
     }
 
-    function updateUser($id, $firstName, $lastName, $email, $nim, $class, $line, $major, $intake, $active) {
+    function updateUser($id, $firstName, $lastName, $email, $pass, $nim, $class, $line, $major, $intake, $active) {
         require("connection.php");
         // date_default_timezone_set('Asia/Jakarta');
         // $currentTime = date("Y-m-d H:i:s");      
         $arr = getUserFromId($id);
     
-        $query = "UPDATE tbl_akun SET first_name = '$firstName', last_name = '$lastName', email = '$email', nim ='$nim', class = '$class', line_id = '$line', major = '$major', intake ='$intake', active ='$active' WHERE id = '$id'"; 
+        $query = "UPDATE tbl_akun SET first_name = '$firstName', last_name = '$lastName', email = '$email', password = '$pass', nim ='$nim', class = '$class', line = '$line', major = '$major', intake ='$intake', active ='$active' WHERE id = '$id'"; 
         
         if ($conn->query($query)) {
             return true;
