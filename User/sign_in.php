@@ -5,7 +5,7 @@
     <?php require_once("Layout/head.php"); ?>
     <link rel="stylesheet" href="Style/mainSignIn.css">
   </head>
-  <body style="margin-top:100px; overflow-y:hidden">
+  <body style="margin-top: 100px; overflow-y: hidden;">
     <div class="background">
       <div class="eclipse1"></div>
       <div class="eclipse2"></div>
@@ -20,34 +20,18 @@
           <form class="container1_1" action="" method="post">
             <h1>Sign In</h1>
             <div class="group">
-              <img class="email" src="Image/Main/Username.png" />
-              <input
-                type="email"
-                class="textbox"
-                id="semail"
-                name = "email"
-                placeholder="Email"
-                required
-                oninput="clearInfo()"
-              />
+              <img class="email" src="Image/Main/Username.png">
+              <input type="email" class="textbox" id="semail" name = "email" placeholder="Email" required oninput="clearInfo()">
             </div>
 
             <div class="group">
-              <img class="pass" src="Image/Main/Password.png" />
-              <input
-                type="password"
-                class="textbox"
-                name = "password"
-                id="spassword"
-                placeholder="Password"
-                required
-                oninput="clearInfo()"
-              />
+              <img class="pass" src="Image/Main/Password.png">
+              <input type="password" class="textbox" name = "password" id="spassword" placeholder="Password" required oninput="clearInfo()">
             </div>
 
             <div class="group2">
               <div class="check">
-                <input type="checkbox" name="message" value="Message" />
+                <input type="checkbox" name="message" value="Message">
                 <label for="message">Remember me</label>
               </div>
 
@@ -78,13 +62,8 @@
               <input type="submit" class="button-ijo" name='submit' onclick="validasi(event)" value="Sign In">
             </div>
             <div class="noAccount">
-              <p>Don't have an account yet?</p>
-              <a href="register.php">
-                Create one.
-              </a>
-            </div>
-            
-            
+              <p>Don't have an account yet?</p><a href="register.php">Create one.</a>
+            </div>            
           </form>
         </div>
 
