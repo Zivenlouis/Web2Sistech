@@ -78,6 +78,12 @@
 
           if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
             ?>
+            <a class="nav-item" href="history.php">
+              <div class="header-item">
+                <p>History</p>
+                <div class="selected-header" style="display: <?= $filename == 'history.php' ? "block" : "";  ?>"></div>
+              </div>
+            </a>
             <div id="profile" class="nav-item" href="">
               <div class="header-item">
                 <p> <?= $_SESSION['firstName']; ?> 
@@ -92,6 +98,7 @@
                 </div>
               </div>
             </div>
+            
             <?php
             
             

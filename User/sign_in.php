@@ -5,44 +5,7 @@
     <?php require_once("Layout/head.php"); ?>
     <link rel="stylesheet" href="Style/mainSignIn.css">
     <style>    
-      body {
-        margin-top: 150px; 
-        overflow-y: hidden;
-      }
 
-      .change {
-        font-size: 15px;
-        color: #4fa485;
-        text-decoration: none;
-        margin-left: 30%;
-      }
-
-      .change:hover {
-        color: #169b45;
-      }
-      
-      .noAccount a {
-        /* color: #1b7d98; */
-        margin-left: 0;
-      }
-
-      .techno {
-        position: relative;
-        width: 75%;
-        height: 90%;
-        top: -15%;
-        left: 20%;
-      }
-
-      @media screen and (max-width: 1000px) {
-        body {
-          overflow-y: auto;
-        }
-
-        .techno {
-          left: 10%;
-        }
-      }
     </style>
   </head>
   <body>
