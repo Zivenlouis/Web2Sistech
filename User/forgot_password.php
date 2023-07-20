@@ -15,6 +15,18 @@
             justify-content: center !important;
             overflow-y: hidden;
         }
+
+        .box {
+            padding-left: 5px;
+            width: 330px;
+            height: 33px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-size: 20px;
+            outline: none;
+            opacity: 50%;
+        }
+
     </style>
 </head>
 <body>
