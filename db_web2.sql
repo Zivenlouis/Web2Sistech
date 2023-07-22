@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Jul 08, 2023 at 08:57 AM
+-- Generation Time: Jul 22, 2023 at 10:48 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -47,9 +47,9 @@ INSERT INTO `tbl_admin_about` (`id`, `name`, `about_title`, `about_content`, `ab
 (3, 'HMPSSI Description', 'HMPSSI', 'HMPSSI-UPH is a Student Organization (OK) which was formed to answer the needs of students and improve the academic and non-academic quality of students. HMPSSI strives to encourage students to participate in every activity to create positive values of togetherness and kinship among Information Systems study program students.', '3.png', '2023-07-01 23:16:26', 3),
 (4, 'HMPSSI Vision', 'BETTER TOGETHER', 'Menjadikan HMPSSI sebagai wadah mahasiswa/i berkumpul dan beraspirasi guna meningkatkan potensi mahasiswa/i program studi Sistem Informasi baik dalam bidang akademik maupun non-akademik dengan melaksanakan program kerja yang unggul dan berkualitas.', '', '2023-07-01 18:19:01', 4),
 (5, 'HMPSSI Mission', 'FIT', '1.Facilitate\nMenyediakan wadah bagi mahasiswa/i melalui kesempatan bertumbuh dan berkembang guna menumbuhkan pribadi yang aktif, berkompeten dan berkarakter.\n2.Inspire\nMenginspirasi mahasiswa/i untuk mencari dan mengembangkan minat dan bakatnya masing-masing melalui program kerja yang membina, eksploratif dan informatif.\n3.Togetherness\nMenjalin hubungan baik antar organisasi di dalam, di luar UPH maupun antar mahasiswa/i program studi Sistem Informasi.', '', '2023-07-01 18:19:01', 5),
-(6, 'HMPSIF Vision', 'HDD(Help - Devote - Develop)', 'Menjadikan HMPSIF sebagai organisasi yang berkomitmen dalam membantu, mempererat hubungan kebersamaan serta mengembangkan potensi yang dimiliki mahasiswa/i program studi Informatika baik dalam bidang akademik maupun non-akademik.', '64a6627d11e72.png', '2023-07-06 13:43:09', 7),
+(6, 'HMPSIF Vision', 'HMPSIF', 'Menjadikan HMPSIF sebagai organisasi yang berkomitmen dalam membantu, mempererat hubungan kebersamaan serta mengembangkan potensi yang dimiliki mahasiswa/i program studi Informatika baik dalam bidang akademik maupun non-akademik.', '64a6627d11e72.png', '2023-07-06 13:43:09', 7),
 (7, 'HMPSIF Mission', 'DREAM', '1.Drive\nMenjadi wadah untuk menampung dan menyalur aspirasi serta bakat dari mahasiswa/i program studi Informatika.\n2.Relation\nMembangun hubungan yang harmonis antara sesama mahasiswa/i program studi Informatika.\n3.Educate	\nMengadakan program kerja yang dapat menjadi sumber ilmu dan wawasan mahasiswa/i program studi Informatika.\n4.Active	\nMenjadikan mahasiswa/i program studi Informatika sebagai mahasiswa/i yang lebih aktif dalam mengekspresikan diri melalui program kerja yang akan dilaksanakan.\n5.Model	\nMenjadi seorang pemimpin yang dapat memotivasi mahasiswa/i.', '', '2023-07-01 18:19:01', 8),
-(8, 'HMPSIF Description', 'HMPSIF', 'HMPSIF-UPH is a Student Organization (OK) which was formed to answer the needs of students and improve the academic and non-academic quality of students. HMPSIF strives to encourage students to participate in every activity to create positive values of togetherness and kinship among Informatics study program students.', '4.png', '2023-07-02 00:08:31', 6);
+(8, 'HMPSIF Description', 'HDD(Help - Devote - Develop)', 'HMPSIF-UPH is a Student Organization (OK) which was formed to answer the needs of students and improve the academic and non-academic quality of students. HMPSIF strives to encourage students to participate in every activity to create positive values of togetherness and kinship among Informatics study program students.', '4.png', '2023-07-02 00:08:31', 6);
 
 -- --------------------------------------------------------
 
@@ -97,7 +97,7 @@ CREATE TABLE `tbl_admin_home` (
 --
 
 INSERT INTO `tbl_admin_home` (`id`, `name`, `last_modified`, `dataImage`) VALUES
-(1, 'On Going 1', '2023-07-05 15:43:19', '64a52d27987a4.png'),
+(1, 'On Going 1', '2023-07-20 19:26:25', '64b927f1784a2.png'),
 (2, 'On Going 2', '2023-07-05 15:42:30', '64a52cf613db9.png'),
 (3, 'On Going 3', '2023-06-29 11:06:29', '649d034529312.png'),
 (4, 'Past Events 1', '2023-06-29 11:06:34', '649d034ad3b7b.png'),
@@ -183,8 +183,18 @@ CREATE TABLE `tbl_akun` (
 --
 
 INSERT INTO `tbl_akun` (`id`, `first_name`, `last_name`, `email`, `password`, `class`, `nim`, `line`, `major`, `intake`, `active`, `remember_token`, `verification_code`, `update_verification_time`) VALUES
-(15, 'Ziven', 'Louis', 'zivenlouisuph@gmail.com', '12345678', '21TI2', '03082210017', 'zivenlouis25', 'Informatics', '2021', '1', '', NULL, '2023-07-05 20:53:18'),
-(17, 'Ziven', 'Louis', 'zivenlouis25@gmail.com', '12345678', '21TI2', '03082210017', 'zivenlouis25', 'Informatics', '2021', '1', '83f58a9d90498fcc5f110e1127c96b90', NULL, '2023-07-08 13:32:27');
+(15, 'Ziven', 'Louis', 'zivenlouisuph@gmail.com', '12345678', '21TI2', '03082210017', 'zivenlouis25', 'Informatics', '2021', '1', '144dfbf443507838292bd88446a3042e', 'S-276204', '2023-07-10 20:02:19'),
+(17, 'Irwanto', 'Kocak', 'zivenlouis25@gmail.com', '12345678', '21TI2', '03082210017', 'zivenlouis25', 'Informatics', '2021', '1', '83f58a9d90498fcc5f110e1127c96b90', 'S-930030', '2023-07-10 19:55:11'),
+(18, 'Kuraku', 'Raninja', 'erickleonardo123123@gmail.com', 'sushitei', '21ti2', '030303030303', 'memakannasi', 'Informatics', '2021', '1', '787b5039d7251a8db3063c9e87c1d3fb', 'S-019108', '2023-07-10 18:13:27'),
+(19, 'Darren', 'Oswaldo', 'darrenoswldo@gmail.com', '12345678', '21TI2', '03082210018', 'darren_ot', 'Informatics', '2021', '1', '', NULL, NULL),
+(20, 'Gilbert', 'Januar', 'zivenlouis31@gmail.com', '12345678', '21TI1', '03082210020', 'zivenlouis25', 'Informatics', '2021', '1', '', NULL, '2023-07-08 13:32:27'),
+(21, 'Erick', 'Leonardo', '03082210007@student.uph.edu', '123123123', '21ti1', '03082210007', 'erickleonardo1234', 'Informatics', '2021', '1', 'e344485f185a05110cdeca69c3208e65', NULL, '2023-07-10 18:00:13'),
+(22, 'Lala', 'Lili', 'liasandy92@gmail.com', '11111111', '21si2', '03082210000', 'kapurbarus', 'System Information', '2021', '1', '', NULL, NULL),
+(23, 'Jason', 'Tjoa', 'tjoajason2003@gmail.com', '11111111', '21TI2', '03082210003', 'tjoajason', 'Informatics', '2021', '1', '', 'S-022499', '2023-07-10 19:54:35'),
+(24, 'Andi', 'Tjoa', 'jasontjoa2003@gmail.com', '13572468', '21TI2', '03082210003', 'tjoajason', 'Informatics', '2021', '1', '', 'S-044091', '2023-07-10 19:43:33'),
+(25, 'Amir', 'Ahmad', '03082210003@student.uph.edu', '12345678', '21TI2', '03082210003', 'tjoajason', 'Informatics', '2021', '1', '', NULL, '2023-07-10 19:43:58'),
+(26, 'Oswaldo', 'Tan', 'evotingindonesia23@gmail.com', '12345678', '21TI2', '03082210003', 'tjoajason', 'Informatics', '2021', '1', '', NULL, '2023-07-10 19:44:06'),
+(27, 'Irwanto', 'Ganteng', 'iwganteng@gmail.com', '12345678', '21TI2', '03082210024', 'Irwantokocak', 'Informatics', '2021', '1', '', NULL, NULL);
 
 --
 -- Triggers `tbl_akun`
@@ -240,7 +250,17 @@ INSERT INTO `tbl_events_registration` (`id`, `event_id`, `account_id`, `payment_
 ('649e8e8ada147', 6, 15, 'Success', '2023-06-30 15:13:09'),
 ('649e929c6cb17', 8, 15, 'Success', '2023-06-30 15:32:29'),
 ('64a90340d3a0a', 9, 17, 'Success', '2023-07-08 13:33:39'),
-('64a904fdb01d1', 6, 17, 'Pending', '0000-00-00 00:00:00');
+('64a904fdb01d1', 6, 17, 'Pending', '0000-00-00 00:00:00'),
+('64abe1f485fcc', 6, 19, 'Success', '2023-07-10 17:48:59'),
+('64abe45542fa9', 6, 18, 'Success', '2023-07-10 17:59:41'),
+('64abe4b774e1b', 6, 23, 'Success', '2023-07-10 18:00:28'),
+('64abe4c5ed8dc', 6, 21, 'Success', '2023-07-10 18:01:00'),
+('64abe50d54508', 6, 24, 'Success', '2023-07-10 18:02:13'),
+('64abe53fde75f', 6, 22, 'Success', '2023-07-10 18:03:07'),
+('64abe5439e37d', 6, 17, 'Pending', '0000-00-00 00:00:00'),
+('64abe5ba5f151', 9, 26, 'Success', '2023-07-10 18:04:27'),
+('64ac01ac3e3b9', 8, 27, 'Success', '2023-07-10 20:04:13'),
+('64ae6684268d3', 6, 17, 'Pending', '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -315,7 +335,7 @@ ALTER TABLE `tbl_admin_profile`
 -- AUTO_INCREMENT for table `tbl_akun`
 --
 ALTER TABLE `tbl_akun`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `tbl_akun_admin`
