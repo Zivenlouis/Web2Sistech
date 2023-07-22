@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
   <title>About Us</title>
-  <?php require_once("Layout/head.php"); ?>
-  <link rel="stylesheet" href="Style/mainAboutUs.css">
-</head>
-<body>
-  <div class="background">
-    <div class="eclipse1"></div>
-    <div class="eclipse2"></div>
-    <div class="eclipse3"></div>
-    <div class="eclipse4"></div>
-  </div>
+    <?php require_once("Layout/head.php"); ?>
+    <link rel="stylesheet" href="Style/mainAboutUs.css">
+  </head>
+  <body>
+    <div class="background">
+      <div class="eclipse1"></div>
+      <div class="eclipse2"></div>
+      <div class="eclipse3"></div>
+      <div class="eclipse4"></div>
+    </div>
 
     <?php 
       require_once("Layout/header.php");
@@ -163,15 +163,15 @@
   </body>
 </html>
 <script>
-function toggleContent(section) {
-  var sectionBody = document.getElementById(section + "-body");
-  var button = sectionBody.previousElementSibling.children[1];
-  if (sectionBody.style.display == "none") {
-    sectionBody.style.display = "block";
-    button.innerHTML = "-";
-  } else {
-    sectionBody.style.display = "none";
-    button.innerHTML = "+";
+  function toggleContent(section) {
+    var sectionBody = document.getElementById(section + "-body");
+    var button = sectionBody.previousElementSibling.children[1];
+    if (sectionBody.style.display == "none") {
+      sectionBody.style.display = "block";
+      button.innerHTML = "-";
+    } else {
+      sectionBody.style.display = "none";
+      button.innerHTML = "+";
+    }
   }
-}
 </script>
